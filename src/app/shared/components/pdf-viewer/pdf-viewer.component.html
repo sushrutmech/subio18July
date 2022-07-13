@@ -1,0 +1,12 @@
+<ngx-extended-pdf-viewer class="app-pdf-viewer" [src]="src" height="55vh" [showToolbar]="true"
+  [showSidebarButton]="false" [showFindButton]="true" [showPagingButtons]="true" [showZoomButtons]="true"
+  [showPresentationModeButton]="true" [showOpenFileButton]="false" [showPrintButton]="true" [showDownloadButton]="true"
+  [showBookmarkButton]="false" [showSecondaryToolbarButton]="true" [showRotateButton]="false"
+  [showHandToolButton]="false" [showScrollingButton]="false" [showSpreadButton]="false" [showPropertiesButton]="false"
+  [showBorders]="false" [sidebarVisible]="false" [filenameForDownload]="fileName" [zoom]="'page-fit'" [page]="1"
+  [theme]="'dark'" (pdfLoaded)="onPdfLoad()" (progress)="handlePdfLoading()" (pdfLoadingFailed)="onFailedPdfLoad()"
+  (afterPrint)="hideLoading()">
+</ngx-extended-pdf-viewer>
+<ngx-spinner [name]="'pdf-viewer'" bdColor="#dcdcdc80" size="medium" color="#2f5597" [fullScreen]="false" type="timer">
+</ngx-spinner>
+

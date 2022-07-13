@@ -1,0 +1,49 @@
+.goal-type-button {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.goal-type-button img {
+  width: 20px;
+  height: 100%;
+  margin-right: 5px;
+}
+
+.list-group-item.active {
+  z-index: 2;
+  color: #fff;
+  background-color: #0198e0;
+  border-color: #0198e0;
+}
+
+.img-assessment-man {
+  width: 320px;
+}
+
+.goalImg-Container {
+  gap: 35px;
+}
+
+.goalSection{
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+
+.goalText {
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 120%;
+}
+
+.saveBtn > div{
+  padding-left: 15%;
+  padding-top: 10px;
+}
+
+.saveBtn > div > button{
+  background-color: #0198e0;
+}
+.inputGoalContainer{
+  padding-left: 48px;
+}

@@ -1,0 +1,20 @@
+vg-player {
+    border-radius: 0.2rem;
+    background-color: transparent;
+  }
+  
+  .scrub-progress-bar {
+    box-shadow: -1px -3px 5px rgb(128 128 128 / 50%);
+    z-index: 301;
+  }
+  
+  .current-time {
+    justify-content: center;
+    width: 45px;
+  }
+  
+  .total-time {
+    justify-content: center;
+    width: 45px;
+  }
+  

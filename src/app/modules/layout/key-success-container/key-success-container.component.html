@@ -1,0 +1,69 @@
+<div class="myGoalContainer d-flex justify-content-between">
+  <div class="container2HeaderText">
+    MY GOALS
+  </div>
+  <div>
+    <button mat-raised-button color="primary" routerLink="/key-to-success/goal" >Add New Goal </button>
+  </div>
+</div>
+
+<div class="my-libraryContainer">
+  <router-outlet></router-outlet>
+
+  <div class="goalContainer">
+    <mat-tab-group (selectedTabChange)="selectedTabChange($event)">
+      <mat-tab label="All Goals">
+
+        <app-key-to-success-c *ngIf="addGoalForm===false" [tabIndex]="tabIndex"></app-key-to-success-c>
+
+         <app-goal *ngIf="addGoalForm===true"></app-goal>
+
+            <!-- <app-assessment *ngIf="addGoalForm===true"></app-assessment>  -->
+       
+        <mat-card>
+
+
+        </mat-card>
+      </mat-tab>
+
+
+
+      <mat-tab label="My Goals">
+        <mat-card>
+
+          <app-key-to-success-c [tabIndex]="tabIndex" ></app-key-to-success-c>
+
+        
+
+        </mat-card>
+      </mat-tab>
+      <mat-tab label="My Business Goals">
+
+        <mat-card>
+
+          <app-key-to-success-c [tabIndex]="tabIndex"></app-key-to-success-c>
+
+         
+        </mat-card>
+      </mat-tab>
+      <mat-tab label=" My Team Goals">
+        <mat-card>
+
+          <app-key-to-success-c [tabIndex]="tabIndex"></app-key-to-success-c>
+
+
+          
+
+
+
+        </mat-card>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+
+
+  <button mat-raised-button color="primary" routerLink="/key-to-success/">Add New Goal </button>
+
+
+
+</div>

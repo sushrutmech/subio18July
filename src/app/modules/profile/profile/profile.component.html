@@ -1,0 +1,89 @@
+
+
+<section class="conatiner">
+
+    <div class="animated fadeIn py-3">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card border-0">
+              <div class="card-body">
+                <form [formGroup]="userForm" novalidate (ngSubmit)="onFormSubmit()">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div
+                        class="d-flex align-items-center justify-content-center align-items-md-start flex-column-reverse flex-md-row mb-3">
+                        <input #imageInput type="file" class="d-none" accept="image/*" (change)="processFile($event)" />
+                        <div class="text-center">
+                          <img
+                            [src]="defaultImage ? 'data:image/png;base64,' + defaultImage : './assets/img/dummy-profile.png'"
+                            class="rounded profile-image" alt="...">
+                          <div class="mt-2">
+                            <button type="button" class="btn btn-outline-primary btn-sm" (click)="imageInput.click()">
+                              <i class="fa fa-camera"></i> Change Your Profile Picture
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                      <label for="firstName" class="form-label">First name</label>
+                      <input type="text" class="form-control" id="firstName" formControlName="firstName"
+                        [class.is-invalid]="submitted && formControls.firstName.errors">
+                      <div class="invalid-feedback">
+                        Please enter your First name
+                      </div>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                      <label for="lastName" class="form-label">Last name</label>
+                      <input type="text" class="form-control" id="lastName" formControlName="lastName"
+                        [class.is-invalid]="submitted && formControls.lastName.errors">
+                      <div class="invalid-feedback">
+                        Please enter your Last name
+                      </div>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                      <label for="preferredName" class="form-label">Preferred name</label>
+                      <input type="text" class="form-control" id="preferredName" formControlName="preferredName"
+                        [class.is-invalid]="submitted && formControls.preferredName.errors">
+                      <div class="invalid-feedback">
+                        Please enter your preferred name
+                      </div>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                      <label for="jobTitle" class="form-label">Job title</label>
+                      <input type="text" class="form-control" id="jobTitle" formControlName="jobTitle"
+                        [class.is-invalid]="submitted && formControls.jobTitle.errors" />
+                      <div class="invalid-feedback">
+                        Please enter your Job title
+                      </div>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                      <label for="contactNumber" class="form-label">Contact number</label>
+                      <input type="number" class="form-control" id="contactNumber" formControlName="contactNumber"
+                        [class.is-invalid]="submitted && formControls.contactNumber.errors" />
+                      <div class="invalid-feedback">
+                        Please enter your Contact number
+                      </div>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                      <label for="emailAddress" class="form-label">Email address</label>
+                      <input type="text" class="form-control" id="emailAddress" formControlName="emailAddress" [disabled]="is_edit">
+                    </div>
+                    <div class="col-md-12 d-flex justify-content-end">
+                      <button type="button" class="btn btn-secondary ml-3" (click)="onCancelClick()" *ngIf="userForm.dirty">
+                        <i class="fa fa-ban mr-1"></i> Cancel
+                      </button>
+                      <button type="submit" class="btn btn-primary ml-3" [disabled]="submitted && userForm.invalid">
+                        <i class="fa fa-floppy-o mr-1"></i> Save My Profile
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+</section>
+  

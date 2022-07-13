@@ -1,0 +1,101 @@
+<div class="assessFormC">
+
+<div class="d-flex pt-3 h-100 animated fadeIn main-div" *ngIf="assessmentData && isDataLoaded">
+    <div class="close-button-container" *ngIf="showCancelButton">
+      <button class="btn-close" aria-label="Close" (click)="handleCancelClick()" routerLinkActive="router-link-active" >
+        <i class="icon icon-close fa-2x "></i>
+      </button>
+    </div>
+    <div class="d-flex flex-column h-100 justify-content-between w-100" *ngIf="introVisible">
+      <div class="d-flex align-sm-items-center flex-column flex-sm-row">
+        <div class="mr-sm-4">
+          <img src="./../../../../assets/assessment-man.png" height="250" />
+        </div>
+        <div>
+          <div class="assessment-introduction-header">{{assessmentData.introduction}}</div>
+          <p class="font-xl">{{assessmentData.introductionBody}}</p>
+        </div>
+      </div>
+      <div>
+        <div class="d-flex flex-column h-100 justify-content-end align-items-center animated fadeIn">
+          <button class="btn btn-link d-flex flex-column align-items-center font-xl" (click)="onStartClick()">
+            LETS’ START
+            <div class="slide-arrow down"></div>
+          </button>
+        </div>
+      </div>
+    </div>
+  
+    <div class="d-flex flex-column h-100 justify-content-between w-100 animated fadeIn" *ngIf="formVisible">
+      <div>
+        <div class="d-flex flex-column h-100 justify-content-end align-items-center animated fadeIn">
+          <button class="btn mb-1 d-flex flex-column align-items-center" (click)="onPreviousClick()">
+            <div class="slide-arrow up"></div>
+            Questions {{questionText}}
+          </button>
+        </div>
+      </div>
+      <div class="d-flex h-100 overflow-hidden">
+        <div class="container ratingAssesDiv" [@listAnimation]="currentPage">
+          <div class="row ratingAssesChild" (keypress)="eventHandler($event, question)"
+            *ngFor="let question of questionList | paginate: { itemsPerPage: 10, currentPage: currentPage }">
+            <div class="col-md-6 py-3">
+              <div class="d-flex align-items-center h-100">
+                <span class="font-xl">{{question.questionText}}</span>
+              </div>
+            </div>
+            <div class="col-md-6 py-3 rate-container" tabindex="{{question.thisOrderNo}}">
+              <div class="d-flex justify-content-evenly align-items-center h-100">
+                <span class="text-muted d-sm-down-none">{{question.minimumText}}</span>
+                <div class="mx-2 text-primary" [ngClass]="{'text-danger': submitted && !question.selectedValue }">
+                  <rating [(ngModel)]="question.selectedValue" class="custom-rating-star" [max]="question.maximumValue"
+                    (click)="handleClickOnQuestion(question)">
+                  </rating>
+                </div>
+                <span class="text-muted d-sm-down-none">{{question.maximumText}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="d-flex flex-column h-100 justify-content-end align-items-center" *ngIf="!isLastPage">
+          <button class="btn NxtBtn d-flex flex-column align-items-center" (click)="onNextClick()">
+            Next questions
+            <div class="slide-arrow down"></div>
+          </button>
+        </div>
+        <div class="d-flex flex-column h-100 justify-content-end align-items-center" *ngIf="isLastPage">
+          <button class="btn btn-link d-flex flex-column align-items-center" (click)="onFinishClick()">
+            Finish
+            <div class="slide-arrow down"></div>
+          </button>
+        </div>
+      </div>
+    </div>
+  
+    <div class="d-flex flex-column h-100 justify-content-between w-100" *ngIf="finishVisible">
+      <div class="d-flex g-1 justify-content-center align-sm-items-center flex-column flex-sm-row">
+        <div class="mr-sm-4">
+          <img src="./../../../../assets/assessment-man.png" height="250" />
+        </div>
+        <div>
+          <div class="assessment-introduction-header">{{assessmentData.ending}}</div>
+          <p class="font-xl">{{assessmentData.endingBody}}</p>
+          <div class="">
+            <!-- <app-success-key-chart [userSuccessID]="successGoal.userSuccessID"></app-success-key-chart> -->
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="d-flex flex-column h-100 justify-content-end align-items-center animated fadeIn">
+          <button class="btn btn-primary btn-block d-flex flex-column align-items-center font-xl w-30"
+            (click)="onShowMeMyKeyClick()">
+            RETURN TO MY KEYS !
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>

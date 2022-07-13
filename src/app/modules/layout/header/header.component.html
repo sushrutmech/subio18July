@@ -1,0 +1,100 @@
+
+
+
+<div class="navbar" *ngIf="currentUser">
+  
+     
+    <div class="flexWrap">
+        <div class="userInfo">
+
+            <div style="padding-right: 27.3px;" class="marPad0">
+                <img src="../../../assets/logo/subio.svg" alt="" height="40px" width="90" height="40">
+            </div>
+
+
+            <div class="marPad0">
+                <img src="../../../assets/componnets/Avatar.svg" alt="Avatar" class="avatar">
+                <!-- <img
+        [src]="userSession.profilePic ? 'data:image/png;base64,' + userSession.profilePic : './assets/img/dummy-profile.png'"
+        class="user-image" /> -->
+           
+            </div>
+            <div style="padding-left: 18px;" class="marPad10">
+
+                <P class="marPad0">Good Morning {{userSession.firstName}}</P>
+                <span class="marPad0">Here is your<strong> Keys to Success</strong> </span>
+
+            </div>
+
+        </div>
+        <div class="btmFlex d-flex">
+
+            <div class="marPad0">
+                <img src="../../../assets/componnets/notificatioBtn.svg" alt="sv" width="50" height="48">
+
+            </div>
+
+            <div class="marPad0 dropdown">
+                <!-- <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"
+                dropdownToggle (click)="false">
+                <img src="../../../assets/componnets/settingBtn.svg" alt="sv" width="50" height="48">
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
+                <div class="dropdown-header">
+                  <h5 class="mb-0 text-primary">
+                    {{userSession.firstName}} {{userSession.lastName}}
+                  </h5>
+                  <span class="text-muted">{{userSession.jobTitle}}</span>
+                </div>
+                <div class="divider"></div>
+                <a class="dropdown-item" [routerLink]="'/profile'">Profile</a>
+                <a class="dropdown-item" [routerLink]="'/change-passwoord'">Change Password</a>
+              </div> -->
+                   <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                      <img src="../../../assets/componnets/settingBtn.svg" alt="sv" width="50" height="48">
+                  </a>
+                
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <div class="dropdown-header">
+                          <h5 class="mb-0 text-primary userName">
+                            {{userSession.firstName}}
+                          </h5>
+                          <span class="text-muted userJob">{{userSession.jobTitle}}</span>
+                      </div>
+                      <hr class="my-1">
+                        <a class="dropdown-item cursorP" [routerLink]="'/profile'">Profile</a>
+                        <hr class="my-1">
+                        <a class="dropdown-item cursorP" [routerLink]="'/change-passwoord'">Change Password</a>
+                  </div> 
+            </div>
+
+            <div class="marPad0" style="cursor:pointer" >
+                <img (click)="onPressSignOut()"  src="../../../assets/componnets/logout.svg" alt="" width="125" height="48">
+                
+            </div>
+
+            
+        </div>
+    </div>
+
+    <ng-container *ngIf=" router.url.includes('key-to-success') || router.url.includes('/layout/home/goal/') || router.url.includes('my-library') ">
+        
+        <div class="wrapper">
+            <div class="item" [routerLink]="'/layout/home'" >
+                <span id="homeLabel" class="homeLabel">Home</span>
+            </div>
+            <div class="item" [routerLink]="'/key-to-success'">
+                <span id="goalLabel" class="goalLabel">My Goals</span>
+            </div>
+            <div class="item"  [routerLink]="'my-library'">
+                <span id="libraryLabel" class="libraryLabel">My Library</span>
+                
+            </div>
+          
+        </div>
+
+    </ng-container>
+
+</div>
+
+<router-outlet></router-outlet>

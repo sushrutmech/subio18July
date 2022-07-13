@@ -1,0 +1,50 @@
+<div class="animated fadeIn py-3">
+    <div class="row full-height-row">
+      <div class="col-lg-8 col-md-8 col-xl-6 mx-auto" *ngIf="isDataLoaded">
+        <div class="d-flex flex-column h-100 justify-content-between">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="setup-state-container">
+              <div *ngFor="let content of programContents; let i = index" class="d-flex setup-state-block">
+                <div class="setup-state" [class.active]="activeIndex >= i"
+                  [innerHTML]="activeIndex > i ? '&#10003;' : i + 1">
+                </div>
+              </div>
+            </div>
+            <div class="close-button" (click)="onWatchLaterClick()">
+              <i class="icon icon-close fa-2x"></i>
+            </div>
+          </div>
+          <div class="d-flex flex-grow-1 flex-column justify-content-around py-3">
+            <div class="video-header">
+              <h3>{{activeContent.stepName}}</h3>
+              <label>{{activeContent.headerBlurb}}</label>
+            </div>
+            <div class="video-player-wrapper" [ngSwitch]="activeContent.contenttypeid">
+              <app-video-player *ngSwitchCase="contentType.Video" [src]="activeContent.contentLocation"
+                (onVideoEnd)="handleReadContent()">
+              </app-video-player>
+              <app-pdf-viewer *ngSwitchCase="contentType.PDF_Document" [src]="activeContent.contentLocation"
+                (onLoad)="handleReadContent()">
+              </app-pdf-viewer>
+              <!-- <app-pdf-viewer [src]="'https://subioapi.azurewebsites.net/wwwroot/PDF/K2S_Module_1.pdf'">
+              </app-pdf-viewer> -->
+            </div>
+            <div class="d-flex justify-content-center py-2 animated fadeIn"
+              *ngIf="!(visibleWatchNextButton || visibleBackToHomeButton)">
+              <button class="btn btn-outline-primary" (click)="onWatchLaterClick()">Watch later</button>
+            </div>
+            <div class="video-footer">
+              <label>{{activeContent.footerBlurb}}</label>
+            </div>
+          </div>
+          <div class="btn-min-highted-block">
+            <button class="btn btn-block btn-primary animated fadeIn" *ngIf="visibleWatchNextButton"
+              (click)="nextContent()">{{activeContent.nextButtonText || 'WATCH NEXT'}}</button>
+            <button class="btn btn-block btn-primary animated fadeIn" *ngIf="visibleBackToHomeButton"
+              (click)="backToHomeClick()">{{activeContent.nextButtonText || 'BACK TO HOME'}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

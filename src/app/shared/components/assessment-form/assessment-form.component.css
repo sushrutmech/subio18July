@@ -1,0 +1,52 @@
+.main-div {
+  position: relative;
+}
+
+.assessment-introduction-header {
+  font-size: 1.75rem;
+  line-height: 30px;
+  margin-bottom: 0.7rem;
+}
+
+.custom-rating-star {
+  font-size: 2.5rem;
+}
+
+.close-button-container {
+  position: absolute;
+  right: 0;
+}
+
+.rate-container:focus-within {
+  transform: scale(1.2);
+  transition: all 0.2s linear;
+}
+
+.assessFormC {
+  padding: 8px 40px;
+}
+
+.NxtBtn {
+  background: #0198e0;
+  border-radius: 4.8px;
+  color: #fff;
+  margin-top: 24px;
+}
+
+.ratingAssesDiv :nth-child(odd) {
+  background: #E9ECEF;
+  height: 63px;
+}
+.ratingAssesDiv :nth-child(even) {
+  background: #fff;
+  height: 63px;
+}
+
+.ratingAssesChild :nth-child(odd) {
+  background: unset;
+  height: auto;
+}
+.ratingAssesChild :nth-child(even) {
+  background: unset;
+  height: auto;
+}

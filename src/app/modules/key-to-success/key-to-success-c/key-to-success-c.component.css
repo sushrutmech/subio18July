@@ -1,0 +1,148 @@
+.goal-item,
+.goal-item-value {
+  padding: 8px 0px 16px 0px;
+}
+
+.addGoalContainer{
+  max-width: 100%;
+  padding: 0px !important;
+}
+.goalWHoleC{
+  max-width: 100%;
+  padding: 40px !important;
+}
+
+.goal-item img {
+  width: 25px;
+  height: 25px;
+}
+
+.goal-header {
+  padding: 0.1rem 0px;
+  border-bottom: 1px solid #a5a5a5;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.goal-header span {
+  color: #a5a5a5;
+}
+
+.goal-item span {
+  color: #a5a5a5;
+  cursor: pointer;
+}
+
+.goal-item span:hover {
+  text-decoration: underline;
+  text-decoration-color: #a5a5a5;
+}
+
+.goal-item.active span {
+  color: black;
+  text-decoration: underline;
+  cursor: default;
+}
+
+.goal-item-value {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.goal-item-value span {
+  color: #a5a5a5;
+  cursor: pointer;
+}
+
+.goal-item-value span:hover {
+  text-decoration: underline;
+  text-decoration-color: #a5a5a5;
+}
+
+.goal-item-value.active span {
+  color: black;
+  text-decoration: underline;
+  cursor: default;
+}
+
+.lockContainerDivGoal {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.addGoalBtn {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 150%;
+  background-color: #0198e0 !important;
+  color: #fff !important;
+  height: 48px;
+  margin-top: 16px;
+  }
+
+.reAsses > button{
+  font-size: 14px;
+}
+
+.goalContainer {
+  position: relative;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  margin-top: 16px !important;
+  padding: 8px;
+  margin-right: 0px !important;
+  margin-left: 16px;
+}
+.goalContainer:hover {
+  box-shadow: 0px 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0px 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+}
+.dispNone{
+  display: none;
+}
+
+.titleCard {
+  background: #c29ffa;
+  border-radius: 4px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 120%;
+  padding: 10px;
+}
+
+.titleCardTeamGoal {
+  background: rgba(207, 244, 252, 1);    border-radius: 4px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 120%;
+  padding: 10px;
+}
+
+.titleCardBuisnessGoal {
+  background: rgba(222, 226, 230, 1);
+  border-radius: 4px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 120%;
+  padding: 10px;
+}
+
+.progressStatusCard {
+  background: #fff3cd;
+  border-radius: 2px;
+  flex-grow: 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  padding: 0px 8px;
+  height: 21px;
+  margin-left: 13px;
+}
+
+.goal-item > span {
+  color: #000;
+  text-decoration: none;
+}

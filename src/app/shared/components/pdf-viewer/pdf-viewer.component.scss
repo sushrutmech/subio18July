@@ -1,0 +1,10 @@
+.app-pdf-viewer {
+    ngx-extended-pdf-viewer a:focus,
+    ngx-extended-pdf-viewer button:focus,
+    ngx-extended-pdf-viewer input:focus,
+    ngx-extended-pdf-viewer select:focus {
+      outline: none;
+      border: unset !important;
+    }
+  }
+  

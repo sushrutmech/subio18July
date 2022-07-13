@@ -1,0 +1,113 @@
+<div class="key-container" #mainContainer>
+    <div class="animated fadeIn d-flex align-items-center justify-content-center h-100" *ngIf="isDataLoaded">
+      <div class="key-box key-slide1 {{getColorName(keySlide1?.rag)}}" *ngIf="keySlide1">
+        <div class="key-content" >
+          <span class="categoryName">{{keySlide1?.categoryName}}</span>
+          <span class="scorePC">{{keySlide1.scorePC | number : '0.0-0'}}%
+            <i class="fa" *ngIf="keySlide1.previousScore"
+              [class.fa-caret-up]="keySlide1.previousScore < keySlide1.scorePC"
+              [class.fa-caret-down]="keySlide1.previousScore > keySlide1.scorePC">
+            </i>
+          </span>
+        </div>
+      </div>
+      <div class="key-box key-slide2 {{getColorName(keySlide2?.rag)}}" *ngIf="keySlide2">
+        <div class="key-content" >
+          <span class="categoryName">{{keySlide2?.categoryName}}</span>
+          <span class="scorePC">{{keySlide2.scorePC | number : '0.0-0'}}%
+            <i class="fa" *ngIf="keySlide2.previousScore"
+              [class.fa-caret-up]="keySlide2.previousScore < keySlide2.scorePC"
+              [class.fa-caret-down]="keySlide2.previousScore > keySlide2.scorePC">
+            </i>
+          </span>
+        </div>
+        <div class="key-box key-slide3 absolute {{getColorName(keySlide3?.rag)}}"  *ngIf="keySlide3">
+          <div class="key-content" >
+            <span class="categoryName">{{keySlide3.categoryName}}</span>
+            <span class="scorePC">{{keySlide3.scorePC | number : '0.0-0'}}%
+              <i class="fa" *ngIf="keySlide3.previousScore"
+                [class.fa-caret-up]="keySlide3.previousScore < keySlide3.scorePC"
+                [class.fa-caret-down]="keySlide3.previousScore > keySlide3.scorePC">
+              </i>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="key-box key-slide4 {{getColorName(keySlide4?.rag)}}" *ngIf="keySlide4" >
+        <div class="key-content" >
+          <span class="categoryName">{{keySlide4.categoryName}}</span>
+          <span class="scorePC">{{keySlide4.scorePC | number : '0.0-0'}}%
+            <i class="fa" *ngIf="keySlide4.previousScore"
+              [class.fa-caret-up]="keySlide4.previousScore < keySlide4.scorePC"
+              [class.fa-caret-down]="keySlide4.previousScore > keySlide4.scorePC">
+            </i>
+          </span>
+        </div>
+      </div>
+      <div class="key-rounded-container">
+        <div>
+          <div class="key-box key-slide6 {{getColorName(keySlide6?.rag)}}" *ngIf="keySlide6">
+            <div class="key-content" >
+              <span class="categoryName">{{keySlide6?.categoryName}}</span>
+              <span class="scorePC">{{keySlide6.scorePC | number : '0.0-0'}}%
+                <i class="fa" *ngIf="keySlide6.previousScore"
+                  [class.fa-caret-up]="keySlide6.previousScore < keySlide6.scorePC"
+                  [class.fa-caret-down]="keySlide6.previousScore > keySlide6.scorePC">
+                </i>
+              </span>
+            </div>
+          </div>
+          <div class="key-box key-slide5 {{getColorName(keySlide5?.rag)}}" *ngIf="keySlide5">
+            <div class="key-content">
+              <span class="categoryName">{{keySlide5?.categoryName}}</span>
+              <span class="scorePC">{{keySlide5.scorePC | number : '0.0-0'}}%
+                <i class="fa" *ngIf="keySlide5.previousScore"
+                  [class.fa-caret-up]="keySlide5.previousScore < keySlide5.scorePC"
+                  [class.fa-caret-down]="keySlide5.previousScore > keySlide5.scorePC">
+                </i>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="key-box key-slide8 {{getColorName(keySlide8?.rag)}}" *ngIf="keySlide8">
+            <div class="key-content" >
+              <span class="categoryName">{{keySlide8.categoryName}}</span>
+              <span class="scorePC">{{keySlide8.scorePC | number : '0.0-0'}}%
+                <i class="fa" *ngIf="keySlide8.previousScore"
+                  [class.fa-caret-up]="keySlide8.previousScore < keySlide8.scorePC"
+                  [class.fa-caret-down]="keySlide8.previousScore > keySlide8.scorePC">
+                </i>
+              </span>
+            </div>
+          </div>
+          <div class="key-box key-slide7 {{getColorName(keySlide7?.rag)}}" *ngIf="keySlide7">
+            <div class="key-content">
+              <span class="categoryName">{{keySlide7.categoryName}}</span>
+              <span class="scorePC">{{keySlide7.scorePC | number : '0.0-0'}}%
+                <i class="fa" *ngIf="keySlide7.previousScore"
+                  [class.fa-caret-up]="keySlide7.previousScore < keySlide7.scorePC"
+                  [class.fa-caret-down]="keySlide7.previousScore > keySlide7.scorePC">
+                </i>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="inner-absolute-circle {{getColorName(keySlide9?.rag)}}" *ngIf="keySlide9">
+          <div class="key-content">
+            <span class="categoryName">{{keySlide9.categoryName}}</span>
+            <span class="scorePC">{{keySlide9.scorePC | number : '0.0-0'}}%
+              <i class="fa" *ngIf="keySlide9.previousScore"
+                [class.fa-caret-up]="keySlide9.previousScore < keySlide9.scorePC"
+                [class.fa-caret-down]="keySlide9.previousScore > keySlide9.scorePC">
+              </i>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ngx-spinner bdColor="#ffffff00" size="medium" color="#2f5597" [fullScreen]="false" type="ball-scale-multiple"
+      name="assessment-key-chart">
+    </ngx-spinner>
+  </div>
+  

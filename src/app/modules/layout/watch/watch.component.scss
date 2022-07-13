@@ -1,0 +1,91 @@
+.video-player-wrapper {
+  max-width: 100%;
+  min-width: 100%;
+  text-align: center;
+  margin: 0 auto;
+  box-shadow: 0px 0px 15px rgb(128 128 128 / 50%);
+  border-radius: 0.2rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.video-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.setup-state-container {
+  display: inline-flex;
+  align-items: center;
+}
+
+.setup-state-block {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 0 1rem;
+}
+
+.setup-state-container .setup-state-block:first-child {
+  padding-left: 0;
+}
+
+.setup-state-container .setup-state-block:last-child {
+  padding-right: 0;
+}
+
+.setup-state {
+  height: 30px;
+  width: 30px;
+  background-color: #2f5597;
+  color: white;
+  border-radius: 50%;
+  font-weight: 500;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.setup-state-container .setup-state-block::after,
+.setup-state-container .setup-state-block::before {
+  content: "";
+  border: 0;
+  width: 50%;
+  position: absolute;
+  display: block;
+  left: 50%;
+  top: calc(50% - 1px);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.setup-state-container .setup-state-block::before {
+  left: 0%;
+}
+
+.setup-state-container .setup-state-block:last-of-type::after,
+.setup-state-container .setup-state-block:first-of-type::before {
+  content: "";
+  width: 0px;
+  border-top: unset;
+}
+
+.setup-state.active {
+  background-color: #70ad47;
+  color: white;
+}
+
+.close-button {
+  cursor: pointer;
+  color: rgb(68, 68, 68, 0.7);
+  transition: all 0.3s ease;
+}
+
+.close-button:hover i {
+  color: rgb(68, 68, 68);
+  text-shadow: 0px 0px 3px rgb(68 68 68 / 60%);
+}

@@ -1,0 +1,68 @@
+<div class="container-fluid classFigma">
+    <app-alert-box *ngIf="resData" [resData]="resData"></app-alert-box>
+    
+  <div class="d-flex flex-wrap justify-content-evenly">
+        
+          <div class="">
+              <div class="">
+                  <img src="../../assets/logo/subio.svg" alt="" width="224.6px" height="100px">
+  
+              </div>
+              <div class="textSubio">
+                  <p class="marPad0 textLeftD">
+                      Subio Help you to achieve personal,
+                      team or business goal in your Life.
+  
+                  </p>
+              </div>
+
+          </div>
+          
+      
+      
+
+          <div class="">
+              <div class="formCard">
+                  <form [formGroup]="loginForm" (ngSubmit)="onSubmit($event)" novalidate>
+                      <div class="formElement">
+                          <div class="inputEmail">
+                            <input type="text" class="form-control" placeholder="Username" autocomplete="off"
+                            formControlName="username" [class.is-invalid]="submitted && f.username.errors">
+                            <div class="invalid-feedback">
+                                Please enter your Username
+                              </div>
+                          </div>
+  
+                          <div class="inputPass">
+                            <input type="password" class="form-control" placeholder="Password" autocomplete="off"
+                            formControlName="password" [class.is-invalid]="submitted && f.password.errors">
+                            <div class="invalid-feedback">
+                                Please enter your Password
+                              </div>
+                          </div>
+  
+                          <div class="loginBtn">
+                              <button type="submit" class="btn btnBlock" [disabled]="submitted && loginForm.invalid">Log In</button>
+                          </div>
+  
+                          <div class="frgtPass">
+                              <p style="cursor: pointer;" class="marPad0" [routerLink]="'/forgot-password'" >Forgot Password </p>
+                          </div>
+  
+                          <div class="regBlock">
+                              <p class="marPad0 regText">Don't have an account?</p>
+                              <div class="regBtn" style="cursor: pointer;">
+                                  <button [routerLink]="'/register'" type="button" class="btn btnRegister ">Register Now</button>
+                              </div>
+                          </div>
+              
+                      </div>
+                  </form>
+               </div>
+          </div>
+      
+  </div>
+
+
+
+</div>

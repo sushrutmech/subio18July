@@ -1,0 +1,21 @@
+<vg-player (onPlayerReady)="videoPlayerInit($event)">
+    <vg-overlay-play></vg-overlay-play>
+    <vg-buffering></vg-buffering>
+    <vg-scrub-bar class="scrub-progress-bar">
+      <vg-scrub-bar-current-time [vgSlider]="true"></vg-scrub-bar-current-time>
+      <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+    </vg-scrub-bar>
+    <!-- <vg-controls> -->
+    <vg-controls [vgAutohide]="true">
+      <vg-play-pause></vg-play-pause>
+      <vg-time-display class="current-time" vgProperty="current" vgFormat="mm:ss /"></vg-time-display>
+      <vg-time-display class="total-time" vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+      <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
+      <vg-mute></vg-mute>
+      <vg-volume></vg-volume>
+      <vg-fullscreen></vg-fullscreen>
+    </vg-controls>
+    <video #media [vgMedia]="$any(media)" [src]="src" preload="auto" crossorigin>
+    </video>
+  </vg-player>
+  
