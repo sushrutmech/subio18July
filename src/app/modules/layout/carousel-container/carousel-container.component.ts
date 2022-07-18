@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 
  import * as moment from 'moment';
 
 import { NgxSpinnerService } from 'ngx-spinner';
-import { Subscription, timer } from 'rxjs';
+import { BehaviorSubject, Subscription, timer } from 'rxjs';
+import { GlobleDataserviceService } from 'src/app/appServices/globle-dataservice.service';
 import {ProgramContentTypes } from '../../../shared/constants/program-content-types'
 import { UserProgramContent, UserProgramInstance } from '../../../shared/interfaces/home-content'
 import {HomeService } from '../home.service'
@@ -27,13 +30,23 @@ export class CarouselContainerComponent implements OnInit {
   selectedVideoIndex: number = -1;
   timeSubscription!: Subscription;
   contentType:any= ProgramContentTypes;
-  selectedContent:any
+  selectedContent:any;
+  courseData!:any;
+
 
   constructor(
     private homeService: HomeService,
     private spinner: NgxSpinnerService,
+    private router: Router,
+    private globalDataSevice:GlobleDataserviceService,
 
-  ) { }
+  ) {
+
+    this.globalDataSevice.caroselData.subscribe(courseData=>{
+      this.courseData=courseData
+    })
+
+   }
 
   ngOnInit(): void {
     this.callHomeContentAPI();
@@ -69,11 +82,15 @@ export class CarouselContainerComponent implements OnInit {
     })
   }
 
-  handleWatchVideo(index: number = -1) {
-    this.selectedVideoIndex = index;
+  handleWatchVideo(data:any) {
+   //this.selectedVideoIndex = index;
     //this.selectedContent=this.selectedVideoIndex
-    console.log(this.selectedVideoIndex)
-    this.isWatchVideo = true;
+    
+    console.log(data)
+   
+    var url = "layout/media/"+ JSON.stringify(data.contentTypeName)
+    this.router.navigate([url]);
+    //this.isWatchVideo = true;
   }
 
   handleVideoPlayerClose(dataRefresh: boolean) {

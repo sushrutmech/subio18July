@@ -9,6 +9,7 @@ import { RegisterComponent } from './register/register.component';
 import { TestComponent } from './test/test.component';
 import { Test2Component } from './test2/test2.component';
 import { Test3Component } from './test3/test3.component';
+import { VideoComponent } from './video/video.component';
 
 const routes: Routes = [
   { path: "", redirectTo: '/layout/home', pathMatch: "full" },
@@ -22,6 +23,8 @@ const routes: Routes = [
       title: 'Forgot Password Page'
     }
   },
+
+  {path:'video',component:VideoComponent},
 
   { path: "test1", component: TestComponent },
   { path: "test2", component: Test2Component },

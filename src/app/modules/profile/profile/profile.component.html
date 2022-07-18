@@ -3,8 +3,12 @@
 <section class="conatiner">
 
     <div class="animated fadeIn py-3">
-        <div class="row">
+      <div style="
+        align-items: center;
+        justify-content: center;
+        margin: 0px;" class="row">
           <div class="col-md-4">
+            <mat-card class="mt-1">
             <div class="card border-0">
               <div class="card-body">
                 <form [formGroup]="userForm" novalidate (ngSubmit)="onFormSubmit()">
@@ -81,6 +85,7 @@
                 </form>
               </div>
             </div>
+          </mat-card>
           </div>
         </div>
       </div>

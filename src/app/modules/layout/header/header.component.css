@@ -66,7 +66,8 @@
   cursor: pointer;
 }
 
-.item:focus-within {
+.itemFocus{
+  position: relative;
   cursor: pointer;
   width: 148px;
   height: 52px;
@@ -86,17 +87,17 @@
 
     .homeLabel::before{
         content: "";
-        height: 24px;
+        height: 25px;
         width: 24px;
-        top: 12px;
-        left: 35px;
+        top: 14px;
+        left: 34px;
         position: absolute;
         background-image: url(../../../../assets/images/HOMEG.svg);
         background-repeat: no-repeat;
         background-position: center;
     }
 
-  #homeLabel:hover::before{
+    .homeLabelB::before{
         content: "";
         height: 24px;
         width: 24px;
@@ -112,8 +113,8 @@
       content: "";
       height: 24px;
       width: 24px;
-      top: 14px;
-      left: 22px;
+      top: 15px;
+      left: 20px;
       position: absolute;
       background-image: url(../../../../assets/images/GOALG.svg);
       background-repeat: no-repeat;
@@ -121,12 +122,12 @@
   }
 
 
-  #goalLabel:hover::before{
+  .goalLabelB::before{
         content: "";
         height: 24px;
         width: 24px;
-        top: 14px;
-        left: 14px;
+        top: 15px;
+        left: 20px;    
         position: absolute;
         background-image: url(../../../../assets/images/GOALB.svg);
         background-repeat: no-repeat;
@@ -145,11 +146,11 @@
             background-position: center;
         }
         
-      #libraryLabel:hover::before {
+        .libraryLabelB::before{
           content: "";
           height: 14px;
           width: 14px;
-          top: 12px;
+          top: 19px;
           left: 22px;
           position: absolute;
           background-image: url(../../../../assets/images/LIBTARYB.svg);

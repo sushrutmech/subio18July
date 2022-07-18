@@ -18,6 +18,10 @@ export class HeaderComponent implements OnInit {
   currentUser:any;
   userSession!: User;
 
+  bool1:boolean = false
+  bool2:boolean = false
+  bool3:boolean = false
+
   constructor(
     private AuthService:AuthService,
     public router: Router,
@@ -35,6 +39,21 @@ export class HeaderComponent implements OnInit {
     
   }
 
+  clickB1(){
+    this.bool1 = true
+    this.bool2 = false
+    this.bool3 = false
+  }
+  clickB2(){
+    this.bool1 = false
+    this.bool2 = true
+    this.bool3 = false
+  }
+  clickB3(){
+    this.bool1 = false
+    this.bool2 = false
+    this.bool3 = true
+  }
   
 
   onPressSignOut(){

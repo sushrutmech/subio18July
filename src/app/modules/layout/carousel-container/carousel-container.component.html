@@ -5,10 +5,6 @@
     </div>
   </div>
 
-  <app-watch *ngIf="isWatchVideo" [programContents]="programContents" [videoIndex]="selectedVideoIndex"
-    (onRequestClose)="handleVideoPlayerClose($event)">
-  </app-watch>
-
   <div class="full-height" *ngIf="isDataLoaded && hasData; else noDataTemplate">
     <carousel [cellsToShow]="4" style="height: 515px" class="carouselCardRow">
 
@@ -31,7 +27,7 @@
                     <div class="fa fa-check"></div>
                   </div>
                   <div class="overlay-content" *ngIf="nextVideoIndex >= i">
-                    <div class="round-button" (click)="handleWatchVideo(i)" [ngSwitch]="item.contenttypeid">
+                    <div class="round-button" (click)="handleWatchVideo(item)" [ngSwitch]="item.contenttypeid">
                       <i class="fa fa-play fa-2x pl-1" aria-hidden="true" *ngSwitchCase="contentType.Video"></i>
                       <i class="fa fa-file-pdf-o fa-2x" aria-hidden="true" *ngSwitchCase="contentType.PDF_Document"></i>
                     </div>
@@ -44,9 +40,9 @@
                   <p class="card-text cardDescDiv">{{item.contentBlurb}}</p>
                 </div>
                 <button style="position: absolute;bottom: 32px;left: 25%;" *ngIf="nextVideoIndex === i"
-                  class="cardBtnBottom btn btn-block btn-primary text-center" (click)="handleWatchVideo()">
+                  class="cardBtnBottom btn btn-block btn-primary text-center" (click)="handleWatchVideo(item)">
                   <div [ngSwitch]="item.contenttypeid">
-                    <span *ngSwitchCase="contentType.Video">WATCH NOW</span>
+                    <span *ngSwitchCase="contentType.Video" [routerLink]="['/layout/media/Video',item]"  >WATCH NOW</span>
                     <span *ngSwitchCase="contentType.PDF_Document">VIEW NOW</span>
                   </div>
                   <div *ngIf="nextVideoIndex > i" class="text-center mt-1 text-muted text-sm">VIEWED:

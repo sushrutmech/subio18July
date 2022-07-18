@@ -53,9 +53,7 @@
                   {{programInstance.programName}}
                 </div>
                 <div class="para">
-                  "If you’re bored with life – you don’t get up every morning with a burning desire to do things – you
-                  don’t
-                  have enough goals."
+                   {{programInstance.programDescription}}
                 </div>
                 <div class="timing1">
                   <div>TIMINGS</div>
@@ -106,10 +104,10 @@
         <div class="row">
           <div class="myGoalContainer d-flex justify-content-between">
             <div class="container2HeaderText">
-              MY GOALS **
+              MY GOALS 
             </div>
             <div>
-              <button mat-raised-button color="primary" routerLink="/key-to-success/goal">Add New Goal </button>
+              <button class=" btn btn-outline-primary btn-sm addGoalBtn" routerLink="/key-to-success/goal">Add New Goal </button>
             </div>
           </div>
           <div class="goalContainer">
@@ -302,12 +300,7 @@
 
 
                   <div class="col-sm-12 pl-0">
-
-                    <div class="text-md-left text-center py-3">
-                      <span class="font-lg text-uppercase">Viewing List
-                      </span>
-                    </div>
-
+                
                     <div class="row overflow-auto pr-1  h-330px" *ngIf="readingList?.length>0">
                       <div *ngFor="let item of readingList" class=" toViewCont col-sm-12 h-100 pr-2 py-1 pl-0"
                         [ngClass]="{'col-xl-3 col-md-4 col-sm-6 col-12': readingList?.length <= 6, 'min-width-230px' : readingList?.length > 6}">
@@ -378,11 +371,7 @@
               <mat-tab label="Suggested Viewing">
 
                 <div class="col-sm-12 ">
-
-                  <div class="text-md-left text-center py-3">
-                    <span class="font-lg text-uppercase">SUGGESTED VIEWING
-                    </span>
-                  </div>
+                 
                   <div class="d-flex overflow-auto h-370px pl-0" *ngIf="suggestedList?.length>0">
                     <div *ngFor="let single of suggestedList" class="h-100 pr-2 py-1 pl-0"
                       [ngClass]="{'col-xxl-2 col-xl-3 col-md-4 col-sm-6 col-12': suggestedList?.length <= 6, 'min-width-230px' : suggestedList?.length > 6 }">
@@ -461,10 +450,7 @@
 
                   <div class="col-sm-12 pl-0">
 
-                    <div class="text-md-left text-center py-3">
-                      <span class="font-lg text-uppercase">PAST VIEWING
-                      </span>
-                    </div>
+                   
 
                     <div class="row overflow-auto pr-1  h-330px" *ngIf="readingHistory?.length>0">
                       <div *ngFor="let item of readingHistory" class=" toViewCont col-sm-12 h-100 pr-2 py-1 pl-0"
@@ -551,22 +537,6 @@
         <div class="row">
           <app-key-success-container></app-key-success-container>
 
-
-
-          <!-- <div>
-            <div class="col-lg-8">
-              <app-success-key-lock [userSuccessID]="selectedSuccessGoal.userSuccessID"></app-success-key-lock>
-
-
-            </div>
-            <div class="col-lg-4">
-
-            </div>
-          </div> -->
-
-
-
-
         </div>
       </div>
     </mat-tab>
@@ -575,8 +545,6 @@
         <span class="libraryLabel">My Library</span>
       </ng-template>
       <app-my-library-container></app-my-library-container>
-
-
 
     </mat-tab>
   </mat-tab-group>

@@ -4,9 +4,9 @@
     margin-top: 40px;
     margin-bottom: 40px;
 }
-.my-libraryContainer{
-    padding: 0px 40px;
- }
+// .my-libraryContainer{
+//     padding: 0px 40px;
+//  }
 .container2HeaderText {
     font-family: "Roboto";
     font-style: normal;
@@ -222,3 +222,15 @@
         background: #0198E0  !important;
     }
 }
+
+
+.addGoalBtn {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 150%;
+    background-color: #0198e0 !important;
+    color: #fff !important;
+    height: 48px;
+    margin-top: 16px;
+    }

@@ -52,7 +52,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     HeaderComponent,
     ContentComponent,
     LayoutComponentComponent,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    
     
   ]
 })

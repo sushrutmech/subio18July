@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges  } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { GlobleDataserviceService } from 'src/app/appServices/globle-dataservice.service';
 import { ProgramContentTypes } from 'src/app/shared/constants/program-content-types';
 import { UserProgramContent } from 'src/app/shared/interfaces/home-content';
 import { HomeService } from '../home.service';
@@ -14,11 +16,22 @@ export class WatchComponent implements OnInit , OnChanges {
   @Input() programContents!: UserProgramContent[];
   @Input() videoIndex: number = -1;
   @Output() onRequestClose: EventEmitter<boolean> = new EventEmitter();
+  courseData:any;
+  
 
   constructor(
     private homeService: HomeService,
     private spinner: NgxSpinnerService,
-  ) { }
+    private route:ActivatedRoute,
+    private globalDataSevice:GlobleDataserviceService,
+  ) { 
+ 
+  
+  
+    
+
+  }
+
 
   isDataLoaded: boolean = false;
   activeIndex: number = -1;
@@ -26,9 +39,26 @@ export class WatchComponent implements OnInit , OnChanges {
   visibleWatchNextButton: boolean = false;
   visibleBackToHomeButton: boolean = false;
 
-  contentType = ProgramContentTypes;
+  //contentType = ProgramContentTypes;
+
+  contentType:string=""
+  contentDescription:any;
+  
 
   ngOnInit(): void {
+    // this.contentType=this.route.params["value"]
+    // this.contentType= this.route.params["value"].contentType;
+    //console.log(this.route.params._value.contentType)
+    // this.contentType["Video"] = true
+
+    this.route.paramMap.subscribe(res=>{
+          this.contentDescription=res;
+          console.log("from carosal" , this.contentDescription.params.contentLocation)
+    })
+
+   
+
+   
   }
 
   ngOnChanges(changes: any): void {

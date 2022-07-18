@@ -69,7 +69,7 @@ export class SuccessKeyLockComponent implements OnInit {
       let sec = document.getElementById('seconds')
       let ss = document.getElementById('ss')
       let indicator1 = document.getElementById('circleIndicator')
-      let s = this.keyData[0].scorePC
+      let s = Math.floor(this.keySlide1.scorePC);
   
       sec!.innerHTML = String(s);
   
@@ -81,7 +81,7 @@ export class SuccessKeyLockComponent implements OnInit {
       let sec1 = document.getElementById('seconds1')
       let ss1 = document.getElementById('ss1')
       let indicator2 = document.getElementById('circle1Indicator')
-      let s1 = this.keyData[1].scorePC;
+      let s1 = Math.floor(this.keySlide2.scorePC) 
   
       sec1!.innerHTML = String(s1)
   
@@ -93,7 +93,7 @@ export class SuccessKeyLockComponent implements OnInit {
       let sec2 = document.getElementById('seconds2')
       let ss2 = document.getElementById('ss2')
       let indicator3 = document.getElementById('circle2Indicator')
-      let s2 =  this.keyData[2].scorePC;;
+      let s2 = Math.floor(this.keySlide3.scorePC)  
   
       sec2!.innerHTML = String(s2)
   
@@ -105,7 +105,7 @@ export class SuccessKeyLockComponent implements OnInit {
       let sec3 = document.getElementById('seconds3')
       let ss3 = document.getElementById('ss3')
       let indicator4 = document.getElementById('circle3Indicator')
-      let s3 =  this.keyData[3].scorePC;
+      let s3 = Math.floor(this.keySlide4.scorePC)  
   
       sec3!.innerHTML = String(s3)
   
@@ -117,7 +117,7 @@ export class SuccessKeyLockComponent implements OnInit {
       let sec4 = document.getElementById('seconds4')
       let ss4 = document.getElementById('ss4')
       let indicator5 = document.getElementById('circle4Indicator')
-      let s4 =  this.keyData[4].scorePC;;
+      let s4 = Math.floor(this.keySlide5.scorePC)  
   
       sec4!.innerHTML = String(s4)
   
@@ -129,7 +129,7 @@ export class SuccessKeyLockComponent implements OnInit {
       let sec5 = document.getElementById('seconds5')
       let ss5 = document.getElementById('ss5')
       let indicator6 = document.getElementById('circle5Indicator')
-      let s5 =  this.keyData[5].scorePC;
+      let s5 = Math.floor(this.keySlide6.scorePC)  ;
 
       sec5!.innerHTML = String(s5)
   
@@ -141,7 +141,7 @@ export class SuccessKeyLockComponent implements OnInit {
       let sec6 = document.getElementById('seconds6')
       let ss6 = document.getElementById('ss6')
       let indicator7 = document.getElementById('circle6Indicator')
-      let s6 =  this.keyData[6].scorePC;
+      let s6 =Math.floor(this.keySlide7.scorePC)  ;
   
       sec6!.innerHTML = String(s6)
   
@@ -154,7 +154,7 @@ export class SuccessKeyLockComponent implements OnInit {
       let sec7 = document.getElementById('seconds7')
       let ss7 = document.getElementById('ss7')
       let indicator8 = document.getElementById('circle7Indicator')
-      let s7 =  this.keyData[7].scorePC;
+      let s7 =Math.floor( this.keySlide8.scorePC) ;
   
       sec7!.innerHTML = String(s7)
   
@@ -166,7 +166,7 @@ export class SuccessKeyLockComponent implements OnInit {
       let sec8 = document.getElementById('seconds8')
       let ss8 = document.getElementById('ss8')
       let indicator9 = document.getElementById('circle8Indicator')
-      let s8 =  this.keyData[8].scorePC;
+      let s8 = Math.floor(this.keySlide9.scorePC);
   
       sec8!.innerHTML = String(s8)
   

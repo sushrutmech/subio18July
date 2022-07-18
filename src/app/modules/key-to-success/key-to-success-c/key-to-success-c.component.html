@@ -8,18 +8,19 @@
       <div class="col-lg-12 col-md-12 col-xl-8">
         <app-success-key-lock [userSuccessID]="selectedSuccessGoal.userSuccessID"></app-success-key-lock>
       </div>
-      <div class="col-lg-12 col-md-12 col-xl-4">
+
+      <div class="reAssesCont col-lg-12 col-md-12 col-xl-4">
         <div class="row" *ngIf="selectedSuccessGoal">
           <div class="col-md-12">
-            <span class="font-xs">SUCCESS GOAL</span>
+            <span class="font-xs">GOAL</span>
             <h2>{{selectedSuccessGoal.goal}}</h2>
             <p class="text-justify">
               {{selectedSuccessGoal.goalDescription}}
             </p>
           </div>
-          <div class="col-md-12 d-flex flex-row justify-content-between align-items-center">
+          <div style="gap: 32px;" class="col-md-12 d-flex flex-row align-items-center">
             <div class="d-flex align-items-center">
-              <i class="fa fa-calendar fa-2x mr-2 text-muted"></i>
+              <i class="fa fa-calendar fa-2x mr-2 text-muted" style="margin-right: 20px;"></i>
               <span class="text-muted">
                 Last assessed: {{selectedSuccessGoal.lastAssessmentTaken | date : 'dd/MM/YYYY hh:mma'}}
               </span>
@@ -27,7 +28,7 @@
             <div class="align-items-center text-center reAsses">
               <button class="btn btn-outline-primary btn-sm addGoalBtn"
                 [routerLink]="['goal', selectedSuccessGoal.userSuccessID]"
-                [state]="{goal_data: selectedSuccessGoal}">RE-ASSESS THIS GOAL</button>
+                [state]="{goal_data: selectedSuccessGoal}">Re-Assess This Goal</button>
             </div>
           </div>
         </div>

@@ -1,9 +1,6 @@
-
-
-
 <div class="navbar" *ngIf="currentUser">
-  
-     
+
+
     <div class="flexWrap">
         <div class="userInfo">
 
@@ -12,12 +9,17 @@
             </div>
 
 
-            <div class="marPad0">
-                <img src="../../../assets/componnets/Avatar.svg" alt="Avatar" class="avatar">
-                <!-- <img
-        [src]="userSession.profilePic ? 'data:image/png;base64,' + userSession.profilePic : './assets/img/dummy-profile.png'"
-        class="user-image" /> -->
-           
+            <div style="display: flex;
+            align-items: center;" class="marPad0">
+
+                <img [src]="userSession.profilePic ? 'data:image/png;base64,' + userSession.profilePic : './assets/img/dummy-profile.png'"
+                    alt="Avatar" class="avatar" width="25px" style="border-radius:50% ; object-fit: cover;     width: 32px;
+                height: 32px;" />
+
+
+                <!-- <img src="../../../assets/componnets/Avatar.svg" alt="Avatar" class="avatar"> -->
+
+
             </div>
             <div style="padding-left: 18px;" class="marPad10">
 
@@ -50,47 +52,49 @@
                 <a class="dropdown-item" [routerLink]="'/profile'">Profile</a>
                 <a class="dropdown-item" [routerLink]="'/change-passwoord'">Change Password</a>
               </div> -->
-                   <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                      <img src="../../../assets/componnets/settingBtn.svg" alt="sv" width="50" height="48">
-                  </a>
-                
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                      <div class="dropdown-header">
-                          <h5 class="mb-0 text-primary userName">
+                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <img src="../../../assets/componnets/settingBtn.svg" alt="sv" width="50" height="48">
+                </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <div class="dropdown-header">
+                        <h5 class="mb-0 text-primary userName">
                             {{userSession.firstName}}
-                          </h5>
-                          <span class="text-muted userJob">{{userSession.jobTitle}}</span>
-                      </div>
-                      <hr class="my-1">
-                        <a class="dropdown-item cursorP" [routerLink]="'/profile'">Profile</a>
-                        <hr class="my-1">
-                        <a class="dropdown-item cursorP" [routerLink]="'/change-passwoord'">Change Password</a>
-                  </div> 
+                        </h5>
+                        <span class="text-muted userJob">{{userSession.jobTitle}}</span>
+                    </div>
+                    <hr class="my-1">
+                    <a class="dropdown-item cursorP" [routerLink]="'/profile'">Profile</a>
+                    <hr class="my-1">
+                    <a class="dropdown-item cursorP" [routerLink]="'/change-passwoord'">Change Password</a>
+                </div>
             </div>
 
-            <div class="marPad0" style="cursor:pointer" >
-                <img (click)="onPressSignOut()"  src="../../../assets/componnets/logout.svg" alt="" width="125" height="48">
-                
+            <div class="marPad0" style="cursor:pointer">
+                <img (click)="onPressSignOut()" src="../../../assets/componnets/logout.svg" alt="" width="125"
+                    height="48">
+
             </div>
 
-            
+
         </div>
     </div>
 
-    <ng-container *ngIf=" router.url.includes('key-to-success') || router.url.includes('/layout/home/goal/') || router.url.includes('my-library') ">
-        
+    <ng-container
+        *ngIf=" router.url.includes('key-to-success') || router.url.includes('/layout/home/goal/') || router.url.includes('my-library') || router.url.includes('profile') ">
+
         <div class="wrapper">
-            <div class="item" [routerLink]="'/layout/home'" >
-                <span id="homeLabel" class="homeLabel">Home</span>
+            <div (click)="clickB1()" [ngClass]="bool1 ===true? 'itemFocus ': 'item' "  [routerLink]="'/layout/home'">
+                <span id="homeLabel" [ngClass]="bool1 ===true? 'homeLabelB ': 'homeLabel'">Home</span>
             </div>
-            <div class="item" [routerLink]="'/key-to-success'">
-                <span id="goalLabel" class="goalLabel">My Goals</span>
+            <div (click)="clickB2()" [ngClass]="bool2 ===true? 'itemFocus ': 'item' "  [routerLink]="'/key-to-success'">
+                <span id="goalLabel"  [ngClass]="bool2 ===true? 'goalLabelB ': 'goalLabel'" >My Goals</span>
             </div>
-            <div class="item"  [routerLink]="'my-library'">
-                <span id="libraryLabel" class="libraryLabel">My Library</span>
-                
+            <div (click)="clickB3()" [ngClass]="bool3 ===true? 'itemFocus ': 'item' "  [routerLink]="'my-library'">
+                <span id="libraryLabel" [ngClass]="bool3 ===true? 'libraryLabelB ': 'libraryLabel'" >My Library</span>
             </div>
-          
+
         </div>
 
     </ng-container>

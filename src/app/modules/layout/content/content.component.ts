@@ -40,6 +40,7 @@ export class ContentComponent implements OnInit {
   timeSubscription?: Subscription;
   contentType = ProgramContentTypes;
   userSession!: User;
+  dateProgram:any;
 
 
   i!: number
@@ -79,35 +80,41 @@ export class ContentComponent implements OnInit {
   ) {
 
     this.userSession = authService.userSession.user;
+   // console.log("data ==" , this.programInstance.dateStart)
+  //  this.homeService.getHomeContent().subscribe(results => {
+  //   if (results.userProgramContent.length > 0 && results.userProgramInstance.length > 0) {
+  //     this.dateProgram = results.userProgramInstance;
+  //   }})
+  //   console.log("value" + this.dateProgram)
 
-    // setInterval(() => {
+    setInterval(() => {
 
-    //   let now1 = moment("2022-07-07t10:00:00");
-    //   let now2 = moment();
+      let now1 = moment("2022-07-20t10:00:00");
+      let now2 = moment();
 
-    //   let hour1 = now1.get('hour');
-    //   //console.log(hour1)
-    //   let hour2 = now2.get('hour');
-    //   //console.log(hour2)
+      let hour1 = now1.get('hour');
+      //console.log(hour1)
+      let hour2 = now2.get('hour');
+      //console.log(hour2)
 
-    //   let minute1 = now1.get('minute');
-    //   let minute2 = now2.get('minute');
-    //   let second1 = now1.get('second');
-    //   let second2 = now2.get('second');
+      let minute1 = now1.get('minute');
+      let minute2 = now2.get('minute');
+      let second1 = now1.get('second');
+      let second2 = now2.get('second');
 
-    //   let HH = document.getElementById('h')
-    //   let RHH = ((hour2 + 1) - hour1)
-    //   HH!.innerHTML = String(Math.abs(RHH));
+      let HH = document.getElementById('h')
+      let RHH = ((hour2 + 1) - hour1)
+      HH!.innerHTML = String(Math.abs(RHH));
 
-    //   let DD = document.getElementById('m')
-    //   let RDD = (60 - (minute2 - minute1))
-    //   DD!.innerHTML = String(Math.abs(RDD));
+      let DD = document.getElementById('m')
+      let RDD = (60 - (minute2 - minute1))
+      DD!.innerHTML = String(Math.abs(RDD));
 
-    //   let SS = document.getElementById('s')
-    //   let RSS = (60 - (second2 - second1))
-    //   SS!.innerHTML = String(Math.abs(RSS));
+      let SS = document.getElementById('s')
+      let RSS = (60 - (second2 - second1))
+      SS!.innerHTML = String(Math.abs(RSS));
 
-    // }, 1000)
+    }, 1000)
 
   }
 
@@ -119,9 +126,7 @@ export class ContentComponent implements OnInit {
     this.getTeamGoakList();
     this.getAllContent();
     
-   console.log("goal list " , 
-   this.myKeysToSuccessService.getGoalList().subscribe(results => {console.log(results)}))
-
+  
     this.searchForm = this.fb.group({
       searchInput: '',
       excludeSwitch: false
