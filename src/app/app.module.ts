@@ -20,7 +20,6 @@ import { Test3Component } from './test3/test3.component';
 
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +30,7 @@ import { Test3Component } from './test3/test3.component';
     ForgotPasswordComponent,
     Test2Component,
     Test3Component,
+
     
     
     

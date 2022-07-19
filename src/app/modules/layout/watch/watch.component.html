@@ -28,11 +28,18 @@
               </app-pdf-viewer>
             </div> -->
             <div class="video-player-wrapper" >
-              {{contentDescription.params.contentLocation}} hello sdfdasfaf
-              <app-video-player *ngIf="contentType=='video'"  [src]="contentDescription.params.contentLocation"
+              {{contentDescriptionJson.contentLocation}} hello
+              <app-video-player *ngIf="contentType=='video'"  [src]="contentDescriptionJson.contentLocation"
 
                 (onVideoEnd)="handleReadContent()">
               </app-video-player>
+
+              <video class="video-player-wrapper" width="320" height="240" controls>
+                <source  [src]="contentDescriptionJson.contentLocation" type="video/mp4">
+                <source  [src]="contentDescriptionJson.contentLocation" type="video/ogg">
+                Your browser does not support the video tag.
+              </video>
+
               <app-pdf-viewer *ngIf="contentType=='PDF_Document'" [src]="activeContent.contentLocation"
                 (onLoad)="handleReadContent()">
               </app-pdf-viewer>
@@ -42,7 +49,7 @@
               <button class="btn btn-outline-primary" (click)="onWatchLaterClick()">Watch later</button>
             </div>
             <div class="video-footer">
-              <label>{{activeContent.footerBlurb}}</label>
+              <!-- <label>{{activeContent.footerBlurb}}</label> -->
             </div>
           </div>
           <div class="btn-min-highted-block">

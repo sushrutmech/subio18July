@@ -42,7 +42,7 @@
                 <button style="position: absolute;bottom: 32px;left: 25%;" *ngIf="nextVideoIndex === i"
                   class="cardBtnBottom btn btn-block btn-primary text-center" (click)="handleWatchVideo(item)">
                   <div [ngSwitch]="item.contenttypeid">
-                    <span *ngSwitchCase="contentType.Video" [routerLink]="['/layout/media/Video',item]">WATCH NOW</span>
+                    <span *ngSwitchCase="contentType.Video">WATCH NOW</span>
                     <span *ngSwitchCase="contentType.PDF_Document">VIEW NOW</span>
                   </div>
                   <div *ngIf="nextVideoIndex > i" class="text-center mt-1 text-muted text-sm">VIEWED:

@@ -5,6 +5,9 @@ import { AssessmentRequest } from '../../requests/assessment-request';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { KeyToSuccessService } from '../../../modules/key-to-success/key-to-success.service'
 import { Router } from '@angular/router';
+import { NgWizardConfig, NgWizardService, StepChangedArgs, StepValidationArgs, STEP_STATE, THEME } from 'ng-wizard';
+import { of } from 'rxjs';
+
 
 @Component({
   selector: 'app-assessment-form',
@@ -19,6 +22,7 @@ export class AssessmentFormComponent implements OnInit {
   @Output() onRequestClose: EventEmitter<any> = new EventEmitter();
   @Output() progressChange: EventEmitter<number> = new EventEmitter();
 
+  Arr = Array;
   currentPage: number = 1;
   totalPages: number = 0;
   questionList!: QuestionList[];
@@ -29,17 +33,75 @@ export class AssessmentFormComponent implements OnInit {
   isDataLoaded: boolean = false;
   precentage: number = 0;
 
+  //wizardss
+  stepStates = {
+    normal: STEP_STATE.normal,
+    disabled: STEP_STATE.disabled,
+    error: STEP_STATE.error,
+    hidden: STEP_STATE.hidden
+  };
+
+  config: NgWizardConfig = {
+    selected: 0,
+    theme: THEME.dots,
+    toolbarSettings: {
+      toolbarExtraButtons: [
+        { text: 'Finish', class: 'btn btn-info', event: () => { alert("Finished!!!"); } }
+      ],
+    }
+  };
+
+
+
+
 
   formParams: AssessmentRequest = { userId: 0, userSuccessID: 0, answerList: [] };
 
   constructor(
     private myKeysToSuccessService: KeyToSuccessService,
     private spinner: NgxSpinnerService,
-    private route:Router
+    private route: Router,
+    private ngWizardService: NgWizardService
   ) { }
 
   ngOnInit(): void {
   }
+
+  ///
+
+  showPreviousStep(event?: Event) {
+    this.ngWizardService.previous();
+  }
+
+  showNextStep(event?: Event) {
+    this.ngWizardService.next();
+  }
+
+  resetWizard(event?: Event) {
+    this.ngWizardService.reset();
+  }
+
+  setTheme(theme: THEME) {
+    this.ngWizardService.theme(theme);
+  }
+
+  stepChanged(args: StepChangedArgs) {
+    console.log(args.step);
+  }
+
+  isValidTypeBoolean: boolean = true;
+
+  isValidFunctionReturnsBoolean(args: StepValidationArgs) {
+    return true;
+  }
+
+  isValidFunctionReturnsObservable(args: StepValidationArgs) {
+    return of(true);
+  }
+
+
+  ///end wicards bydefault configuration 
+
 
   get showCancelButton() {
     return !this.isLastPage;
@@ -64,6 +126,8 @@ export class AssessmentFormComponent implements OnInit {
       this.assessmentData = changes.assessmentData.currentValue;
       this.questionList = this.assessmentData.questionList;
       this.totalPages = Math.ceil(this.questionList.length / 10);
+      console.log("this.totalPages === ", this.totalPages);
+
       this.formParams.answerList = this.questionList.map(x => {
         return {
           assessmentQuestionId: x.assessmentQuestionID,
@@ -168,6 +232,7 @@ export class AssessmentFormComponent implements OnInit {
       this.submitted = false;
       this.currentPage = this.currentPage + 1;
       this.sendPercentage();
+      this.ngWizardService.next();
     } else {
       this.submitted = true;
     }
@@ -181,6 +246,7 @@ export class AssessmentFormComponent implements OnInit {
   onPreviousClick() {
     if (this.currentPage !== 1) {
       this.currentPage = this.currentPage - 1;
+      this.ngWizardService.previous();
     }
   }
 
@@ -195,6 +261,7 @@ export class AssessmentFormComponent implements OnInit {
         this.finishVisible = true;
         this.precentage = 100;
         this.progressChange.emit(this.precentage);
+        this.ngWizardService.next();
         this.spinner.hide();
       })
     } else {
@@ -223,6 +290,19 @@ export class AssessmentFormComponent implements OnInit {
   onShowMeMyKeyClick() {
     this.onRequestClose.emit();
     this.route.navigate(['/key-to-success'])
+  }
+
+  pagination(stepperIndx: any) {
+    let displayEndRec = stepperIndx * 10;
+    console.log("displayEndRec === ", displayEndRec);
+    return displayEndRec;
+  }
+
+  paginationStart(stepperIndx: any) {
+    let displaystartRec = (stepperIndx - 1) * 10;
+    displaystartRec = displaystartRec + 1;
+    console.log("displaystartRec === ", displaystartRec);
+    return displaystartRec;
   }
 
 

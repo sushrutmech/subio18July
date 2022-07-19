@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 
 
- import * as moment from 'moment';
+import * as moment from 'moment';
 
 import { NgxSpinnerService } from 'ngx-spinner';
 import { BehaviorSubject, Subscription, timer } from 'rxjs';
 import { GlobleDataserviceService } from 'src/app/appServices/globle-dataservice.service';
-import {ProgramContentTypes } from '../../../shared/constants/program-content-types'
+import { ProgramContentTypes } from '../../../shared/constants/program-content-types'
 import { UserProgramContent, UserProgramInstance } from '../../../shared/interfaces/home-content'
-import {HomeService } from '../home.service'
+import { HomeService } from '../home.service'
 
 
 
@@ -29,27 +29,28 @@ export class CarouselContainerComponent implements OnInit {
   nextVideoIndex: number = -1;
   selectedVideoIndex: number = -1;
   timeSubscription!: Subscription;
-  contentType:any= ProgramContentTypes;
-  selectedContent:any;
-  courseData!:any;
+  contentType: any = ProgramContentTypes;
+  selectedContent: any;
+  courseData!: any;
 
 
   constructor(
     private homeService: HomeService,
     private spinner: NgxSpinnerService,
     private router: Router,
-    private globalDataSevice:GlobleDataserviceService,
+    private globalDataSevice: GlobleDataserviceService,
 
   ) {
 
-    this.globalDataSevice.caroselData.subscribe(courseData=>{
-      this.courseData=courseData
+    this.globalDataSevice.caroselData.subscribe(courseData => {
+      this.courseData = courseData
     })
 
-   }
+  }
 
   ngOnInit(): void {
     this.callHomeContentAPI();
+
   }
 
   ngOnDestroy(): void {
@@ -82,20 +83,18 @@ export class CarouselContainerComponent implements OnInit {
     })
   }
 
-  handleWatchVideo(data:any) {
-   //this.selectedVideoIndex = index;
-    //this.selectedContent=this.selectedVideoIndex
-    
-    console.log(data)
-    this.courseData=data
-    console.log("+++++" , this.courseData)
-    this.globalDataSevice.caroselData.next(data)
-    console.log("** besub" , this.globalDataSevice.caroselData )
+  handleWatchVideo(data: any) {
+    data.contentImage=null
+    const queryParams: any = {}
+    queryParams.videoData = JSON.stringify(data);
+    let navigationExtras: NavigationExtras = { queryParams }
+    console.log( "****",data)
 
-    var url = "layout/media/"+ JSON.stringify(data.contentTypeName)
-    this.router.navigate([url]);
-    //this.isWatchVideo = true;
+    console.log("slm ", navigationExtras)
+    this.router.navigate(["layout/media/" + JSON.stringify(data.contentTypeName)], navigationExtras);
+
   }
+
 
   handleVideoPlayerClose(dataRefresh: boolean) {
     if (dataRefresh) {
@@ -127,12 +126,12 @@ export class CarouselContainerComponent implements OnInit {
   getFormattedDate(date: string) {
     var diff = moment().diff(date, 'minutes');
     let dt = moment().subtract(diff, 'minutes').calendar();
-  
-    if(moment(dt).format('DD/MM/YYYY').toLowerCase() != 'invalid date') {
-      return  moment(dt).format('DD/MM/YYYY');
+
+    if (moment(dt).format('DD/MM/YYYY').toLowerCase() != 'invalid date') {
+      return moment(dt).format('DD/MM/YYYY');
     } else {
       return dt;
-    }    
+    }
   }
 
 

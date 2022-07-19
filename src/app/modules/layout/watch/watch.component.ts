@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute , NavigationExtras } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { GlobleDataserviceService } from 'src/app/appServices/globle-dataservice.service';
 import { ProgramContentTypes } from 'src/app/shared/constants/program-content-types';
@@ -47,21 +47,16 @@ export class WatchComponent implements OnInit, OnChanges {
 
   contentType: string = ""
   contentDescription: any;
+  contentDescriptionJson:any;
 
   ngOnInit(): void {
-    // this.contentType=this.route.params["value"]
-    // this.contentType= this.route.params["value"].contentType;
-    //console.log(this.route.params._value.contentType)
-    // let s= JSON.stringify(this.route.params)
-    // console.log(JSON.parse(s)._value.contentType)
-    // this.contentType=JSON.parse(s)._value.contentType
-    // this.contentType["Video"] = true
+  
+    this.contentDescription= this.route.snapshot.queryParamMap.get("videoData")
+    this.contentDescriptionJson=JSON.parse(this.contentDescription)
+    console.log("form watch **" , this.contentDescriptionJson)
+    console.log("url .. ", this.contentDescriptionJson.contentLocation) 
 
 
-    this.route.paramMap.subscribe((res: any) => {
-      this.contentDescription = res;
-      console.log("from carosal", this.contentDescription.params.contentLocation)
-    })
 
   }
 

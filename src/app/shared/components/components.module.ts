@@ -20,6 +20,13 @@ import { ViewContentComponent } from './view-content/view-content.component';
 import { SuccessKeyLockComponent } from './success-key-lock/success-key-lock.component';
 import { AlertBoxComponent } from './alert-box/alert-box.component';
 
+import { NgWizardModule, NgWizardConfig, THEME } from 'ng-wizard';
+
+const ngWizardConfig: NgWizardConfig = {
+  theme: THEME.default
+};
+
+
 
 @NgModule({
   declarations: [
@@ -43,7 +50,8 @@ import { AlertBoxComponent } from './alert-box/alert-box.component';
     VgOverlayPlayModule,
     VgBufferingModule,
     VgStreamingModule,
-    NgxExtendedPdfViewerModule
+    NgxExtendedPdfViewerModule ,
+    NgWizardModule.forRoot(ngWizardConfig) 
   ],
   exports: [
     AssessmentFormComponent,
