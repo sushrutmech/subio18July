@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges  } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { GlobleDataserviceService } from 'src/app/appServices/globle-dataservice.service';
@@ -11,24 +11,28 @@ import { HomeService } from '../home.service';
   templateUrl: './watch.component.html',
   styleUrls: ['./watch.component.scss']
 })
-export class WatchComponent implements OnInit , OnChanges {
+export class WatchComponent implements OnInit, OnChanges {
 
   @Input() programContents!: UserProgramContent[];
   @Input() videoIndex: number = -1;
   @Output() onRequestClose: EventEmitter<boolean> = new EventEmitter();
-  courseData:any;
-  
+  courseData: any;
+
 
   constructor(
     private homeService: HomeService,
     private spinner: NgxSpinnerService,
-    private route:ActivatedRoute,
-    private globalDataSevice:GlobleDataserviceService,
-  ) { 
- 
-  
-  
-    
+    private route: ActivatedRoute,
+    private globalDataSevice: GlobleDataserviceService,
+  ) {
+
+    // console.log("**** from watch" ,   this.globalDataSevice.caroselData.subscribe(
+    //   courseData=>{
+    //     this.courseData=courseData
+    //   }
+    // ) )
+
+
 
   }
 
@@ -41,24 +45,24 @@ export class WatchComponent implements OnInit , OnChanges {
 
   //contentType = ProgramContentTypes;
 
-  contentType:string=""
-  contentDescription:any;
-  
+  contentType: string = ""
+  contentDescription: any;
 
   ngOnInit(): void {
     // this.contentType=this.route.params["value"]
     // this.contentType= this.route.params["value"].contentType;
     //console.log(this.route.params._value.contentType)
+    // let s= JSON.stringify(this.route.params)
+    // console.log(JSON.parse(s)._value.contentType)
+    // this.contentType=JSON.parse(s)._value.contentType
     // this.contentType["Video"] = true
 
-    this.route.paramMap.subscribe(res=>{
-          this.contentDescription=res;
-          console.log("from carosal" , this.contentDescription.params.contentLocation)
+
+    this.route.paramMap.subscribe((res: any) => {
+      this.contentDescription = res;
+      console.log("from carosal", this.contentDescription.params.contentLocation)
     })
 
-   
-
-   
   }
 
   ngOnChanges(changes: any): void {

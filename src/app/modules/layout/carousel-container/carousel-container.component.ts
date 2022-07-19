@@ -87,7 +87,11 @@ export class CarouselContainerComponent implements OnInit {
     //this.selectedContent=this.selectedVideoIndex
     
     console.log(data)
-   
+    this.courseData=data
+    console.log("+++++" , this.courseData)
+    this.globalDataSevice.caroselData.next(data)
+    console.log("** besub" , this.globalDataSevice.caroselData )
+
     var url = "layout/media/"+ JSON.stringify(data.contentTypeName)
     this.router.navigate([url]);
     //this.isWatchVideo = true;

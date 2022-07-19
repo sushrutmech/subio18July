@@ -29,7 +29,7 @@
             </div> -->
             <div class="video-player-wrapper" >
               {{contentDescription.params.contentLocation}} hello sdfdasfaf
-              <app-video-player *ngIf="contentType=='video'" [src]="contentDescription.params.contentLocation"
+              <app-video-player *ngIf="contentType=='video'"  [src]="contentDescription.params.contentLocation"
 
                 (onVideoEnd)="handleReadContent()">
               </app-video-player>

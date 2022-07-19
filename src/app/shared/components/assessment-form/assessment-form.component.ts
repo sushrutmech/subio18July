@@ -35,7 +35,7 @@ export class AssessmentFormComponent implements OnInit {
   constructor(
     private myKeysToSuccessService: KeyToSuccessService,
     private spinner: NgxSpinnerService,
-    private route: Router
+    private route:Router
   ) { }
 
   ngOnInit(): void {
@@ -223,14 +223,6 @@ export class AssessmentFormComponent implements OnInit {
   onShowMeMyKeyClick() {
     this.onRequestClose.emit();
     this.route.navigate(['/key-to-success'])
-  }
-
-  starLeave(params:any) {
-    console.log("calling .." , params )
-  
-    document.querySelector('.starr>.active')?.classList.add("sarfraj");
-    
-    
   }
 
 
