@@ -19,6 +19,7 @@
                 (onVideoEnd)="handleReadContent()">
   
               </app-video-player>
+              
               <app-pdf-viewer *ngIf="selectedContent.contentTypeName == 'PDF Document'"
                 [src]="selectedContent.contentLocation" (onLoad)="handleReadContent()">
   

@@ -4,6 +4,7 @@ import { LibraryListInstance , SearchLibrary } from '../../../shared/interfaces/
 import { MyLibraryService } from '../../my-library/my-library.service'
 import { NgxSpinnerService } from 'ngx-spinner';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatTabChangeEvent } from '@angular/material/tabs';
 
 
 @Component({
@@ -99,9 +100,10 @@ export class MyLibraryContainerComponent implements OnInit {
     this.isWatchVideo = false;
   }
 
-
-
-
+  selectedTabChange(event:MatTabChangeEvent){
+    console.log(event)
+    this.getAllContent(); 
+  }
 
 
 

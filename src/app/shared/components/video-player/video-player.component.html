@@ -11,12 +11,18 @@
       <vg-time-display class="current-time" vgProperty="current" vgFormat="mm:ss /"></vg-time-display>
       <vg-time-display class="total-time" vgProperty="total" vgFormat="mm:ss"></vg-time-display>
       <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
-      <vg-mute></vg-mute>
-      <vg-volume></vg-volume>
-      <vg-fullscreen></vg-fullscreen>
+      <vg-mute>mute</vg-mute>
+      <vg-volume>volume</vg-volume>
+      <vg-fullscreen>fullS</vg-fullscreen>
     </vg-controls>
-    <video #media [vgMedia]="$any(media)" src="https://subiomaintainance2021092.blob.core.windows.net/subio-content-vid/part-1.mp4"
-     preload="auto" crossorigin>
+    <video #media [vgMedia]="$any(media)" [src]="src" preload="auto" >
     </video>
   </vg-player>
+  
+
+<!-- < <video width="400" controls>
+  <source  #media [vgMedia]="$any(media)" [src]="src" preload="auto">
+  <source #media [vgMedia]="$any(media)" [src]="src" preload="auto">
+  Your browser does not support HTML video.
+</video>   -->
   

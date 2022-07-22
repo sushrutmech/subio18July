@@ -3,7 +3,7 @@
     <div class="myGoalContainer d-flex justify-content-between">
     </div>
     <div class="goalContainer">
-      <mat-tab-group>
+      <mat-tab-group (selectedTabChange)="selectedTabChange($event)">
         <router-outlet></router-outlet>
 
         <mat-tab label="Library">
@@ -26,7 +26,7 @@
 
 
             <div class="col-sm-12 pl-0">
-          
+
               <div class="row overflow-auto pr-1  h-330px" *ngIf="readingList?.length>0">
                 <div *ngFor="let item of readingList" class=" toViewCont col-sm-12 h-100 pr-2 py-1 pl-0"
                   [ngClass]="{'col-xl-3 col-md-4 col-sm-6 col-12': readingList?.length <= 6, 'min-width-230px' : readingList?.length > 6}">
@@ -76,6 +76,12 @@
                     </div>
                   </div>
                 </div>
+               
+              </div>
+              <div class=" overflow-auto pr-lg-1 d-lg-block d-block d-sm-flex" *ngIf="readingList?.length==0">
+                <div class="" *ngIf="isDataLoaded">
+                  <span class="text-muted">Nothing in your Viewing list</span>
+                </div>
               </div>
 
 
@@ -91,7 +97,7 @@
 
           </div>
 
-          
+
 
         </mat-tab>
 
@@ -179,7 +185,7 @@
 
             <div class="col-sm-12 pl-0">
 
-             
+
 
               <div class="row overflow-auto pr-1  h-330px" *ngIf="readingHistory?.length>0">
                 <div *ngFor="let item of readingHistory" class=" toViewCont col-sm-12 h-100 pr-2 py-1 pl-0"
@@ -246,7 +252,7 @@
 
           </div>
 
-        
+
         </mat-tab>
       </mat-tab-group>
     </div>

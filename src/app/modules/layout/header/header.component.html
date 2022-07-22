@@ -37,21 +37,7 @@
             </div>
 
             <div class="marPad0 dropdown">
-                <!-- <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"
-                dropdownToggle (click)="false">
-                <img src="../../../assets/componnets/settingBtn.svg" alt="sv" width="50" height="48">
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
-                <div class="dropdown-header">
-                  <h5 class="mb-0 text-primary">
-                    {{userSession.firstName}} {{userSession.lastName}}
-                  </h5>
-                  <span class="text-muted">{{userSession.jobTitle}}</span>
-                </div>
-                <div class="divider"></div>
-                <a class="dropdown-item" [routerLink]="'/profile'">Profile</a>
-                <a class="dropdown-item" [routerLink]="'/change-passwoord'">Change Password</a>
-              </div> -->
+             
                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
                     aria-expanded="false">
                     <img src="../../../assets/componnets/settingBtn.svg" alt="sv" width="50" height="48">
@@ -82,7 +68,8 @@
     </div>
 
     <ng-container
-        *ngIf=" router.url.includes('key-to-success') || router.url.includes('/layout/home/goal/') || router.url.includes('my-library') || router.url.includes('profile') ">
+        *ngIf=" router.url.includes('key-to-success') || router.url.includes('/layout/home/goal/') 
+        || router.url.includes('my-library') || router.url.includes('profile') || router.url.includes('/layout/media/') ">
 
         <div class="wrapper">
             <div (click)="clickB1()" [ngClass]="bool1 ===true? 'itemFocus ': 'item' "  [routerLink]="'/layout/home'">

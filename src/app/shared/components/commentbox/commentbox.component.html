@@ -1,0 +1,48 @@
+<section>
+    <div class="wrapper">
+        <div class="parrent d-flex flex-row">
+
+            <div class="userImage">
+                <img src="../../../../assets/img/profile.jpg" alt="Avatar" class="avatar" width="25px" style="border-radius:50% ; object-fit: cover;     width: 32px;
+            height: 32px;" />
+
+            </div>
+            <div class="commet">
+                <div class="userName">
+                    Kishor Pawar
+                    <span class="commetDuration">2 years ago</span>
+                </div>
+                <div class="commetDes"  >
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non consequatur rerum sequi voluptatum
+                    fugiat necessitatibus aspernatur at, sint natus nesciunt recusandae, repellendus asperiores!
+                    Dignissimos esse consectetur quisquam eveniet magni alias.
+                </div>
+            
+               
+                <div class="commetLiDisReply">
+
+                    <div class="d-flex flex-row">
+                        <div class="likeSvg">
+                            <img src="../../../../assets/images/likeSvg.svg" alt="">
+                            <span style="padding: 8px;" >887</span>
+                        </div>
+                        <div class="disLikeSvg">
+                            <img src="../../../../assets/images/disLikeSvg.svg" alt="">
+                            <span style="padding: 8px;">110</span>
+                        </div>
+
+                        <span class="replyBtn" (click)="replyCommet()">Reply</span>
+                        <div class="replyBox">
+                            <app-commentbox *ngIf="showRepBox"></app-commentbox>
+
+                        </div>
+                        
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

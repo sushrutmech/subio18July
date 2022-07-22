@@ -21,6 +21,7 @@ import { SuccessKeyLockComponent } from './success-key-lock/success-key-lock.com
 import { AlertBoxComponent } from './alert-box/alert-box.component';
 
 import { NgWizardModule, NgWizardConfig, THEME } from 'ng-wizard';
+import { CommentboxComponent } from './commentbox/commentbox.component';
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.default
@@ -36,7 +37,8 @@ const ngWizardConfig: NgWizardConfig = {
     PdfViewerComponent,
     ViewContentComponent,
     SuccessKeyLockComponent,
-    AlertBoxComponent
+    AlertBoxComponent,
+    CommentboxComponent
   ],
   imports: [
     CommonModule,
@@ -60,7 +62,8 @@ const ngWizardConfig: NgWizardConfig = {
     PdfViewerComponent,
     ViewContentComponent,
     SuccessKeyLockComponent,
-    AlertBoxComponent
+    AlertBoxComponent,
+    CommentboxComponent
   ]
 })
 export class ComponentsModule { }

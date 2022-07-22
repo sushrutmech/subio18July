@@ -83,12 +83,12 @@ export class CarouselContainerComponent implements OnInit {
     })
   }
 
-  handleWatchVideo(data: any) {
+  handleWatchVideo(data: any , programContents:any) {
     data.contentImage=null
     const queryParams: any = {}
     queryParams.videoData = JSON.stringify(data);
     let navigationExtras: NavigationExtras = { queryParams }
-    console.log( "****",data)
+    console.log( "**** progcontent",programContents)
 
     console.log("slm ", navigationExtras)
     this.router.navigate(["layout/media/" + JSON.stringify(data.contentTypeName)], navigationExtras);

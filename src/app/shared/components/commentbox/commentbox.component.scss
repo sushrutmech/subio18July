@@ -1,0 +1,70 @@
+.userImage {
+    padding: 16px 8px 0px 8px;
+}
+
+.commet {
+    padding: 16px;
+}
+
+.userName {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 120%;
+    display: flex;
+    align-items: center;
+    color: #0198E0;
+
+}
+
+.commetDuration {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #6C757D;
+    margin: 0px 0px 0px 8px;
+}
+
+.commetDes {
+    margin: 8px 0px 0px 0px;
+    padding: 0px 0px 16px 0px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 120%;
+    display: flex;
+    align-items: center;
+    color: #495057;
+
+}
+
+.likeIcon ::before {
+    width: 52px;
+    height: 19px;
+
+}
+
+.likeSvg {}
+
+.disLikeSvg {
+    margin: 0px 0px 0px 16px;
+
+}
+
+.replyBtn {
+    margin: 0px 0px 0px 24px;
+}
+
+.likeCount {
+    margin: 0px 0px 0px 8px;
+}
+
+.disLikeSvg {
+    margin: 0px 0px 0px 8px;
+}

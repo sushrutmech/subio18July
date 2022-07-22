@@ -86,6 +86,7 @@ export class MyLibraryComponent implements OnInit {
       this.myLibraryService.searchTerm(this.searchForm.value.searchInput, this.searchForm.value.excludeSwitch).subscribe((result:any) => {
         this.isSearched = true;
         this.searchResult = result;
+        console.log("search result" , this.searchResult)
         this.spinner.hide();
       })
     }

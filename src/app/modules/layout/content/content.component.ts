@@ -16,6 +16,7 @@ import { AuthService } from '../../../appServices/auth.service'
 import { User } from 'src/app/shared/interfaces/user';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { MatTabChangeEvent } from '@angular/material/tabs';
 
 
 @Component({
@@ -40,7 +41,7 @@ export class ContentComponent implements OnInit {
   timeSubscription?: Subscription;
   contentType = ProgramContentTypes;
   userSession!: User;
-  dateProgram:any;
+  dateProgram: any;
 
 
   i!: number
@@ -52,26 +53,26 @@ export class ContentComponent implements OnInit {
   end: any;
 
   rate = 4;
-  suggestedList:any =[];
-  readingList:any=[];
-  readingHistory:any=[];
+  suggestedList: any = [];
+  readingList: any = [];
+  readingHistory: any = [];
   excludeSwitch: boolean = false;
 
-  searchResult:any = [];
+  searchResult: any = [];
   searchForm!: FormGroup;
   selectedContent: any;
-  
-  
 
-  
+
+
+
   isSearched: boolean = false;
-
+  courseDate: any
 
 
 
   constructor(
     private homeService: HomeService,
-    private spinner:NgxSpinnerService,
+    private spinner: NgxSpinnerService,
     private authService: AuthService,
     private myLibraryService: MyLibraryService,
     private myKeysToSuccessService: KeyToSuccessService,
@@ -80,41 +81,45 @@ export class ContentComponent implements OnInit {
   ) {
 
     this.userSession = authService.userSession.user;
-   // console.log("data ==" , this.programInstance.dateStart)
-  //  this.homeService.getHomeContent().subscribe(results => {
-  //   if (results.userProgramContent.length > 0 && results.userProgramInstance.length > 0) {
-  //     this.dateProgram = results.userProgramInstance;
-  //   }})
-  //   console.log("value" + this.dateProgram)
+    this.homeService.getHomeContent().subscribe(results => {
+      console.log("prog data", results.userProgramInstance[0].dateStart)
+      var CurrentDate = moment().format();
+      console.log("current date", CurrentDate)
+      this.courseDate = String(moment(results.userProgramInstance[0].dateStart).format())
 
-    // setInterval(() => {
+    })
 
-    //   let now1 = moment("2022-07-20t10:00:00");
-    //   let now2 = moment();
+    setInterval(() => {
 
-    //   let hour1 = now1.get('hour');
-    //   //console.log(hour1)
-    //   let hour2 = now2.get('hour');
-    //   //console.log(hour2)
+      let now1 = moment(this.courseDate);
+      let now2 = moment();
 
-    //   let minute1 = now1.get('minute');
-    //   let minute2 = now2.get('minute');
-    //   let second1 = now1.get('second');
-    //   let second2 = now2.get('second');
+      var days = moment
+        .duration(moment(this.courseDate, 'YYYY/MM/DD HH:mm')
+          .diff(moment(now2, 'YYYY/MM/DD HH:mm'))
+        ).asDays();
+      //console.log("future days", days);
 
-    //   let HH = document.getElementById('h')
-    //   let RHH = ((hour2 + 1) - hour1)
-    //   HH!.innerHTML = String(Math.abs(RHH));
+      let hour1 = now1.get('hour');
+      //console.log("sar hour" , hour1)
+      let hour2 = now2.get('hour');
+      let minute1 = now1.get('minute');
+      let minute2 = now2.get('minute');
 
-    //   let DD = document.getElementById('m')
-    //   let RDD = (60 - (minute2 - minute1))
-    //   DD!.innerHTML = String(Math.abs(RDD));
+      let HH = document.getElementById('m')
+      let RHH = Math.abs(24-Math.abs(((hour2) - hour1)))-1
+      HH!.innerHTML = String(Math.abs(Math.floor(RHH)));
 
-    //   let SS = document.getElementById('s')
-    //   let RSS = (60 - (second2 - second1))
-    //   SS!.innerHTML = String(Math.abs(RSS));
+      let SS = document.getElementById('s')
+      let RSS =  (60-Math.abs(minute2 - minute1))
 
-    // }, 1000)
+      SS!.innerHTML = String(Math.abs(Math.floor(RSS)));
+
+      let DD = document.getElementById('h')
+
+      DD!.innerHTML = String(Math.abs(Math.floor(days)));
+
+    }, 1000)
 
   }
 
@@ -125,8 +130,8 @@ export class ContentComponent implements OnInit {
     this.getMyGoalList();
     this.getTeamGoakList();
     this.getAllContent();
-    
-  
+
+
     this.searchForm = this.fb.group({
       searchInput: '',
       excludeSwitch: false
@@ -290,7 +295,7 @@ export class ContentComponent implements OnInit {
     this.selectedSuccessGoal = item;
   }
 
-  
+
   getRoundedValue(rate: number) {
     return Math.ceil(rate);
 
@@ -299,7 +304,7 @@ export class ContentComponent implements OnInit {
   getAllContent() {
     this.spinner.show();
     this.myLibraryService.getContentList().subscribe(result => {
-     //debugger;
+      //debugger;
       this.spinner.hide();
       this.isDataLoaded = true;
       if (result.length > 0) {
@@ -310,7 +315,7 @@ export class ContentComponent implements OnInit {
     });
   }
 
-  addToReadingList(contentId:any) {
+  addToReadingList(contentId: any) {
     this.spinner.show();
     this.myLibraryService.addToReadingList(contentId).subscribe(result => {
       // this.spinner.hide();
@@ -323,8 +328,8 @@ export class ContentComponent implements OnInit {
   searchTerm() {
     if (this.searchForm.value.searchInput) {
       this.spinner.show();
-    
-      this.myLibraryService.searchTerm(this.searchForm.value.searchInput, this.searchForm.value.excludeSwitch).subscribe((result:any) => {
+
+      this.myLibraryService.searchTerm(this.searchForm.value.searchInput, this.searchForm.value.excludeSwitch).subscribe((result: any) => {
         this.isSearched = true;
         this.searchResult = result;
         this.spinner.hide();
@@ -334,14 +339,14 @@ export class ContentComponent implements OnInit {
   }
 
 
-  handleWatchVideoo(data:any = null) {
+  handleWatchVideoo(data: any = null) {
     this.selectedContent = data;
     this.isWatchVideo = true;
   }
 
- 
 
-  handleContentViewerClose(ev:any) {
+
+  handleContentViewerClose(ev: any) {
     if (ev) {
       this.getAllContent();
       this.searchTerm()
@@ -350,7 +355,10 @@ export class ContentComponent implements OnInit {
     this.isWatchVideo = false;
   }
 
-
+  selectedTabChange(event:MatTabChangeEvent){
+    console.log(event)
+    this.getAllContent(); 
+  }
 
 
 

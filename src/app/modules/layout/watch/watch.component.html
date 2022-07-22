@@ -1,53 +1,41 @@
 <div class="animated fadeIn py-3">
+  
+  <div class="setup-state-container">
+    
+    <div *ngFor="let content of programContents; let i = index" class="d-flex setup-state-block">
+      <div class="setup-state" [class.active]="i ==contentDescriptionJson.stepNo"
+        [innerHTML]="activeIndex > i ? '&#10003;' : i + 1">
+      </div>
+    </div>
+  </div>
+  <div class="close-button" (click)="onWatchLaterClick()">
+    <i class="icon icon-close fa-2x"></i>
+  </div>
+</div>
     <div class="row full-height-row">
-      <div class="col-lg-8 col-md-8 col-xl-6 mx-auto" >
+      <div class="col-lg-8 col-md-8  mx-auto" >
         <div class="d-flex flex-column h-100 justify-content-between">
           <div class="d-flex justify-content-between align-items-center">
-            <div class="setup-state-container">
-              <div *ngFor="let content of programContents; let i = index" class="d-flex setup-state-block">
-                <div class="setup-state" [class.active]="activeIndex >= i"
-                  [innerHTML]="activeIndex > i ? '&#10003;' : i + 1">
-                </div>
-              </div>
-            </div>
-            <div class="close-button" (click)="onWatchLaterClick()">
-              <i class="icon icon-close fa-2x"></i>
-            </div>
-          </div>
+            
           <div class="d-flex flex-grow-1 flex-column justify-content-around py-3">
-            <!-- <div class="video-header">
-              <h3>{{activeContent.stepName}}</h3>
-              <label>{{activeContent.headerBlurb}}</label>
-            </div> -->
-            <!-- <div class="video-player-wrapper" [ngSwitch]="activeContent.contenttypeid">
-              <app-video-player *ngSwitchCase="contentType.Video" [src]="activeContent.contentLocation"
-                (onVideoEnd)="handleReadContent()">
-              </app-video-player>
-              <app-pdf-viewer *ngSwitchCase="contentType.PDF_Document" [src]="activeContent.contentLocation"
-                (onLoad)="handleReadContent()">
-              </app-pdf-viewer>
-            </div> -->
+            <div class="video-header">
+              <h3 class="videoHeading marPad0">{{contentDescriptionJson.stepName}}</h3>
+              <p class="videoHeaderBlurb marPad0">{{contentDescriptionJson.headerBlurb}}</p>
+            </div>         
             <div class="video-player-wrapper" >
-              {{contentDescriptionJson.contentLocation}} hello
-              <app-video-player *ngIf="contentType=='video'"  [src]="contentDescriptionJson.contentLocation"
-
-                (onVideoEnd)="handleReadContent()">
+              <app-video-player class="" *ngIf="contentDescriptionJson.contentTypeName=='Video'"  [src]="contentDescriptionJson.contentLocation"
+                (onVideoEnd)="handleReadContent(contentDescriptionJson.contentID ,contentDescriptionJson.programStepID)">
               </app-video-player>
 
-              <video class="video-player-wrapper" width="320" height="240" controls>
-                <source  [src]="contentDescriptionJson.contentLocation" type="video/mp4">
-                <source  [src]="contentDescriptionJson.contentLocation" type="video/ogg">
-                Your browser does not support the video tag.
-              </video>
-
-              <app-pdf-viewer *ngIf="contentType=='PDF_Document'" [src]="activeContent.contentLocation"
-                (onLoad)="handleReadContent()">
+              <app-pdf-viewer *ngIf="contentDescriptionJson.contentTypeName=='PDF Document'" [src]="contentDescriptionJson.contentLocation"
+                (onLoad)="handleReadContent(contentDescriptionJson.contentID ,contentDescriptionJson.programStepID)">
               </app-pdf-viewer>
+
             </div>
-            <div class="d-flex justify-content-center py-2 animated fadeIn"
+            <!-- <div class="d-flex justify-content-center py-2 animated fadeIn"
               *ngIf="!(visibleWatchNextButton || visibleBackToHomeButton)">
               <button class="btn btn-outline-primary" (click)="onWatchLaterClick()">Watch later</button>
-            </div>
+            </div> -->
             <div class="video-footer">
               <!-- <label>{{activeContent.footerBlurb}}</label> -->
             </div>
@@ -58,6 +46,19 @@
             <button class="btn btn-block btn-primary animated fadeIn" *ngIf="visibleBackToHomeButton"
               (click)="backToHomeClick()">{{activeContent.nextButtonText || 'BACK TO HOME'}}</button>
           </div>
+        </div>
+        <div class="matTab">
+          <mat-tab-group mat-align-tabs="start">
+            <mat-tab label="Transcript">
+              Content 1
+            </mat-tab>
+            <mat-tab label="Exercise">
+              Content 2
+            </mat-tab>
+            <mat-tab label="Discussion">
+              <app-commentbox></app-commentbox>
+            </mat-tab>
+          </mat-tab-group>
         </div>
       </div>
     </div>

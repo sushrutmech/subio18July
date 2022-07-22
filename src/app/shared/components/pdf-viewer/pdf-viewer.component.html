@@ -1,3 +1,7 @@
+{{src}} + "from pdf vierwer component "
+
+
+
 <ngx-extended-pdf-viewer class="app-pdf-viewer" [src]="src" height="55vh" [showToolbar]="true"
   [showSidebarButton]="false" [showFindButton]="true" [showPagingButtons]="true" [showZoomButtons]="true"
   [showPresentationModeButton]="true" [showOpenFileButton]="false" [showPrintButton]="true" [showDownloadButton]="true"
@@ -7,6 +11,13 @@
   [theme]="'dark'" (pdfLoaded)="onPdfLoad()" (progress)="handlePdfLoading()" (pdfLoadingFailed)="onFailedPdfLoad()"
   (afterPrint)="hideLoading()">
 </ngx-extended-pdf-viewer>
+
+<!-- <ngx-extended-pdf-viewer src="https://subiomaintainance2021092.blob.core.windows.net/subio-content-pdf/WhoIsTakingAccountability.pdf" [height]="'95%'" [useBrowserLocale]="true" [textLayer]="true"
+  [showHandToolButton]="true">
+</ngx-extended-pdf-viewer>
+ -->
+
+
+
 <ngx-spinner [name]="'pdf-viewer'" bdColor="#dcdcdc80" size="medium" color="#2f5597" [fullScreen]="false" type="timer">
 </ngx-spinner>
-

@@ -1,247 +1,252 @@
 /* sarfaraz starting */
-.card .card-header{
-    border-bottom: none !important;
+.card .card-header {
+  border-bottom: none !important;
 }
-.cardDescDiv{
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    margin-top: 14px;
-    font-style: italic;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 150%;
-    height: 88px;
-  }
-  .card-body .card-title {
-    margin-bottom: 0px !important;
-    font-weight: 500 !important;
-    font-size: 16px !important;
-    line-height: 120% !important;
-    color: #0198E0 !important;
-    text-align: left;
-  }
-  .cardBtnBottom{
+
+.cardDescDiv {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  margin-top: 14px;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  height: 88px;
+}
+
+.card-body .card-title {
+  margin-bottom: 0px !important;
+  font-weight: 500 !important;
+  font-size: 16px !important;
+  line-height: 120% !important;
+  color: #0198E0 !important;
+  text-align: left;
+}
+
+.cardBtnBottom {
   background: #0198E0;
-    border-radius: 4px;
-    padding: 7px 13px;
-    font-weight: 400;
-    font-size: 16px;
-    width: 161px;
-    height: 38px;
-    line-height: 150%;
-    margin-top: 16px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .carouselCardDiv .card-body {
-    flex: 0 0 auto !important;
+  border-radius: 4px;
+  padding: 7px 13px;
+  font-weight: 400;
+  font-size: 16px;
+  width: 161px;
+  height: 38px;
+  line-height: 150%;
+  margin-top: 16px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.carouselCardDiv .card-body {
+  flex: 0 0 auto !important;
 }
 
 .container2 {
-    max-width: 1496px !important;
-    padding-top: 32px;
-    margin-top: 46px;
-    border-top: 2px solid #d4d4d4 !important;
-    padding-bottom: 32px;
-    margin-bottom: 46px;
-    border-bottom: 2px solid #d4d4d4 !important;
+  max-width: 1496px !important;
+  padding-top: 32px;
+  margin-top: 46px;
+  border-top: 2px solid #d4d4d4 !important;
+  padding-bottom: 32px;
+  margin-bottom: 46px;
+  border-bottom: 2px solid #d4d4d4 !important;
 }
 
 .container3 {
-    max-width: 1496px !important;
-    margin-top: 40px;
-    margin-bottom: 40px;
+  max-width: 1496px !important;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .container2HeaderText {
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 28px;
-    line-height: 120%;
-    color: #0198e0;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 120%;
+  color: #0198e0;
 }
 
 .goalContainer mat-card.mat-card.mat-focus-indicator.ng-star-inserted {
-    box-shadow: 0px 20px 25px -5px rgba(0, 0, 0, 0.1),
-        0px 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
-    border: 1px solid rgba(0, 0, 0, 0.125);
-    margin-top: 16px !important;
+  box-shadow: 0px 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0px 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  margin-top: 16px !important;
 }
 
 .titleCard {
-    background: #c29ffa;
-    border-radius: 4px;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 120%;
-    padding: 10px;
+  background: #c29ffa;
+  border-radius: 4px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 120%;
+  padding: 10px;
 }
 
 .progressStatusCard {
-    background: #fff3cd;
-    border-radius: 2px;
-    flex-grow: 0;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 150%;
-    padding: 0px 8px;
-    height: 21px;
+  background: #fff3cd;
+  border-radius: 2px;
+  flex-grow: 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  padding: 0px 8px;
+  height: 21px;
 }
 
 .cardGap {
-    gap: 36px;
-    padding: 16px;
+  gap: 36px;
+  padding: 16px;
 }
 
 ::ng-deep .rating {
-    display: block !important;
-    margin-left: -6px !important;
+  display: block !important;
+  margin-left: -6px !important;
 }
 
 .ratingNumber {
-    margin-left: 2px;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 150%;
+  margin-left: 2px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
 }
-.card{
-    min-height: 510px;
+
+.card {
+  min-height: 510px;
 }
 
 .cardPara {
-    font-style: italic;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 150%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 5;
-    -webkit-box-orient: vertical;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
 }
 
 .cardBtn {
-    background-color: #0198e0 !important;
-    color: #e0e7eb !important;
+  background-color: #0198e0 !important;
+  color: #e0e7eb !important;
 }
 
 .cardTitle {
-    color: #0198e0;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 120%;
+  color: #0198e0;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 120%;
 }
 
 .carousel-cell {
-    width: 316px !important;
+  width: 316px !important;
 }
 
 .carousel-cell>div {
-    width: 316px !important;
+  width: 316px !important;
 }
 
 .carouselCardRow .mat-card {
-    padding: 0px !important;
+  padding: 0px !important;
 }
 
 .carouselDataContainer {
-    padding: 16px;
+  padding: 16px;
 }
 
 .statusBar {
-    background: #fff3cd;
-    position: absolute;
-    right: 12px;
-    top: 10px;
-    padding: 2px 8px;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 150%;
+  background: #fff3cd;
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  padding: 2px 8px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
 }
 
 .example-card {
-    position: relative;
+  position: relative;
 }
 
 .clock {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .timerContainer {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .times {
-    text-align: center;
-    font-weight: 500;
-    font-size: 32px;
-    line-height: 120%;
+  text-align: center;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 120%;
 }
 
 #calender {
-    text-align: center;
-    font-weight: 500;
-    font-size: 8px;
-    line-height: 120%;
+  text-align: center;
+  font-weight: 500;
+  font-size: 8px;
+  line-height: 120%;
 }
 
 .date {
-    font-weight: 400;
-    font-size: 80px;
-    line-height: 120%;
-    text-align: center;
+  font-weight: 400;
+  font-size: 80px;
+  line-height: 120%;
+  text-align: center;
 }
 
 .day {
-    font-weight: 700;
-    font-size: 15px;
-    line-height: 100%;
-    text-align: center;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 100%;
+  text-align: center;
 }
 
 #time .circle {
-    position: relative;
-    width: 150px;
-    height: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: relative;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #time div {
-    position: absolute;
-    text-align: center;
-    font-weight: 500;
-    font-style: 1.5rem;
+  position: absolute;
+  text-align: center;
+  font-weight: 500;
+  font-style: 1.5rem;
 }
 
 
 #time .circle svg {
-    position: relative;
-    width: 150px;
-    height: 150px;
-    transform: rotate(270deg);
+  position: relative;
+  width: 150px;
+  height: 150px;
+  transform: rotate(270deg);
 }
 
 #time .circle svg circle {
-    width: 100%;
-    height: 100%;
-    fill: transparent;
-    stroke: #191919;
-    stroke-width: 9;
-    transform: translate(5px, 5px);
+  width: 100%;
+  height: 100%;
+  fill: transparent;
+  stroke: #191919;
+  stroke-width: 9;
+  transform: translate(5px, 5px);
 }
 
 #time .circle svg circle:nth-child(2) {
-    stroke: var(--clr);
-    stroke-dasharray: 440;
+  stroke: var(--clr);
+  stroke-dasharray: 440;
 }
 
 /* sarfaraz ending */
@@ -249,142 +254,226 @@
 
 // css from ood code 
 
-  
-  .key-success-card .card-header {
-    border-bottom: unset;
-  }
-  
-  .item-calender {
-    text-align: center;
-  }
-  
-  .item-calender i {
-    font-size: 12rem;
-    position: relative;
-  }
-  .absolute-calendar-text {
-    position: absolute;
-    font-size: 15%;
-    width: 84%;
-    margin-left: 8%;
-    display: flex;
-    flex-direction: column;
-    height: 50%;
-    bottom: 10%;
-    justify-content: space-around;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
-      "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  }
-  
- 
-  
-  
-  
-  
 
-  
-  .overlay {
-    position: relative;
-  }
-  
-  .overlay:before {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    content: "";
-    top: 0;
-    left: 0;
-    opacity: 1;
-    border-radius: inherit;
-    transition: inherit;
-  }
-  
-  .overlay-content {
-    position: absolute;
-    padding: 1rem;
-    overflow: hidden;
-    height: 100%;
-    width: 100%;
-    border-radius: inherit;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .round-button {
-    box-sizing: border-box;
-    display: flex;
-    width: 3.5rem;
-    height: 3.5rem;
-    line-height: 0;
-    border-radius: 50%;
-    color: #f5f5f5;
-    background-color: rgba(0, 0, 0, 0.5);
-    transition: all 0.3s ease;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
-  
-  .round-button:hover {
-    background-color: rgb(0 0 0 / 80%);
-    box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 50%);
-  }
-  
-  time.calendar-icon {
-    font-size: 1em;
-    display: block;
-    position: relative;
-    width: 14em;
-    height: 14em;
-    max-height: 100%;
-    max-width: 100%;
-    background-color: #fff;
-    margin: 1em auto;
-    border-radius: 0.6em;
-    box-shadow: 0 1px 0 #bdbdbd, 0 2px 0 #fff, 0 3px 0 #bdbdbd, 0 4px 0 #fff,
-      0 5px 0 #bdbdbd, 0 0 0 1px #bdbdbd;
-    // box-shadow: 0 1px 0 #2f5597, 0 2px 0 #fff, 0 3px 0 #2f5597, 0 4px 0 #fff, 0 5px 0 #2f5597, 0 0 0 1px #2f5597;
-    overflow: hidden;
-    transform-origin: 50% 10%;
-  }
-  
-  time.calendar-icon * {
-    display: block;
-    width: 100%;
-    font-size: 1em;
-    font-weight: bold;
-    font-style: normal;
-    text-align: center;
-  }
-  
-  time.calendar-icon strong {
-    position: absolute;
-    top: 0;
-    padding: 0.3em 0;
-    font-size: 2em;
-    color: #fff;
-    // background-color: #2f5597;
-    // border-bottom: 1px dashed #ffffff;
-    // box-shadow: 0 2px 0px 0px #2f5597;
-    background-color: #fd9f1b;
-    border-bottom: 1px dashed #f37302;
-    box-shadow: 0 2px 0 #fd9f1b;
-  }
-  
-  time.calendar-icon em {
-    position: absolute;
-    bottom: 10px;
-    // color: #2f5597;
-    color: #fd9f1b;
-    font-size: 2em;
-  }
-  
-  time.calendar-icon span {
-    width: 100%;
-    font-size: 4em;
-    padding-top: 1.2em;
-    color: #2f2f2f;
-  }
-  
+.key-success-card .card-header {
+  border-bottom: unset;
+}
+
+.item-calender {
+  text-align: center;
+}
+
+.item-calender i {
+  font-size: 12rem;
+  position: relative;
+}
+
+.absolute-calendar-text {
+  position: absolute;
+  font-size: 15%;
+  width: 84%;
+  margin-left: 8%;
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  bottom: 10%;
+  justify-content: space-around;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+
+
+
+
+
+
+
+.overlay {
+  position: relative;
+}
+
+.overlay:before {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  opacity: 1;
+  border-radius: inherit;
+  transition: inherit;
+}
+
+.overlay-content {
+  position: absolute;
+  padding: 1rem;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  border-radius: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.round-button {
+  box-sizing: border-box;
+  display: flex;
+  width: 3.5rem;
+  height: 3.5rem;
+  line-height: 0;
+  border-radius: 50%;
+  color: #f5f5f5;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.round-button:hover {
+  background-color: rgb(0 0 0 / 80%);
+  box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 50%);
+}
+
+time.calendar-icon {
+  font-size: 1em;
+  display: block;
+  position: relative;
+  width: 14em;
+  height: 14em;
+  max-height: 100%;
+  max-width: 100%;
+  background-color: #fff;
+  margin: 1em auto;
+  border-radius: 0.6em;
+  box-shadow: 0 1px 0 #bdbdbd, 0 2px 0 #fff, 0 3px 0 #bdbdbd, 0 4px 0 #fff,
+    0 5px 0 #bdbdbd, 0 0 0 1px #bdbdbd;
+  // box-shadow: 0 1px 0 #2f5597, 0 2px 0 #fff, 0 3px 0 #2f5597, 0 4px 0 #fff, 0 5px 0 #2f5597, 0 0 0 1px #2f5597;
+  overflow: hidden;
+  transform-origin: 50% 10%;
+}
+
+time.calendar-icon * {
+  display: block;
+  width: 100%;
+  font-size: 1em;
+  font-weight: bold;
+  font-style: normal;
+  text-align: center;
+}
+
+time.calendar-icon strong {
+  position: absolute;
+  top: 0;
+  padding: 0.3em 0;
+  font-size: 2em;
+  color: #fff;
+  // background-color: #2f5597;
+  // border-bottom: 1px dashed #ffffff;
+  // box-shadow: 0 2px 0px 0px #2f5597;
+  background-color: #fd9f1b;
+  border-bottom: 1px dashed #f37302;
+  box-shadow: 0 2px 0 #fd9f1b;
+}
+
+time.calendar-icon em {
+  position: absolute;
+  bottom: 10px;
+  // color: #2f5597;
+  color: #fd9f1b;
+  font-size: 2em;
+}
+
+time.calendar-icon span {
+  width: 100%;
+  font-size: 4em;
+  padding-top: 1.2em;
+  color: #2f2f2f;
+}
+
+// stepper css
+
+.setup-state-container {
+  display: inline-flex;
+  align-items: center;
+}
+
+.setup-state-block {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 0 1rem;
+}
+
+.setup-state-container .setup-state-block:first-child {
+  padding-left: 0;
+}
+
+.setup-state-container .setup-state-block:last-child {
+  padding-right: 0;
+}
+
+.setup-state {
+  height: 30px;
+  width: 30px;
+  background-color: #2f5597;
+  color: white;
+  border-radius: 50%;
+  font-weight: 500;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.setup-state-container .setup-state-block::after,
+.setup-state-container .setup-state-block::before {
+  content: "";
+  border: 0;
+  width: 50%;
+  position: absolute;
+  display: block;
+  left: 50%;
+  top: calc(50% - 1px);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.setup-state-container .setup-state-block::before {
+  left: 0%;
+}
+
+.setup-state-container .setup-state-block:last-of-type::after,
+.setup-state-container .setup-state-block:first-of-type::before {
+  content: "";
+  width: 0px;
+  border-top: unset;
+}
+
+.setup-state.active {
+  background-color: #70ad47;
+  color: white;
+}
+
+.rightCheckMark {
+  background-image: url(../../../../assets/images/stepperWrightCheck.svg);
+  background-repeat: no-repeat;
+  background-color: whitesmoke;
+}
+
+.unCheckStep {
+  background-color: #ffff;
+  border: 2px solid  #6C757D;;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  color: #6C757D;
+}
