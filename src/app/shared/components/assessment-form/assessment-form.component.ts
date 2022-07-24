@@ -294,16 +294,17 @@ export class AssessmentFormComponent implements OnInit {
 
   pagination(stepperIndx: any) {
     let displayEndRec = stepperIndx * 10;
-    console.log("displayEndRec === ", displayEndRec);
+    // console.log("displayEndRec === ", displayEndRec);
     return displayEndRec;
   }
 
   paginationStart(stepperIndx: any) {
     let displaystartRec = (stepperIndx - 1) * 10;
     displaystartRec = displaystartRec + 1;
-    console.log("displaystartRec === ", displaystartRec);
+    // console.log("displaystartRec === ", displaystartRec);
     return displaystartRec;
   }
+
 
 
 }
