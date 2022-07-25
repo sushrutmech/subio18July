@@ -28,6 +28,7 @@ export class MyLibraryContainerComponent implements OnInit {
 
   searchForm!: FormGroup;
   isSearched: boolean = false;
+  tabIndex:any
 
   constructor(
     private myLibraryService: MyLibraryService,
@@ -101,7 +102,8 @@ export class MyLibraryContainerComponent implements OnInit {
   }
 
   selectedTabChange(event:MatTabChangeEvent){
-    console.log(event)
+    this.tabIndex=event.index 
+    console.log( "tabIndex...",this.tabIndex)
     this.getAllContent(); 
   }
 

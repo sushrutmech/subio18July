@@ -17,7 +17,7 @@
 
         <mat-tab label="Viewing List" class="container">
 
-          <app-view-content *ngIf="isWatchVideo" [selectedContent]="selectedContent"
+          <app-view-content *ngIf="isWatchVideo && tabIndex==1" [selectedContent]="selectedContent"
             (onRequestClose)="handleContentViewerClose($event)">
           </app-view-content>
 
@@ -175,7 +175,7 @@
 
         <mat-tab label="Past Viewing">
 
-          <app-view-content *ngIf="isWatchVideo" [selectedContent]="selectedContent"
+          <app-view-content *ngIf="isWatchVideo && tabIndex==3" [selectedContent]="selectedContent"
             (onRequestClose)="handleContentViewerClose($event)">
           </app-view-content>
 
