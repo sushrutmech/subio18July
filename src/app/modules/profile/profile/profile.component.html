@@ -71,7 +71,7 @@
                     </div>
                     <div class="col-md-12 mb-3">
                       <label for="emailAddress" class="form-label">Email address</label>
-                      <input type="text" class="form-control" id="emailAddress" formControlName="emailAddress" [disabled]="is_edit">
+                      <input [readonly]="true"  type="text" class="form-control" id="emailAddress" formControlName="emailAddress" [disabled]="is_edit">
                     </div>
                     <div class="col-md-12 d-flex justify-content-end">
                       <button type="button" class="btn btn-secondary ml-3" (click)="onCancelClick()" *ngIf="userForm.dirty">
