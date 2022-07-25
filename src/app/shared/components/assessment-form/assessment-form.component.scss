@@ -35,11 +35,9 @@
 
 .ratingAssesDiv :nth-child(odd) {
   background: #E9ECEF;
-  height: 63px;
 }
 .ratingAssesDiv :nth-child(even) {
   background: #fff;
-  height: 63px;
 }
 
 .ratingAssesChild :nth-child(odd) {
@@ -49,4 +47,14 @@
 .ratingAssesChild :nth-child(even) {
   background: unset;
   height: auto;
+}
+
+.ratingAssesChild > .ng-star-inserted{
+  display: flex;
+}
+
+::ng-deep{
+  .ratingAssesDiv .ng-wizard-theme-dots>ul.step-anchor:before{
+    top: 63px;
+  }
 }

@@ -39,7 +39,7 @@
           </div>
         </div>
         <div class="d-flex h-100 overflow-hidden">
-          <div class="container " [@listAnimation]="currentPage"> 
+          <div class="container ratingAssesDiv" [@listAnimation]="currentPage"> 
             <ng-wizard [config]="config" (stepChanged)="stepChanged($event)">
 
               <ng-wizard-step *ngFor="let i of Arr(totalPages).fill(1); let indx = index" [title]="'Step '+ (indx+1) +''"

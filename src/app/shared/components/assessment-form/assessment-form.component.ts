@@ -12,7 +12,7 @@ import { of } from 'rxjs';
 @Component({
   selector: 'app-assessment-form',
   templateUrl: './assessment-form.component.html',
-  styleUrls: ['./assessment-form.component.css'],
+  styleUrls: ['./assessment-form.component.scss'],
 
 })
 export class AssessmentFormComponent implements OnInit {
