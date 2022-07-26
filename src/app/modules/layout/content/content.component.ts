@@ -67,6 +67,9 @@ export class ContentComponent implements OnInit {
 
   isSearched: boolean = false;
   courseDate: any
+  homeContentLocalStorage: any;
+  watchTimePercentage: number = 0;
+
 
 
 
@@ -130,6 +133,7 @@ export class ContentComponent implements OnInit {
     this.getMyGoalList();
     this.getTeamGoakList();
     this.getAllContent();
+    this.homeContentLocalStorageFun()
 
 
     this.searchForm = this.fb.group({
@@ -144,6 +148,22 @@ export class ContentComponent implements OnInit {
     if (this.timeSubscription) {
       this.timeSubscription.unsubscribe();
     }
+  }
+
+  homeContentLocalStorageFun() {
+    this.homeService.getHomeContent().subscribe(results => {
+      this.homeContentLocalStorage = results
+      this.homeContentLocalStorage.userProgramContent.map(
+        (x: any) => {
+          x.contentImage = this.watchTimePercentage
+        }
+      )
+
+      console.log(this.homeContentLocalStorage.userProgramContent)
+
+      localStorage.setItem("homeContent", JSON.stringify(this.homeContentLocalStorage))
+    })
+
   }
 
   callHomeContentAPI() {
