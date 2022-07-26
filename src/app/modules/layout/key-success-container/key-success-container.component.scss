@@ -221,16 +221,23 @@
     .goalContainer .mat-ink-bar{
         background: #0198E0  !important;
     }
+    .containerGoal .mat-tab-body-content {
+        overflow: unset;
+    }
+    .containerGoal .mat-tab-body.mat-tab-body-active {
+         overflow-x: unset; 
+        overflow-y: unset; 
+    }
 }
 
 
 .addGoalBtn {
     font-style: normal;
-    font-weight: 300;
-    font-size: 20px;
+    font-weight: 400;
+    font-size: 14px;
     line-height: 150%;
     background-color: #0198e0 !important;
     color: #fff !important;
-    height: 48px;
-    margin-top: 16px;
+    height: 31px;
+    width: 119px;
     }

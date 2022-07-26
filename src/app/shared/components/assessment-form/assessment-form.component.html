@@ -44,7 +44,7 @@
 
               <ng-wizard-step *ngFor="let i of Arr(totalPages).fill(1); let indx = index" [title]="'Step '+ (indx+1) +''"
                 [description]="'Step '+ (indx+1) +' description'">
-                <span>Step {{indx+1}} content</span>
+                <span style="margin-bottom: 8px;">Step {{indx+1}} content</span>
                 <div class="row ratingAssesChild" (keypress)="eventHandler($event, question)"
                   *ngFor="let question of questionList; let questionIndx = index">
                   <div *ngIf="(questionIndx+1) >= paginationStart((indx+1)) && (questionIndx+1) <= pagination((indx+1))">
