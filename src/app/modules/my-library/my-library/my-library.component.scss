@@ -357,7 +357,7 @@ input:checked + .slider:before {
 
 
 .my-libraryContainer{
-   padding: 32PX;
+  padding: 16PX 3px 16px 16px;
 }
 
 .dispNone{
@@ -366,8 +366,8 @@ input:checked + .slider:before {
 
 .searchClassContainer{
 
-   gap: 16px !important;
-    width: 100%;
+   gap: 29px !important;
+    width: 101%;
     display: flex;
     flex-wrap: wrap;
 }

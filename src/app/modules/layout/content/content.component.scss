@@ -231,6 +231,11 @@
     margin-bottom: 46px;
     border-bottom: 2px solid #d4d4d4 !important;
 }
+.containerGoal{
+    max-width: 1496px !important;
+    padding-bottom: 32px;
+
+}
 
 .container3 {
     max-width: 1496px !important;
@@ -713,6 +718,7 @@
     width: 161px;
     height: 38px;
     line-height: 150%;
+    text-transform: capitalize;
 }
   .h-90px {
     height: 90px;
@@ -949,11 +955,11 @@
   
   .addGoalBtn {
     font-style: normal;
-    font-weight: 300;
-    font-size: 20px;
+    font-weight: 400;
+    font-size: 14px;
     line-height: 150%;
     background-color: #0198e0 !important;
     color: #fff !important;
-    height: 48px;
-    margin-top: 16px;
+    height: 31px;
+    width: 119px;
     }
