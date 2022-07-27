@@ -51,13 +51,13 @@ export class VideoPlayerComponent implements OnInit  {
       this.currentTimeVideo = this.videoPlayer.getDefaultMedia().currentTime
       this.videoDuration = this.videoPlayer.getDefaultMedia().duration
       this.videoWatchTimePercent = this.currentTimeVideo / this.videoDuration * 100
-      console.log("curret time video...", this.currentTimeVideo)
-      console.log("**-*- videoDuration", this.videoDuration)
-      console.log("percentage watch time...", this.videoWatchTimePercent)
+     // console.log("curret time video...", this.currentTimeVideo)
+      //console.log("**-*- videoDuration", this.videoDuration)
+     // console.log("percentage watch time...", this.videoWatchTimePercent)
       this.homeContentFromLocal = localStorage.getItem("homeContent")
       this.homeContentFromLocalJson = JSON.parse(this.homeContentFromLocal)
 
-      console.log("actinve link " ,this.src)
+     // console.log("actinve link " ,this.src)
       this.homeContentFromLocalJson.userProgramContent.forEach((ele:any) => {
         if (ele.contentLocation==this.src) {
           ele.watchPerctent=this.videoWatchTimePercent
@@ -73,9 +73,9 @@ export class VideoPlayerComponent implements OnInit  {
            return x.contentLocation==this.src
         }
      )
-      console.log("fromLocal storage", this.homeContentFromLocalJson)
-      console.log("active content++" , activeContent )
-      console.log( "update array ",this.updateHomeContent)
+      //console.log("fromLocal storage", this.homeContentFromLocalJson)
+     // console.log("active content++" , activeContent )
+     // console.log( "update array ",this.updateHomeContent)
       if (this.videoDuration == this.currentTimeVideo) {
         console.log("if condition is calling .....")
         clearInterval(t)

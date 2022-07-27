@@ -38,7 +38,7 @@
                       class="goal-type-button list-group-item text-center list-group-item-action"
                       [class.active]="item.isSelected">
                       <img [src]="item.icon | appImage " *ngIf="item.icon" />
-                      {{item.sucessGoalTypeName | uppercase}}
+                      {{item.sucessGoalTypeName }}
                     </button>
                   </ul>
                 </div>
@@ -49,9 +49,9 @@
         <div>
           <div class="row justify-content-center saveBtn">
             <div class="col-12 col-sm-10 mt-4 pl-4">
-              <button type="button" class="btn btn-primary btn-block btn-lg" (click)="onSubmitGoalForm()">SAVE GOAL AND
-                TAKE
-                DIAGNOSTIC</button>
+              <button type="button" class="btn btn-primary btn-block btn-lg" (click)="onSubmitGoalForm()">Save Goal And
+                Take
+                Diagnostic</button>
             </div>
           </div>
         </div>

@@ -28,7 +28,7 @@ export class MyLibraryComponent implements OnInit {
   searchForm!: FormGroup;
   isSearched: boolean = false;
 
-  color: ThemePalette = 'accent';
+  color:any = 'primary';
   checked = false;
   disabled = false;
 

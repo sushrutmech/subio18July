@@ -25,14 +25,22 @@
               <div class="formCard">
                   <form [formGroup]="loginForm" (ngSubmit)="onSubmit($event)" novalidate>
                       <div class="formElement">
+                        <h3 style="font-weight: 800;
+                        font-size: 20px;">Sign in to your accout</h3>
+                        <P>Email</P>
                           <div class="inputEmail">
+                            
                             <input type="text" class="form-control" placeholder="Username" autocomplete="off"
                             formControlName="username" [class.is-invalid]="submitted && f.username.errors">
                             <div class="invalid-feedback">
                                 Please enter your Username
                               </div>
                           </div>
-  
+                          <div class="">
+                          <span>Password</span>
+                          
+                            <span style="cursor: pointer; color: #0198E0; padding-left: 234px;" class="marPad0" [routerLink]="'/forgot-password'" >Forgot Password </span>
+                        </div>
                           <div class="inputPass">
                             <input type="password" class="form-control" placeholder="Password" autocomplete="off"
                             formControlName="password" [class.is-invalid]="submitted && f.password.errors">
@@ -45,14 +53,13 @@
                               <button type="submit" class="btn btnBlock" [disabled]="submitted && loginForm.invalid">Log In</button>
                           </div>
   
-                          <div class="frgtPass">
-                              <p style="cursor: pointer;" class="marPad0" [routerLink]="'/forgot-password'" >Forgot Password </p>
-                          </div>
+                          
   
-                          <div class="regBlock">
-                              <p class="marPad0 regText">Don't have an account?</p>
-                              <div class="regBtn" style="cursor: pointer;">
-                                  <button [routerLink]="'/register'" type="button" class="btn btnRegister ">Register Now</button>
+                          <div class="">
+                              
+                              <div class="" style="cursor: pointer;">
+                                <span class="">Don't have an account?</span>
+                                  <span [routerLink]="'/register'" style=" color: #0198E0; padding-left: 207px;" type="button" class="">Sign Up</span>
                               </div>
                           </div>
               

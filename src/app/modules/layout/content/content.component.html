@@ -61,9 +61,9 @@
                     {{programInstance.dateStart | date : 'hh:mma'}} to {{programInstance.dateEnd | date : 'hh:mma'}}
                   </div>
                 </div>
-                <div class="btnJoin">
+                <!-- <div class="btnJoin">
                   Join Now
-                </div>
+                </div> -->
               </div>
               <div class="child3">
                 <div>
@@ -282,7 +282,7 @@
       <div class="container container3">
         <div class="row">
           <div class="myGoalContainer d-flex justify-content-between">
-            <div class="container2HeaderText" routerLink="/my-library">
+            <div class="container2HeaderText" routerLink="">
               MY LIBRARY
             </div>
           </div>
@@ -291,7 +291,7 @@
 
               <mat-tab label="Viewing List">
 
-                <app-view-content *ngIf="isWatchVideo" [selectedContent]="selectedContent"
+                <app-view-content *ngIf="isWatchVideo && tabIndex==0"  [selectedContent]="selectedContent"
                   (onRequestClose)="handleContentViewerClose($event)">
                 </app-view-content>
 
@@ -446,7 +446,7 @@
 
               <mat-tab label="Past Viewing">
 
-                <app-view-content *ngIf="isWatchVideo" [selectedContent]="selectedContent"
+                <app-view-content *ngIf="isWatchVideo && tabIndex==2" [selectedContent]="selectedContent"
                   (onRequestClose)="handleContentViewerClose($event)">
                 </app-view-content>
 

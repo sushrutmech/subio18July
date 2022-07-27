@@ -70,7 +70,7 @@ export class ContentComponent implements OnInit {
   homeContentLocalStorage: any;
   watchTimePercentage: number = 0;
 
-
+  tabIndex:any
 
 
   constructor(
@@ -376,6 +376,7 @@ export class ContentComponent implements OnInit {
   }
 
   selectedTabChange(event:MatTabChangeEvent){
+    this.tabIndex=event.index
     console.log(event)
     this.getAllContent(); 
   }

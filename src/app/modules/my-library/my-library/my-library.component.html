@@ -73,7 +73,7 @@
                         </div>
 
                         <div class="cardDetailContainer p-2 d-xl-flex d-block ">
-                            <div class="col-xxl-10 col-xl-9  col-sm-12">
+                            <div style="width:100%" class="col-xxl-10 col-xl-9  col-sm-12">
                                 <!-- <h3><a class="search-result-title">{{single.contentName | uppercase}}</a></h3> -->
                                 <button class="btn  px-0" (click)="handleWatchVideo(single)">
                                     <h5 class="card-title text-dark line-clamp">{{single.contentName}}</h5>
@@ -96,7 +96,9 @@
                                     <div class="text-center "
                                         style="display:flex;flex-direction: row-reverse;justify-content: space-between;">
                                         <label l class="">
-                                            <div class="" [ngClass]="{'d-none': single.isRead}">
+                                            <div style="display: flex;
+                                            align-items: center;
+                                            margin-top: 8px;" class="" [ngClass]="{'d-none': single.isRead}">
                                                 <span class="" style="margin-right: 22px;"> Add to my reading
                                                     list</span>
                                                 <mat-slide-toggle class="example-margin" [color]="color"

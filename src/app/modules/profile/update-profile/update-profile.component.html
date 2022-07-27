@@ -1,0 +1,140 @@
+<section class="main-section webPage">
+    <div class="container container-block">
+        <div class="d-flex profile">
+            <mat-card class="profile-sidebar">
+                <form [formGroup]="userForm" novalidate (ngSubmit)="onFormSubmit()">
+                    <div class="profile-img">
+                        <button type="submit"  class="btn primary file-upload-button">
+                            <input #imageInput type="file" class="d-none" accept="image/*" (change)="processFile($event)" />
+                            <i class="fa fa-solid fa-pen" (click)="imageInput.click()"></i>
+                        </button>
+                      
+                        <button type="button" class="btn btn-outline-primary btn-sm" >
+                            <i class="fa fa-camera"></i> Change Your Profile Picture
+                        </button>
+                        <img src="{{profilePic}}" *ngIf="profilePic" width="100%" alt="">
+                        <img
+                        [src]="defaultImage ? 'data:image/png;base64,' + defaultImage : './assets/img/dummy-profile.png'"
+                        class="rounded profile-image" alt="...">
+                        <img src='./assets/img/dummy-profile.png' *ngIf="!defaultImage" width="100%" alt="">
+                    </div>
+
+                </form>    
+                
+                <div class="userDetail">
+
+                    <p class="personal-profile">Personal Profile</p>
+                </div>
+                <ul class="profile-tabs">
+                    <li [ngClass]="clicked === 0 ? 'active' : ''"><span>Profile</span></li>
+                    <li [ngClass]="clicked === 1 ? 'active' : ''"><span>Login Details </span>
+                    </li>
+
+                    <li [ngClass]="clicked === 4 ? 'active' : ''"><span>Logout </span></li>
+                </ul>
+            </mat-card>
+
+            <div class="main-container">
+                <mat-card class="card-container">
+                    <div class="progressbar-container">
+                        <div class="d-flex justify-content-between progress-label">
+                            <span class="complete-profile">Complete your Profile </span>
+                            <span class="percent">{{progress}} % </span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" role="progressbar"
+                                [ngStyle]="{'width': progress + '%'}" aria-valuenow="progress" aria-valuemin="0"
+                                aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <span class="wadiia-text pb-2">get the best of wadiia by adding the remaimimg details !</span>
+                    <div class="d-flex justify-content-between py-4 my-2 verified-process">
+                        <div class="verifiedIcon">
+                            <i class="icon-b-red"></i>
+                            <span class="inComplete-process">Verified Email ID</span>
+                        </div>
+                        <div class="verifiedIcon">
+                            <i class="icon-b-red"></i>
+                            <span class="inComplete-process">Verified Mobile No</span>
+                        </div>
+                        <div class="basic-info">
+                            <span class="basic-info-plus">+</span>
+                            <span class="complete-process">Complete Basic Info</span>
+                        </div>
+                    </div>
+                </mat-card>
+                <mat-card class="card-container my-3">
+                    <div class="d-flex justify-content-between">
+                        <div class="profile-first-block">
+                            <p class="profile-header pt-3">Profile</p>
+                            <p class="booking-exp">basic info, for a faster booking experience</p>
+                        </div>
+                        <div class="editForm">
+                            <button class="btn btn-light" (click)="openEditPopup('all')"><i
+                                    class="fa fa-solid fa-pen"></i>&nbsp;<span>Edits</span></button>
+                        </div>
+                    </div>
+                    <div class="info-table">
+                        <div class="row">
+                            <label class="col-md-3 info-label">Name</label>
+                            <span class="col-md-9 info-value">{{userDetail.firstName}}</span>
+                            <!-- <div class="verifiedIcon">
+                                <i class="icon-b-red"></i>
+                                <span class="inComplete-process">Verified Email ID</span>
+                            </div> -->
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <label class="col-md-3 info-label">Preferred name</label>
+                            <span class="col-md-9 info-value">{{userDetail.preferredName}}</span>
+                            <a href="javascript:void(0)" *ngIf="!userDetail.preferredName"
+                                class="col-md-9 add-value">+Add</a>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <label class="col-md-3 info-label">Job title</label>
+                            <span class="col-md-9 info-value">{{userDetail.jobTitle}}</span>
+                            <a href="javascript:void(0)" *ngIf="!userDetail.jobTitle"
+                                class="col-md-9 add-value">+Add</a>
+                        </div>
+                    </div>
+                </mat-card>
+                <mat-card class="card-container my-3">
+                    <div class="profile-first-block">
+                        <p class="profile-header pt-3">Login Details </p>
+                        <p class="booking-exp">Manage your email address mobile number and password </p>
+                    </div>
+                    <div class="info-table">
+                        <div class="row">
+                            <label class="col-md-3 info-label">Mobile Number</label>
+                            <span class="col-md-9 info-value"></span>
+                            <p> {{userDetail.contactNumber}} &nbsp;<i class="icon-b-red"></i><span
+                                    class="inComplete-process verified">Verified</span></p>
+                            <a href="javascript:void(0)" *ngIf="!userDetail.contactNumber"
+                                class="col-md-3 add-value">+Add</a>
+
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <label class="col-md-3 info-label">Email ID</label>
+                            <p class="col-md-9 info-value">{{userDetail.emailAddress}} &nbsp;<i
+                                    class="icon-b-red"></i><span class="inComplete-process verified">Verified</span></p>
+                            <a href="javascript:void(0)" *ngIf="!userDetail.emailAddress"
+                                class="col-md-3 add-value">+Add</a>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <label class="col-md-3 info-label" *ngIf="userDetail.emailAddress">Password </label>
+                            <span class="col-md-3 info-value">******</span>
+                            <a href="javascript:void(0)" *ngIf="!userDetail.emailAddress"
+                                class="col-md-3 add-value">+Add</a>
+                            <span style="text-align: right;" class="col-md-6 "><a style="text-decoration: none;"
+                                    href="javascript:void(0)" routerLink="/change-passwoord">Change password</a></span>
+                        </div>
+                    </div>
+                </mat-card>
+
+            </div>
+        </div>
+    </div>
+</section>

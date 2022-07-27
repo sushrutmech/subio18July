@@ -59,7 +59,7 @@ line-height: 150%;
 }
 
 .formElement{
-  padding: 16px 16px 26px 16px;
+  padding: 30px 16px 50px 16px;
 }
 
 .inputEmail{
@@ -67,7 +67,7 @@ line-height: 150%;
 }
 
 .inputPass{
-  padding: 0px 0px 24px 0px;
+  padding: 12px 0px 24px 0px;
 
 }
 

@@ -63,4 +63,8 @@
   .ratingAssesDiv .text-danger .bs-rating-star{
     color: red !important;
   }
+  .ratingAssesDiv .ng-wizard-theme-dots .ng-wizard-toolbar-bottom {
+    display: none;
+  }
 }
+
