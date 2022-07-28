@@ -3,17 +3,9 @@
     <h3 class="Pophead">Edit Profile </h3>
     <div class="closeBtn" [mat-dialog-close]="true"><i class="icon-wrong"></i></div>
 </div>
-<form [formGroup]="profileForm" (ngSubmit)="onSubmit()" novalidate #profileId>
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()" novalidate #profileId>
     <div class="row my-3">
-        <div class="col-3">
-            <mat-form-field style="width: 100%;" appearance="outline">
-                <mat-label>Prefix</mat-label>
-                <mat-select name="prefix" formControlName="prefix">
-                    <mat-option value="Mr">Mr</mat-option>
-                    <mat-option value="Mrs">Mrs</mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
+        
         <div class="col-3">
             <mat-form-field style="width: 100%;" appearance="outline">
                 <mat-label>First Name </mat-label>
@@ -22,35 +14,39 @@
         </div>
         <div class="col-3">
             <mat-form-field style="width: 100%;" appearance="outline">
-                <mat-label>Middle Name </mat-label>
-                <input name="middleName" matInput placeholder="middleName" formControlName="middleName">
+                <mat-label>lastName Name </mat-label>
+                <input name="lastName" matInput placeholder="lastName" formControlName="lastName">
             </mat-form-field>
         </div>
         <div class="col-3">
             <mat-form-field style="width: 100%;" appearance="outline">
-                <mat-label>Last Name </mat-label>
-                <input name="lastName" matInput placeholder="lastName" formControlName="lastName">
+                <mat-label>preferredName Name </mat-label>
+                <input name="preferredName" matInput placeholder="preferredName" formControlName="preferredName">
             </mat-form-field>
         </div>
     </div>
     <div class="row my-3">
         <div class="col-3">
             <mat-form-field style="width: 100%;" appearance="outline">
-                <mat-select class="gender" tabindex="1" name="gender" placeholder="Gender" formControlName="gender" #genderId >
-                    <mat-option value="Male" >Male</mat-option>
-                    <mat-option value="Female">Female</mat-option>
-                    <mat-option value="Female">Transgender</mat-option>
-                </mat-select>
+                <mat-label>jobTitle </mat-label>
+                <input name="jobTitle" matInput placeholder="jobTitle" formControlName="jobTitle">
             </mat-form-field>
         </div>
-        <div class="col-4">
+
+         <div class="col-3">
             <mat-form-field style="width: 100%;" appearance="outline">
-                <mat-select  name="maritalStatus" placeholder="Marital Status" formControlName="maritalStatus" >
-                    <mat-option value="Male">Single</mat-option>
-                    <mat-option value="Female">Marrid</mat-option>
-                </mat-select>
+                <mat-label>contactNumber </mat-label>
+                <input name="contactNumber" matInput placeholder="contactNumber" formControlName="contactNumber">
             </mat-form-field>
         </div>
+
+        <div class="col-3">
+            <mat-form-field style="width: 100%;" appearance="outline">
+                <mat-label>emailAddress </mat-label>
+                <input [readonly]="true" name="emailAddress" matInput placeholder="emailAddress" formControlName="emailAddress">
+            </mat-form-field>
+        </div>
+
         <div class="col-5">
             <!-- <mat-form-field style="width: 100%;" appearance="outline">
                 <mat-label>Date of Birth (DD/MM/YYYY)</mat-label>
@@ -94,3 +90,7 @@
     <button mat-button mat-dialog-close>Cancel</button>
     <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
 </div>
+
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="large" color="#0198e0" type ="ball-scale-multiple" [fullScreen]="true">
+    <p style="color: #0198e0"> Loading... </p>
+  </ngx-spinner>

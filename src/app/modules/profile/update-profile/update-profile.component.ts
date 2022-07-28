@@ -61,7 +61,7 @@ export class UpdateProfileComponent implements OnInit {
     
     this.showProgress();
     this.initializeForm();
-    console.log("test 3 is calling ")
+    console.log("update profile ...  " , this.userDetail)
   }
 
   initializeForm() {
@@ -75,7 +75,7 @@ export class UpdateProfileComponent implements OnInit {
     });
     //this.userForm.get('emailAddress').disable();
     this.defaultImage = this.userDetail.profilePic;
-    console.log("profile image " , this.userDetail.profilePic)
+    
   }
 
   onFormSubmit() {
@@ -89,25 +89,45 @@ export class UpdateProfileComponent implements OnInit {
       this.userDetail.contactNumber = this.userForm.value.contactNumber || '';
       this.userDetail.emailAddress = this.userForm.value.emailAddress;
       this.userDetail.profilePic = this.defaultImage;
-
-      this.authService.updateProfile(this.userDetail).subscribe(result => {
+      
+      this.authService.updateProfile( this.userDetail).subscribe(result => {
         this.submitted = false;
         //this.toastr.success('Profile updated successfully!');
         this.spinner.hide();
       });
+      console.log("form submint is calling ....")
     }
+  }
+  hithere(data:any){
+    console.log("hit here is call here")
+    this.userDetail.profilePic = data;
+    this.authService.updateProfile(this.userDetail).subscribe(result => {
+      this.submitted = false;
+      //this.toastr.success('Profile updated successfully!');
+      this.spinner.hide();
+    });
   }
  
   processFile(event: any) {
     if (event.target.files && event.target.files[0]) {
+      this.onFormSubmit()
+      
       var reader = new FileReader();
       reader.readAsDataURL(event.target.files[0]);
       reader.onload = (event:any) => {
         let dataURL = event.target.result.toString();
         dataURL = dataURL.replace(/data:image\/[a-z]*;base64,/g, "");
         this.defaultImage = dataURL;
+        this.hithere(this.defaultImage)
+       
       }
+     
     }
+    
+  }
+
+  selectedTab(i: number) {
+    this.clicked = i;
   }
 
   openEditPopup(name: any) {
@@ -124,26 +144,25 @@ export class UpdateProfileComponent implements OnInit {
 
   
 
- 
-
   cancelEdit() {  
     this.editProfileForm = false;
   }
 
   showProgress() {
-    this.progress = 55;
-    // if (this.userInfo.email.length !== 0) {
-    //   this.progress = this.progress + 15;
-    // }
-    // if (this.userInfo.mobile.length !== 0) {
-    //   this.progress = this.progress + 15;
-    // }
-    // if (this.profilePic !== undefined) {
-    //   this.progress = this.progress + 20;
-    // }
-    // if (this.userInfo.firstName.length !== 0, this.userInfo.lastName.length !== 0, this.userInfo.middleName.length !== 0) {
-    //   this.progress = this.progress + 30;
-    // }
+    this.progress = 0;
+    if (this.userDetail.emailAddress.length !== 0) {
+      this.progress = this.progress + 15;
+    }
+    if (this.userDetail.contactNumber.length !== 0) {
+      this.progress = this.progress + 15;
+    }
+    if (this.userDetail.profilePic !== undefined) {
+      this.progress = this.progress + 20;
+    }
+    if (this.userDetail.firstName.length !== 0, this.userDetail.lastName.length !== 0, this.userDetail.preferredName.length !== 0) {
+      this.progress = this.progress + 30;
+    }
+
     // if (this.userInfo.dateOfBirth !== null) {
     //   this.progress = this.progress + 10;
     // }

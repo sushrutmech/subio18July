@@ -89,6 +89,8 @@ export class AuthService {
       }));
   }
 
+ 
+
   changePassword(params: ChangePasswordRequest) {
     let url = `${environment.apiEndPoint}/auth/changepassword?user_id=${params.user_id}&oldpassword=${params.oldpassword}&newpassword=${params.newpassword}`
     return this.http.post<number>(url, null);

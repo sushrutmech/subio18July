@@ -4,19 +4,14 @@
             <mat-card class="profile-sidebar">
                 <form [formGroup]="userForm" novalidate (ngSubmit)="onFormSubmit()">
                     <div class="profile-img">
-                        <button type="submit"  class="btn primary file-upload-button">
-                            <input #imageInput type="file" class="d-none" accept="image/*" (change)="processFile($event)" />
-                            <i class="fa fa-solid fa-pen" (click)="imageInput.click()"></i>
+                        <input #imageInput type="file" class="d-none" accept="image/*" (change)="processFile($event)" />
+                        <button (click)="imageInput.click()" type="submit"  class="btn primary file-upload-button">
+                            <i class="fa fa-solid fa-pen" ><img src="../../../../assets/images/editPen.svg" width="100%" alt=""></i>
                         </button>
-                      
-                        <button type="button" class="btn btn-outline-primary btn-sm" >
-                            <i class="fa fa-camera"></i> Change Your Profile Picture
-                        </button>
-                        <img src="{{profilePic}}" *ngIf="profilePic" width="100%" alt="">
                         <img
                         [src]="defaultImage ? 'data:image/png;base64,' + defaultImage : './assets/img/dummy-profile.png'"
-                        class="rounded profile-image" alt="...">
-                        <img src='./assets/img/dummy-profile.png' *ngIf="!defaultImage" width="100%" alt="">
+                        class="rounded profile-image" width="100%" alt="...">
+                        
                     </div>
 
                 </form>    
@@ -26,11 +21,11 @@
                     <p class="personal-profile">Personal Profile</p>
                 </div>
                 <ul class="profile-tabs">
-                    <li [ngClass]="clicked === 0 ? 'active' : ''"><span>Profile</span></li>
-                    <li [ngClass]="clicked === 1 ? 'active' : ''"><span>Login Details </span>
+                    <li [ngClass]="clicked === 0 ? 'active' : ''" (click)="selectedTab(0)"><span>Profile</span></li>
+                    <li [ngClass]="clicked === 1 ? 'active' : ''" (click)="selectedTab(1)"><span>Login Details </span>
                     </li>
 
-                    <li [ngClass]="clicked === 4 ? 'active' : ''"><span>Logout </span></li>
+                    <li [ngClass]="clicked === 2 ? 'active' : ''" (click)="selectedTab(2)"><span>Logout </span></li>
                 </ul>
             </mat-card>
 
@@ -47,7 +42,7 @@
                                 aria-valuemax="100"></div>
                         </div>
                     </div>
-                    <span class="wadiia-text pb-2">get the best of wadiia by adding the remaimimg details !</span>
+                    <span class="wadiia-text pb-2">get the best of Subio by adding the remaimimg details !</span>
                     <div class="d-flex justify-content-between py-4 my-2 verified-process">
                         <div class="verifiedIcon">
                             <i class="icon-b-red"></i>
@@ -87,15 +82,15 @@
                         <div class="row">
                             <label class="col-md-3 info-label">Preferred name</label>
                             <span class="col-md-9 info-value">{{userDetail.preferredName}}</span>
-                            <a href="javascript:void(0)" *ngIf="!userDetail.preferredName"
-                                class="col-md-9 add-value">+Add</a>
+                            <a href="javascript:void(0)" class="col-md-9 add-value" *ngIf="!userDetail.preferredName"
+                                class="col-md-9 add-value" (click)="openEditPopup('preferredName')">+Add</a>
                         </div>
                         <hr>
                         <div class="row">
                             <label class="col-md-3 info-label">Job title</label>
                             <span class="col-md-9 info-value">{{userDetail.jobTitle}}</span>
-                            <a href="javascript:void(0)" *ngIf="!userDetail.jobTitle"
-                                class="col-md-9 add-value">+Add</a>
+                            <a href="javascript:void(0)" class="col-md-9 add-value" *ngIf="!userDetail.jobTitle"
+                                class="col-md-9 add-value" (click)="openEditPopup('jobTitle')">+Add</a>
                         </div>
                     </div>
                 </mat-card>
@@ -111,7 +106,7 @@
                             <p> {{userDetail.contactNumber}} &nbsp;<i class="icon-b-red"></i><span
                                     class="inComplete-process verified">Verified</span></p>
                             <a href="javascript:void(0)" *ngIf="!userDetail.contactNumber"
-                                class="col-md-3 add-value">+Add</a>
+                                class="col-md-3 add-value" (click)="openEditPopup('contactNumber')" >+Add</a>
 
                         </div>
                         <hr>

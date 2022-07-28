@@ -2,10 +2,6 @@
 
     <div class="full-height" *ngIf="isDataLoaded; else noDataTemplate">
         <div class="animated fadeIn full-height pt-2" *ngIf="!isWatchVideo">
-            <!-- <div class="mb-2">
-                <span class="font-lg text-uppercase">SEARCH THE LIBRARY</span>
-            </div> -->
-
             <div class="row">
                 <div class="col-sm-12">
                     <form [formGroup]="searchForm" (ngSubmit)="searchTerm()">
@@ -26,10 +22,7 @@
                                     id="excludeSwitch" (change)="searchTerm()">
 
                                 </mat-slide-toggle>
-
-                                <!-- <input type="checkbox" class="custom-switch custom-control-input" name="excludeSwitch"
-                                    formControlName="excludeSwitch" id="excludeSwitch" (change)="searchTerm()"> -->
-
+                                
                                 <label style="margin-left: 18px;" class="custom-control-label mt-sm-0 mt-2"
                                     for="excludeSwitch">Exclude articles
                                     already viewed</label>
@@ -74,24 +67,22 @@
 
                         <div class="cardDetailContainer p-2 d-xl-flex d-block ">
                             <div style="width:100%" class="col-xxl-10 col-xl-9  col-sm-12">
-                                <!-- <h3><a class="search-result-title">{{single.contentName | uppercase}}</a></h3> -->
+                             
                                 <button class="btn  px-0" (click)="handleWatchVideo(single)">
                                     <h5 class="card-title text-dark line-clamp">{{single.contentName}}</h5>
                                 </button>
 
                                 <div class="m-0 d-flex align-items-center  " *ngIf="single.avgRating>0">
-                                    <!-- <rating [(ngModel)]="single.avgRating" class="custom-rating-star"
-                                        max="single.avgRating" [readonly]="true"></rating> -->
+                                  
                                     <star-rating [value]="single.avgRating"
                                         [totalstars]="getRoundedValue(single.avgRating)" checkedcolor="rgb(255,192,0)"
                                         uncheckedcolor="white" size="30px" [readonly]="true">
                                     </star-rating>
-                                    <!-- <div class="mt-1 ml-1"><span>{{single.avgRating}}</span></div> -->
+                                  
                                     <span>({{single.viewDescription}} )</span>
                                 </div>
 
                                 <div class="d-flex align-items-center justify-content">
-
 
                                     <div class="text-center "
                                         style="display:flex;flex-direction: row-reverse;justify-content: space-between;">
@@ -113,23 +104,6 @@
                                             </div>
 
                                         </label>
-                                        <!-- <div class="custom-control custom-switch mt-1 mb-2"
-                                            [ngClass]="{'d-none': single.isRead}">
-                                            <input type="checkbox" class="custom-switch custom-control-input"
-                                                [id]="single.contentID" [checked]="single.isAlreadyReadingList"
-                                                (click)="addToReadingList(single.contentID)">
-
-                                            <img [ngClass]="{'d-none': single.isRead}"
-                                                class="custom-switch custom-control-input"
-                                                src="../../../../assets/images/bookmark.svg" alt="">
-                                            <img *ngIf="single.isAlreadyReadingList"
-                                                class="custom-switch custom-control-input"
-                                                src="../../../../assets/images/bookmark-fill.svg" alt="">
-                                            <label class="custom-control-label" [for]="single.contentID">Add to viewing
-                                                list
-                                            </label>
-                                        </div> -->
-
                                     </div>
 
                                 </div>
@@ -138,9 +112,7 @@
                                         {{single.tagList}}
                                     </p>
                                 </div>
-
-                                <!-- <div><span>{{single.timetoViewDescription}}</span></div> -->
-
+                              
                             </div>
 
                         </div>
@@ -160,94 +132,17 @@
             <div class="d-flex" *ngIf="searchResult?.length==0 && isSearched">
                 <span class="text-muted">Nothing in your search result</span>
             </div>
-
-
-            <!-- <div class="row cardGap" *ngIf="!isWatchVideo">
-
-                <div class=" col-sm-12 pl-0">
-    
-                  <div class="row searchClassContainer overflow-auto pr-1  h-330px" *ngIf="readingHistory?.length>0">
-                    <div *ngFor="let item of readingHistory" class=" searchCard pastVcard col-sm-12 h-100 pr-2 py-1 pl-0"
-                      [ngClass]="{'col-xl-3 col-md-4 col-sm-6 col-12': readingList?.length <= 6, 'min-width-230px' : readingList?.length > 6}">
-    
-                      <div  class="card sarfarz library-card mr-lg-2 mr-sm-1 w-100 h-310px">
-                        <div class="card-body text-center ">
-                          <div class="card-header border-0  bg-white p-0 overlay mb-2 overlay min-height-140px">
-    
-                            <div class="overlay-content">
-                              <div class="round-button" (click)="handleWatchVideo(item)">
-                                <i class="fa fa-play fa-2x pl-1" aria-hidden="true"
-                                  *ngIf="item.contentTypeName=='Video'"></i>
-                                <i class="fa fa-file-pdf-o fa-2x" aria-hidden="true"
-                                  *ngIf="item.contentTypeName== 'PDF Document'"></i>
-                              </div>
-                            </div>
-                            <img [src]="'data:image/png;base64,'+ item.contentImage" class="suggested-image"
-                              onerror="this.src='./assets/img/default-image.png'">
-                          </div>
-                          <div style="padding: 4px 8px;">
-                            <button class="btn px-0" (click)="handleWatchVideo(item)">
-                              <h5 class="card-title text-dark line-clamp">{{item.contentName}}</h5>
-                            </button>
-    
-                            <div class="m-0 d-flex align-items-center">
-                              
-                              <star-rating [value]="item.avgRating" [totalstars]="getRoundedValue(item.avgRating)"
-                                checkedcolor="rgb(255,192,0)" uncheckedcolor="white" size="24px" [readonly]="true">
-                              </star-rating>
-                             
-                            </div>
-    
-                            <div>
-                              <p class="cardDescDiv">{{item.contentBlurb}}</p>
-                            </div>
-    
-                            <div style="position: absolute;bottom: 32px;left: 25%;" (click)="handleWatchVideo(item)">
-                              <button type="button" class="cardBtnBottom btn btn-primary"
-                                *ngIf="item.contentTypeName=='Video'">watch now</button>
-                              <button type="button" class="cardBtnBottom btn btn-primary"
-                                *ngIf="item.contentTypeName== 'PDF Document'">Read Now</button>
-    
-                            </div>
-    
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-    
-    
-    
-                  <div class="overflow-auto pr-lg-1 d-lg-block d-block d-sm-flex" *ngIf="readingHistory?.length==0">
-                    <div>
-                      <span class="text-muted">Nothing in your past reading list</span>
-                    </div>
-    
-                  </div>
-    
-                </div>
-    
-              </div> -->
-
-
+          
         </div>
         <app-view-content *ngIf="isWatchVideo" [selectedContent]="selectedContent"
             (onRequestClose)="handleContentViewerClose($event)">
         </app-view-content>
     </div>
 
-
-
     <ng-template #noDataTemplate>
         <div class="d-flex justify-content-center align-items-center h-100" *ngIf="isDataLoaded">
             <span class="text-muted">No upcoming data</span>
         </div>
     </ng-template>
-
-
-
-
-
-
 
 </section>
