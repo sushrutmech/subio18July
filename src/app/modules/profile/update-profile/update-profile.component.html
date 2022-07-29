@@ -6,11 +6,11 @@
                     <div class="profile-img">
                         <input #imageInput type="file" class="d-none" accept="image/*" (change)="processFile($event)" />
                         <button (click)="imageInput.click()" type="submit"  class="btn primary file-upload-button">
-                            <i class="fa fa-solid fa-pen" ><img src="../../../../assets/images/editPen.svg" width="100%" alt=""></i>
+                            <i class="fa fa-solid fa-pen" ><img src="./assets/images/editPen.svg" width="100%" alt=""></i>
                         </button>
                         <img
                         [src]="defaultImage ? 'data:image/png;base64,' + defaultImage : './assets/img/dummy-profile.png'"
-                        class="rounded profile-image" width="100%" alt="...">
+                        class="rounded profile-image" width="182px" height="182px" alt="...">
                         
                     </div>
 
@@ -21,11 +21,16 @@
                     <p class="personal-profile">Personal Profile</p>
                 </div>
                 <ul class="profile-tabs">
-                    <li [ngClass]="clicked === 0 ? 'active' : ''" (click)="selectedTab(0)"><span>Profile</span></li>
-                    <li [ngClass]="clicked === 1 ? 'active' : ''" (click)="selectedTab(1)"><span>Login Details </span>
+                    <li [ngClass]="clicked === 0 ? 'active' : ''" (click)="selectedTab(0)"> <span>Profile</span></li>
+                    <li [ngClass]="clicked === 1 ? 'active' : ''" (click)="selectedTab(1)">
+                        <span><img src="../../../../assets/images/logindetail.svg" alt=""></span>
+                        <span>Login Details </span>
                     </li>
 
-                    <li [ngClass]="clicked === 2 ? 'active' : ''" (click)="selectedTab(2)"><span>Logout </span></li>
+                    <li [ngClass]="clicked === 2 ? 'active' : ''" (click)="selectedTab(2)"> 
+                        <span><img src="../../../../assets/images/logout.svg" alt="">
+                        </span><span>Logout </span>
+                    </li>
                 </ul>
             </mat-card>
 
@@ -45,11 +50,11 @@
                     <span class="wadiia-text pb-2">get the best of Subio by adding the remaimimg details !</span>
                     <div class="d-flex justify-content-between py-4 my-2 verified-process">
                         <div class="verifiedIcon">
-                            <i class="icon-b-red"></i>
+                            <i class="iconVerify icon-b-red"><img src="./assets/images/varifiedRigntTicks.svg" alt=""></i>
                             <span class="inComplete-process">Verified Email ID</span>
                         </div>
                         <div class="verifiedIcon">
-                            <i class="icon-b-red"></i>
+                            <i class="icon-b-red"><img src="./assets/images/varifiedRigntTicks.svg" alt=""></i>
                             <span class="inComplete-process">Verified Mobile No</span>
                         </div>
                         <div class="basic-info">
@@ -73,10 +78,7 @@
                         <div class="row">
                             <label class="col-md-3 info-label">Name</label>
                             <span class="col-md-9 info-value">{{userDetail.firstName}}</span>
-                            <!-- <div class="verifiedIcon">
-                                <i class="icon-b-red"></i>
-                                <span class="inComplete-process">Verified Email ID</span>
-                            </div> -->
+                            
                         </div>
                         <hr>
                         <div class="row">
@@ -102,8 +104,8 @@
                     <div class="info-table">
                         <div class="row">
                             <label class="col-md-3 info-label">Mobile Number</label>
-                            <span class="col-md-9 info-value"></span>
-                            <p> {{userDetail.contactNumber}} &nbsp;<i class="icon-b-red"></i><span
+                            
+                            <p class="col-md-9 info-value"> {{userDetail.contactNumber}} &nbsp;<i class="icon-b-red"></i><span
                                     class="inComplete-process verified">Verified</span></p>
                             <a href="javascript:void(0)" *ngIf="!userDetail.contactNumber"
                                 class="col-md-3 add-value" (click)="openEditPopup('contactNumber')" >+Add</a>
