@@ -90,7 +90,7 @@ ul {
 }
 
 .active {
-  background-color: #0057B9;
+  background-color: #0198E0;
   color: #fff;
 }
 
@@ -151,7 +151,7 @@ ul {
 
 .basic-info-plus {
   border-radius: 50%;
-  background-color: #0057B9;
+  background-color: #0198E0;
   color: #fff;
   margin-right: 10px;
   padding: 1px 5px;
@@ -159,7 +159,7 @@ ul {
 }
 
 .complete-process {
-  color: #0057B9;
+  color: #0198E0;
 }
 
 .icon-b-red {
@@ -249,9 +249,19 @@ ul {
 
 .editForm {
   button {
-    color: #0057B9;
+    color: #0198E0;
     font-weight: 500;
   }
+}
+
+.add-value {
+  color: #0198E0;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 28px;
+
 }
 
 .editTraveller {
@@ -300,4 +310,3 @@ ul {
     font-size: 1.1em;
   }
 }
-

@@ -1,18 +1,23 @@
 .updateBtn {
-    background-color: #0057B9;
-    color           : #fff;
+    background-color: #0198E0;
+
+    color: #fff;
+    font-family: 'Roboto';
+    font-style: normal;
 }
 
 .Pophead {
-    font-family: 'Poppins';
-    font-style : normal;
+    font-family: 'Roboto';
+    font-style: normal;
     font-weight: 500;
-    font-size  : 24px;
+    font-size: 24px;
     line-height: 28px;
-    color      : #000000;
+    color: #000000;
 }
 
 .closeBtn {
+    font-family: 'Roboto';
+    font-style: normal;
     margin: 10px 15px 0 0;
     cursor: pointer;
 }
@@ -23,13 +28,13 @@
 
 ::ng-neep.dropdown-menu.show {
     display: block;
-    width  : 234px !important;
+    width: 234px !important;
 }
 
 .dateRange::placeholder {
     padding-left: 8px;
-    padding-top : 5px;
-    font-size   : 13px;
-    color       : #7e7e7e;
-    opacity     : 1;
-  }
+    padding-top: 5px;
+    font-size: 13px;
+    color: #7e7e7e;
+    opacity: 1;
+}

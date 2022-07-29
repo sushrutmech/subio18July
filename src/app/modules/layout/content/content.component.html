@@ -68,7 +68,7 @@
               <div class="child3">
                 <div>
                   <img class="profileImage" [src]="'data:image/png;base64,' + programInstance.tutorProfilePic"
-                    onerror="this.src = '../../../../assets/img/dummy-profile.png'">
+                    onerror="this.src = './assets/img/dummy-profile.png'">
                 </div>
                 <div class="nameCoach" *ngIf="programInstance">
 
@@ -147,7 +147,7 @@
                             </div>
                           </div>
                           <div style="position: absolute;right: 1%;top: 35%;">
-                            <img src="../../../assets/images/Vector.svg" alt="" srcset="">
+                            <img src="./assets/images/Vector.svg" alt="" srcset="">
                           </div>
                         </mat-card-title>
 
@@ -189,7 +189,7 @@
 
                       </div>
                       <div>
-                        <img src="../../../../assets/images/Vector.svg" alt="" srcset="">
+                        <img src="./assets/images/Vector.svg" alt="" srcset="">
                       </div>
                     </mat-card-title>
                     <mat-card-subtitle class="titleText">
@@ -223,7 +223,7 @@
                         </div>
                       </div>
                       <div>
-                        <img src="../../../../assets/images/Vector.svg" alt="" srcset="">
+                        <img src="./assets/images/Vector.svg" alt="" srcset="">
                       </div>
                     </mat-card-title>
                     <mat-card-subtitle class="titleText">
@@ -257,7 +257,7 @@
                         </div>
                       </div>
                       <div>
-                        <img src="../../../../assets/images/Vector.svg" alt="" srcset="">
+                        <img src="./assets/images/Vector.svg" alt="" srcset="">
                       </div>
                     </mat-card-title>
                     <mat-card-subtitle class="titleText">
@@ -395,7 +395,7 @@
                               </div>
                             </div>
                             <img [src]="'data:image/png;base64,'+ single.contentImage" class="suggested-image"
-                              onerror="this.src='../../../../assets/img/default-image.png'">
+                              onerror="this.src='./assets/img/default-image.png'">
                           </div>
                           <div>
                             <button class="btn btn-link px-0" (click)="handleWatchVideo(single)">

@@ -213,40 +213,7 @@ export class UpdateProfileComponent implements OnInit {
       this.isValidImg = false;
     }
 
-    // const userId = this.authService.getUserId();
-    // this.authService.updateProfile(userId, this.selectedFiles).subscribe({
-    //   next: (res: any) => {
-    //     if (res.status !== "error") {
-    //       this.profilePic = res.image_name;
-    //       localStorage.setItem("authUser", JSON.stringify(res.result));
-    //       this.openSnackBar(res.response, "Success", true);
-    //       this.getUserInfo();
-    //       this.editProfileForm = false;
-    //       this.showProgress();
-    //     } else {
-    //       this.openSnackBar(res.response, "Danger", false);
-    //     }
-  //     },
-  //     error: (error:any) => {
-  //       this.openSnackBar(error, "Danger", false);
-  //     }
-  //   })
-  // }
-
-  // selectedTab(i: number) {
-  //   this.clicked = i;
-  // }
-
- 
-
-  //addTravellerPopup(traveller?: any) {
-    // const dialogRef = this.dialog.open(AddTravellerComponent, {
-    //   data: traveller,
-    //   width: '660px'
-    // },);
-    // dialogRef.afterClosed().subscribe((result: any) => {
-    //   this.getUserInfo();
-    // });
+   
   }
 
   calculateAge(dob: any) {
@@ -259,6 +226,14 @@ export class UpdateProfileComponent implements OnInit {
   logout() {
     //this.authService.doLogout();
    
+  }
+
+  onPressSignOut(){
+    //alert("sing out call ")
+    this.authService.logout()
+    this.router.navigate(['/login'])
+    location.reload()
+
   }
 
 

@@ -23,13 +23,13 @@
                 <ul class="profile-tabs">
                     <li [ngClass]="clicked === 0 ? 'active' : ''" (click)="selectedTab(0)"> <span>Profile</span></li>
                     <li [ngClass]="clicked === 1 ? 'active' : ''" (click)="selectedTab(1)">
-                        <span><img src="../../../../assets/images/logindetail.svg" alt=""></span>
+                        <!-- <span><img src="../../../../assets/images/logindetail.svg" alt=""></span> -->
                         <span>Login Details </span>
                     </li>
 
-                    <li [ngClass]="clicked === 2 ? 'active' : ''" (click)="selectedTab(2)"> 
-                        <span><img src="../../../../assets/images/logout.svg" alt="">
-                        </span><span>Logout </span>
+                    <li [ngClass]="clicked === 2 ? 'active' : ''" (click)="selectedTab(2)" > 
+                        <!-- <span><img src="../../../../assets/images/logout.svg" alt=""> -->
+                        <span (click)="onPressSignOut()">Logout </span>
                     </li>
                 </ul>
             </mat-card>
@@ -125,7 +125,7 @@
                             <span class="col-md-3 info-value">******</span>
                             <a href="javascript:void(0)" *ngIf="!userDetail.emailAddress"
                                 class="col-md-3 add-value">+Add</a>
-                            <span style="text-align: right;" class="col-md-6 "><a style="text-decoration: none;"
+                            <span style="text-align: right; color: #0198E0" class="col-md-6 "><a style="text-decoration: none;color: #0198E0"
                                     href="javascript:void(0)" routerLink="/change-passwoord">Change password</a></span>
                         </div>
                     </div>
