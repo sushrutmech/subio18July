@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 
 import { SuccessGoal } from 'src/app/shared/interfaces/success-goal';
@@ -17,6 +17,9 @@ import { User } from 'src/app/shared/interfaces/user';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { MatTabChangeEvent } from '@angular/material/tabs';
+import { MatDialog } from '@angular/material/dialog';
+import { OnHoverKeyComponent } from 'src/app/shared/components/on-hover-key/on-hover-key.component';
+//import {OnHoverKeyComponent} from '../../../shared/components/on-hover-key'
 
 
 @Component({
@@ -24,7 +27,7 @@ import { MatTabChangeEvent } from '@angular/material/tabs';
   templateUrl: './content.component.html',
   styleUrls: ['./content.component.scss']
 })
-export class ContentComponent implements OnInit {
+export class ContentComponent implements OnInit, OnDestroy {
 
   isDataLoaded: boolean = false;
   successGoalList: SuccessGoal[] = [];
@@ -71,7 +74,11 @@ export class ContentComponent implements OnInit {
   watchTimePercentage: number = 0;
 
   tabIndex:any
-
+  keyDisplay:boolean=false;
+  keyDisplayActiveId:number=0;
+  userSuccessGoalId:any;
+  timerCourse:any;
+  homeTabIndex:any=0;
 
   constructor(
     private homeService: HomeService,
@@ -79,7 +86,8 @@ export class ContentComponent implements OnInit {
     private authService: AuthService,
     private myLibraryService: MyLibraryService,
     private myKeysToSuccessService: KeyToSuccessService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    public dialog: MatDialog
 
   ) {
 
@@ -91,12 +99,20 @@ export class ContentComponent implements OnInit {
       this.courseDate = String(moment(results.userProgramInstance[0].dateStart).format())
 
     })
+    this.mainHomeTabChange(0)
 
-    setInterval(() => {
+this.timerCourse= setInterval(() => {
 
       let now1 = moment(this.courseDate);
       let now2 = moment();
-
+      //console.log("set interval calling...")
+      if (this.homeTabIndex==1 || this.homeTabIndex==2) {
+        console.log("if condition is calling .....")
+        clearInterval(this.timerCourse)
+      } else{
+        //console.log("else block is calling ")
+        this.timerCourse
+      }
       var days = moment
         .duration(moment(this.courseDate, 'YYYY/MM/DD HH:mm')
           .diff(moment(now2, 'YYYY/MM/DD HH:mm'))
@@ -104,6 +120,7 @@ export class ContentComponent implements OnInit {
       //console.log("future days", days);
 
       let hour1 = now1.get('hour');
+      
       //console.log("sar hour" , hour1)
       let hour2 = now2.get('hour');
       let minute1 = now1.get('minute');
@@ -111,8 +128,10 @@ export class ContentComponent implements OnInit {
 
       let HH = document.getElementById('m')
       let RHH = Math.abs(24-Math.abs(((hour2) - hour1)))-1
+     
       HH!.innerHTML = String(Math.abs(Math.floor(RHH)));
-
+     // console.log("giett dom ele" , HH!.innerHTML)
+     
       let SS = document.getElementById('s')
       let RSS =  (60-Math.abs(minute2 - minute1))
 
@@ -124,6 +143,55 @@ export class ContentComponent implements OnInit {
 
     }, 1000)
 
+  }
+
+  mainHomeTabChange(data:any){
+    console.log("tab change " , data.index)
+    this.homeTabIndex=data.index
+    if(this.homeTabIndex==0){
+      this.timerCourse= setInterval(() => {
+
+        let now1 = moment(this.courseDate);
+        let now2 = moment();
+        //console.log("set interval calling...")
+        if (this.homeTabIndex==1 || this.homeTabIndex==2) {
+          console.log("if condition is calling .....")
+          clearInterval(this.timerCourse)
+        } else{
+         // console.log("else block is calling ")
+          this.timerCourse
+        }
+        var days = moment
+          .duration(moment(this.courseDate, 'YYYY/MM/DD HH:mm')
+            .diff(moment(now2, 'YYYY/MM/DD HH:mm'))
+          ).asDays();
+        //console.log("future days", days);
+  
+        let hour1 = now1.get('hour');
+        
+        //console.log("sar hour" , hour1)
+        let hour2 = now2.get('hour');
+        let minute1 = now1.get('minute');
+        let minute2 = now2.get('minute');
+  
+        let HH = document.getElementById('m')
+        let RHH = Math.abs(24-Math.abs(((hour2) - hour1)))-1
+       
+        HH!.innerHTML = String(Math.abs(Math.floor(RHH)));
+       // console.log("giett dom ele" , HH!.innerHTML)
+       
+        let SS = document.getElementById('s')
+        let RSS =  (60-Math.abs(minute2 - minute1))
+  
+        SS!.innerHTML = String(Math.abs(Math.floor(RSS)));
+  
+        let DD = document.getElementById('h')
+  
+        DD!.innerHTML = String(Math.abs(Math.floor(days)));
+  
+      }, 1000)
+
+    }
   }
 
   ngOnInit(): void {
@@ -145,6 +213,8 @@ export class ContentComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
+    console.log("ng on destroy is calledd ")
+    this.timerCourse= clearInterval(this.timerCourse)
     if (this.timeSubscription) {
       this.timeSubscription.unsubscribe();
     }
@@ -379,6 +449,43 @@ export class ContentComponent implements OnInit {
     this.tabIndex=event.index
     console.log(event)
     this.getAllContent(); 
+  }
+
+  over(index:any) {
+    console.log("Mouseover event called");
+    this.keyDisplay=true
+    this.keyDisplayActiveId=index
+    this.userSuccessGoalId=index
+    //apply zoom-in logic here
+  }
+  displayKey(index:any){
+    console.log("Mouseover click called");
+    this.keyDisplay=true
+    this.keyDisplayActiveId=index
+    this.userSuccessGoalId=index
+
+  }
+  out() {
+    console.log("Mouseout event called");
+    this.keyDisplay=false
+    //apply zoom-out logic here
+  }
+
+
+  openDialog(index:any ,item:any) {
+    const dialogRef = this.dialog.open(OnHoverKeyComponent, {
+      data: {
+        animal: 'panda',
+        userSuccessGoalId:index,
+        goalData:item
+
+      },
+    });
+    //console.log("parrent", index)
+
+    dialogRef.afterClosed().subscribe((result:any) => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
 

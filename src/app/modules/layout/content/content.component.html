@@ -1,5 +1,5 @@
 <section class="homeContainer my-libraryContainer">
-  <mat-tab-group class="homeMatTab" mat-align-tabs="start">
+  <mat-tab-group class="homeMatTab" mat-align-tabs="start" (selectedTabChange)="mainHomeTabChange($event)">
     <mat-tab>
       <ng-template mat-tab-label>
         <span class="homeLabel">Home</span>
@@ -110,16 +110,25 @@
               <button class=" btn btn-outline-primary btn-sm addGoalBtn" routerLink="/key-to-success/goal">Add New Goal </button>
             </div>
           </div>
+
+         
+
           <div class="goalContainer">
+
+            
+           
             <mat-tab-group>
+
+            
 
               <mat-tab label="All Goals">
 
                 <div class="allGoalList" *ngIf="isDataLoaded">
 
                   <div class="" *ngIf="successGoalList.length > 0">
+                    <app-on-hover-key [userSuccessGoalId]="userSuccessGoalId"  *ngIf="keyDisplay && keyDisplayActiveId==userSuccessGoalId"></app-on-hover-key>  
 
-                    <mat-card *ngFor="let item of successGoalList">
+                    <mat-card *ngFor="let item of successGoalList;let i = index">
 
                       <div class="row">
 
@@ -128,6 +137,7 @@
                         </div>
                       </div>
                       <div class="row">
+                       
 
                         <mat-card-title class="d-flex justify-content-between">
                           <div class="d-flex gap-1">
@@ -146,8 +156,10 @@
                               In Progress
                             </div>
                           </div>
-                          <div style="position: absolute;right: 1%;top: 35%;">
+                          <div   (mouseover)="openDialog(item.userSuccessID ,item)"   style="position: absolute;right: 1%;top: 35%;">
                             <img src="./assets/images/Vector.svg" alt="" srcset="">
+                            
+                            
                           </div>
                         </mat-card-title>
 
@@ -188,7 +200,7 @@
                         </div>
 
                       </div>
-                      <div>
+                      <div (mouseover)="openDialog(item.userSuccessID ,item)" >
                         <img src="./assets/images/Vector.svg" alt="" srcset="">
                       </div>
                     </mat-card-title>
@@ -222,7 +234,7 @@
                           In Progress
                         </div>
                       </div>
-                      <div>
+                      <div (mouseover)="openDialog(item.userSuccessID ,item)">
                         <img src="./assets/images/Vector.svg" alt="" srcset="">
                       </div>
                     </mat-card-title>
@@ -256,7 +268,7 @@
                           In Progress
                         </div>
                       </div>
-                      <div>
+                      <div (mouseover)="openDialog(item.userSuccessID ,item)">
                         <img src="./assets/images/Vector.svg" alt="" srcset="">
                       </div>
                     </mat-card-title>
@@ -357,15 +369,6 @@
                       </div>
                     </div>
       
-
-
-
-                    <div class="overflow-auto pr-lg-1 d-lg-block d-block d-sm-flex" *ngIf="readingHistory?.length==0">
-                      <div>
-                        <span class="text-muted">Nothing in your past reading list</span>
-                      </div>
-
-                    </div>
 
                   </div>
 

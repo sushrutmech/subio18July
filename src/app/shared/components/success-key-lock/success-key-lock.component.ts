@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { KeyToSuccessService } from 'src/app/modules/key-to-success/key-to-success.service';
 
@@ -25,9 +26,12 @@ export class SuccessKeyLockComponent implements OnInit {
   keySlide8!: any;
   keySlide9!: any;
 
+ 
+
   constructor(
     private myKeysToSuccessService: KeyToSuccessService,
     private spinner: NgxSpinnerService,
+    
   ) {
     //this.mapLockData()
   }

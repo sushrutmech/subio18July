@@ -22,6 +22,8 @@ import { AlertBoxComponent } from './alert-box/alert-box.component';
 
 import { NgWizardModule, NgWizardConfig, THEME } from 'ng-wizard';
 import { CommentboxComponent } from './commentbox/commentbox.component';
+import { OnHoverKeyComponent } from './on-hover-key/on-hover-key.component';
+import { AngularMaterialModule } from 'src/app/angularMaterialComponents/angular-material/angular-material.module';
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.default
@@ -38,7 +40,8 @@ const ngWizardConfig: NgWizardConfig = {
     ViewContentComponent,
     SuccessKeyLockComponent,
     AlertBoxComponent,
-    CommentboxComponent
+    CommentboxComponent,
+    OnHoverKeyComponent
   ],
   imports: [
     CommonModule,
@@ -53,7 +56,8 @@ const ngWizardConfig: NgWizardConfig = {
     VgBufferingModule,
     VgStreamingModule,
     NgxExtendedPdfViewerModule ,
-    NgWizardModule.forRoot(ngWizardConfig) 
+    NgWizardModule.forRoot(ngWizardConfig) ,
+    AngularMaterialModule
   ],
   exports: [
     AssessmentFormComponent,
@@ -63,7 +67,8 @@ const ngWizardConfig: NgWizardConfig = {
     ViewContentComponent,
     SuccessKeyLockComponent,
     AlertBoxComponent,
-    CommentboxComponent
+    CommentboxComponent,
+    OnHoverKeyComponent
   ]
 })
 export class ComponentsModule { }
