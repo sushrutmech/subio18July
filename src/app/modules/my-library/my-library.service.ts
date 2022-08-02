@@ -54,7 +54,9 @@ export class MyLibraryService {
     return this.http.post<any>(`${environment.apiEndPoint}/Library/AddToReadList?UserID=${this.userSession.userID}&ContentID=${contentId}`, {});
   }
 
-
+  markContentSarted(contentId:any ,PlayTime:any){
+    return this.http.post<any>(`${environment.apiEndPoint}/Library/MarkContentStarted?UserID=${this.userSession.userID}&ContentID=${contentId}&PlayTime=${PlayTime}`, {});
+  }
 
 
 

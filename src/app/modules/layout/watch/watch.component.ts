@@ -53,7 +53,7 @@ export class WatchComponent implements OnInit, OnChanges {
     this.callHomeContentAPI();
     this.contentDescription= this.route.snapshot.queryParamMap.get("videoData")
     this.contentDescriptionJson=JSON.parse(this.contentDescription)
-    console.log("form watch **" , this.contentDescriptionJson)
+    console.log("form watch now +++" , this.contentDescriptionJson)
     console.log("url .. ", this.contentDescriptionJson.contentLocation) 
 
 

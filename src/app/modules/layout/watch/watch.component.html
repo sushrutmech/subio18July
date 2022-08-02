@@ -23,7 +23,7 @@
               <p class="videoHeaderBlurb marPad0">{{contentDescriptionJson.headerBlurb}}</p>
             </div>         
             <div class="video-player-wrapper" >
-              <app-video-player class="" *ngIf="contentDescriptionJson.contentTypeName=='Video'"  [src]="contentDescriptionJson.contentLocation"
+              <app-video-player class="" *ngIf="contentDescriptionJson.contentTypeName=='Video'" [contentDescriptionJson]="contentDescriptionJson"  [src]="contentDescriptionJson.contentLocation"
                 (onVideoEnd)="handleReadContent(contentDescriptionJson.contentID ,contentDescriptionJson.programStepID)">
               </app-video-player>
 
