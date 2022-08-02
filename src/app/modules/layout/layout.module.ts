@@ -20,6 +20,7 @@ import { RatingModule } from 'ng-starrating';
 import { WatchComponent } from './watch/watch.component';
 
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { CommentsModule } from '../comments/comments.module';
 
 
 
@@ -44,7 +45,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     KeyToSuccessModule,
     MyLibraryModule,
     RatingModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    CommentsModule
     
     
   ],
