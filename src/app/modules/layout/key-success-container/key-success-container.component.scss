@@ -216,6 +216,15 @@
         box-shadow: unset;
         border-radius: none;
         background: unset;
+        padding: 0px;
+        background: unset;
+        min-width: auto;
+        margin-right: 10px;
+    }
+    .goalContainer .mat-tab-label{
+        padding: 0px;
+        min-width: auto;
+        margin-right: 32px;
     }
 
     .goalContainer .mat-ink-bar{
