@@ -1,5 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { HomeContent } from '../shared/interfaces/home-content';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +14,13 @@ export class GlobleDataserviceService {
   caroselData = new Subject<any>()
 
 
-  constructor() { }
+  constructor(
+    private http: HttpClient,
+  ) { }
+
+  getHomeContent(userID:any) {
+    return this.http.post<HomeContent>(`${environment.apiEndPoint}/library/getDashboardDetails?UserID=${userID}`, {});
+    
+  }
 
 }

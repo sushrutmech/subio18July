@@ -24,6 +24,7 @@ import { NgWizardModule, NgWizardConfig, THEME } from 'ng-wizard';
 import { CommentboxComponent } from './commentbox/commentbox.component';
 import { OnHoverKeyComponent } from './on-hover-key/on-hover-key.component';
 import { AngularMaterialModule } from 'src/app/angularMaterialComponents/angular-material/angular-material.module';
+import { CardComponent } from './card/card.component';
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.default
@@ -41,7 +42,8 @@ const ngWizardConfig: NgWizardConfig = {
     SuccessKeyLockComponent,
     AlertBoxComponent,
     CommentboxComponent,
-    OnHoverKeyComponent
+    OnHoverKeyComponent,
+    CardComponent
   ],
   imports: [
     CommonModule,
@@ -68,7 +70,8 @@ const ngWizardConfig: NgWizardConfig = {
     SuccessKeyLockComponent,
     AlertBoxComponent,
     CommentboxComponent,
-    OnHoverKeyComponent
+    OnHoverKeyComponent,
+    CardComponent
   ]
 })
 export class ComponentsModule { }

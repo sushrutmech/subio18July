@@ -31,22 +31,38 @@
         </div>
         <div class="btmFlex d-flex">
 
-            <div class="marPad0 dropdown">
+            <div class="marPad0 dropdown" (click)="coursedata()">
                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
                     aria-expanded="false">
-                    <img class="dropdown-toggle" src="./assets/componnets/notificatioBtn.svg" alt="sv" width="50" height="48">
+                    <img class="dropdown-toggle" src="./assets/componnets/notificatioBtn.svg" alt="sv" width="50"
+                        height="48">
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <div class="dropdown-header">
-                        <h5 class="mb-0 text-primary userName">
-                            {{userSession.firstName}}
-                        </h5>
-                        <span class="text-muted userJob">{{userSession.jobTitle}}</span>
+                       <div class="cardNextDropInSession">
+
+                        
+                        <div>
+                            <strong>{{courseDate | date:'MM' }}</strong>
+                        </div>
+                        <div>
+                            <strong>{{courseDate | date : 'd'}}</strong>
+                        </div>
+                        <div>
+                            <strong>{{courseDate | date : 'EEEE'}}</strong>
+
+                        </div>
+                        <div>
+                            <strong>{{courseDate | date : 'yyyy'}}</strong>
+                        </div>
+                        <div>TIMINGS</div>
+                        <div>
+                           {{courseDate | date : 'hh:mma'}} to  {{courseDateEnd | date : 'hh:mma'}}
+                        </div>
+                       
+                       </div>
                     </div>
-                    <hr class="my-1">
-                    <a class="dropdown-item cursorP" [routerLink]="'/profile/updateProfile'">Profile</a>
-                    <hr class="my-1">
-                    <a class="dropdown-item cursorP" [routerLink]="'/change-passwoord'">sarfaraz</a>
+                   
                 </div>
             </div>
 
@@ -70,8 +86,7 @@
             </div>
 
             <div class="marPad0" style="cursor:pointer">
-                <img (click)="onPressSignOut()" src="./assets/componnets/logout.svg" alt="" width="125"
-                    height="48">
+                <img (click)="onPressSignOut()" src="./assets/componnets/logout.svg" alt="" width="125" height="48">
 
             </div>
 
@@ -84,14 +99,14 @@
         || router.url.includes('my-library') || router.url.includes('profile') || router.url.includes('/layout/media/') ">
 
         <div class="wrapper">
-            <div (click)="clickB1()" [ngClass]="bool1 ===true? 'itemFocus ': 'item' "  [routerLink]="'/layout/home'">
+            <div (click)="clickB1()" [ngClass]="bool1 ===true? 'itemFocus ': 'item' " [routerLink]="'/layout/home'">
                 <span id="homeLabel" [ngClass]="bool1 ===true? 'homeLabelB ': 'homeLabel'">Home</span>
             </div>
-            <div (click)="clickB2()" [ngClass]="bool2 ===true? 'itemFocus ': 'item' "  [routerLink]="'/key-to-success'">
-                <span id="goalLabel"  [ngClass]="bool2 ===true? 'goalLabelB ': 'goalLabel'" >My Goals</span>
+            <div (click)="clickB2()" [ngClass]="bool2 ===true? 'itemFocus ': 'item' " [routerLink]="'/key-to-success'">
+                <span id="goalLabel" [ngClass]="bool2 ===true? 'goalLabelB ': 'goalLabel'">My Goals</span>
             </div>
-            <div (click)="clickB3()" [ngClass]="bool3 ===true? 'itemFocus ': 'item' "  [routerLink]="'my-library'">
-                <span id="libraryLabel" [ngClass]="bool3 ===true? 'libraryLabelB ': 'libraryLabel'" >My Library</span>
+            <div (click)="clickB3()" [ngClass]="bool3 ===true? 'itemFocus ': 'item' " [routerLink]="'my-library'">
+                <span id="libraryLabel" [ngClass]="bool3 ===true? 'libraryLabelB ': 'libraryLabel'">My Library</span>
             </div>
 
         </div>
