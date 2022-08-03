@@ -964,4 +964,12 @@
     width: 119px;
     }
 
-    
+    .keyImg{
+      cursor: pointer;
+      transition: all 0.5s ease-in-out;
+    }
+
+    .keyImg:hover{
+      transition: all 0.5s ease-in-out;
+      transform: scale(1.5);
+    }
