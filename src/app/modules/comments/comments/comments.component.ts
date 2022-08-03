@@ -11,15 +11,25 @@ import { CommentInterface } from '../types/comment.interface';
 export class CommentsComponent implements OnInit {
 
   @Input() currentUserId!: string;
+  @Input() currentUserName!:string;
+  @Input() activeContentId:any;
 
   comments: CommentInterface[] = [];
   activeComment: ActiveCommentInterface | null = null;
 
-  constructor(private commentsService: CommentsService) {}
+  constructor(private commentsService: CommentsService) { }
 
   ngOnInit(): void {
     this.commentsService.getComments().subscribe((comments) => {
       this.comments = comments;
+      console.log("coments without filterr" , this.comments)
+      console.log("comments filtering .... " ,this.comments.filter((x:any)=>{
+        return x.activeContentId==this.activeContentId
+      }))
+      this.comments=this.comments.filter((x:any)=>{
+        return x.activeContentId==this.activeContentId
+      })
+     
     });
   }
 
@@ -62,13 +72,13 @@ export class CommentsComponent implements OnInit {
 
   addComment({
     text,
-    parentId,
+    parentId
   }: {
     text: string;
     parentId: string | null;
   }): void {
     this.commentsService
-      .createComment(text, parentId)
+      .createComment(text, parentId ,this.currentUserId , this.currentUserName ,this.activeContentId)
       .subscribe((createdComment) => {
         this.comments = [...this.comments, createdComment];
         this.activeComment = null;

@@ -57,7 +57,7 @@
             </mat-tab>
             <mat-tab label="Discussion">
               <!-- <app-commentbox></app-commentbox> -->
-              <app-comments currentUserId="1"></app-comments>
+              <app-comments [currentUserId]="currentUserId" [activeContentId]="activeContentId" [currentUserName]="currentUserName"></app-comments>
             </mat-tab>
           </mat-tab-group>
         </div>

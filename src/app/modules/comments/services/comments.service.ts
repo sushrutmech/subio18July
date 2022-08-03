@@ -17,7 +17,7 @@ export class CommentsService {
 
   createComment(
     text: string,
-    parentId: string | null = null
+    parentId: string | null = null,userID:any ,username:any ,activeContentId:any
   ): Observable<CommentInterface> {
     return this.httpClient.post<CommentInterface>(
       'http://localhost:8000/comments',
@@ -26,8 +26,9 @@ export class CommentsService {
         parentId,
         // Should not be set here
         createdAt: new Date().toISOString(),
-        userId: '1',
-        username: 'John',
+        userId: userID,
+        username: username,
+        activeContentId:activeContentId
       }
     );
   }

@@ -5,4 +5,5 @@ export interface CommentInterface {
   userId: string;
   parentId: null | string;
   createdAt: string;
+  activeContentId:string;
 }

@@ -1,9 +1,11 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ActivatedRoute , NavigationExtras } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { AuthService } from 'src/app/appServices/auth.service';
 import { GlobleDataserviceService } from 'src/app/appServices/globle-dataservice.service';
 import { ProgramContentTypes } from 'src/app/shared/constants/program-content-types';
 import { UserProgramContent, UserProgramInstance } from 'src/app/shared/interfaces/home-content';
+import { User } from 'src/app/shared/interfaces/user';
 import { HomeService } from '../home.service';
 
 @Component({
@@ -17,7 +19,10 @@ export class WatchComponent implements OnInit, OnChanges {
   @Input() videoIndex: number = -1;
   @Output() onRequestClose: EventEmitter<boolean> = new EventEmitter();
   courseData: any;
- 
+  userSession!: User;
+  currentUserId:any;
+  currentUserName:any;
+  activeContentId:any;
 
 
   constructor(
@@ -25,10 +30,13 @@ export class WatchComponent implements OnInit, OnChanges {
     private spinner: NgxSpinnerService,
     private route: ActivatedRoute,
     private globalDataSevice: GlobleDataserviceService,
+    private authService: AuthService
   ) {
 
-
-
+    this.userSession = this.authService.userSession.user;
+    this.currentUserId=this.userSession.userID
+    this.currentUserName=this.userSession.firstName 
+   
   }
 
 
@@ -53,7 +61,9 @@ export class WatchComponent implements OnInit, OnChanges {
     this.callHomeContentAPI();
     this.contentDescription= this.route.snapshot.queryParamMap.get("videoData")
     this.contentDescriptionJson=JSON.parse(this.contentDescription)
-    console.log("form watch now +++" , this.contentDescriptionJson)
+    this.activeContentId=this.contentDescriptionJson.contentID
+    console.log("user id //**//**" ,this.activeContentId )
+    console.log("form watch now **//--" , this.contentDescriptionJson.contentID)
     console.log("url .. ", this.contentDescriptionJson.contentLocation) 
 
 
