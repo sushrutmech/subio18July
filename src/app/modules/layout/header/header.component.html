@@ -31,18 +31,30 @@
         </div>
         <div class="btmFlex d-flex">
 
-            <div class="marPad0">
-                <img src="./assets/componnets/notificatioBtn.svg" alt="sv" width="50" height="48">
-
+            <div class="marPad0 dropdown">
+                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <img class="dropdown-toggle" src="./assets/componnets/notificatioBtn.svg" alt="sv" width="50" height="48">
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <div class="dropdown-header">
+                        <h5 class="mb-0 text-primary userName">
+                            {{userSession.firstName}}
+                        </h5>
+                        <span class="text-muted userJob">{{userSession.jobTitle}}</span>
+                    </div>
+                    <hr class="my-1">
+                    <a class="dropdown-item cursorP" [routerLink]="'/profile/updateProfile'">Profile</a>
+                    <hr class="my-1">
+                    <a class="dropdown-item cursorP" [routerLink]="'/change-passwoord'">sarfaraz</a>
+                </div>
             </div>
 
             <div class="marPad0 dropdown">
-             
                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
                     aria-expanded="false">
                     <img src="./assets/componnets/settingBtn.svg" alt="sv" width="50" height="48">
                 </a>
-
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <div class="dropdown-header">
                         <h5 class="mb-0 text-primary userName">
