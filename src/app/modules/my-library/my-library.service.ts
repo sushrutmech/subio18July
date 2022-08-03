@@ -58,6 +58,18 @@ export class MyLibraryService {
     return this.http.post<any>(`${environment.apiEndPoint}/Library/MarkContentStarted?UserID=${this.userSession.userID}&ContentID=${contentId}&PlayTime=${PlayTime}`, {});
   }
 
+  getContentList2() {
+    return this.http.post<any>(`${environment.apiEndPoint}/Library/GetContentList?UserID=${this.userSession.userID}`, {})
+    // .pipe(map(results => {
+    //   results.map(x => {
+    //     x.contentLocation = `${environment.serverURL}${x.contentLocation}`
+    //     return x;
+    //   })
+    //   return results;
+    // }));
+  }
+
+ 
 
 
 

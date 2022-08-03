@@ -37,6 +37,12 @@ export class VideoPlayerComponent implements OnInit  {
     this.contentId=this.contentDescriptionJson.contentID
     this.getHomeContentLocalStorage()
     console.log("form video player component " ,this.contentId )
+    this.myLibraryService.getContentList2().subscribe(res=>{
+      console.log("resuslt library content " , res)
+    },
+    err=>{
+       console.log("errors ..." , err)
+    })
 
   }
 
@@ -68,9 +74,9 @@ export class VideoPlayerComponent implements OnInit  {
     //this clear interval stop settimeInterval after leaving the video page 
     let t = setInterval(() => {
       if(this.router.url.includes('layout/home')==true){
-        console.log("router if condition is called .. and time at this moment." , this.currentTimeVideo)
+        console.log("router if condition is called .. and time at this moment." ,Math.floor(this.currentTimeVideo))
         console.log("content Id",this.contentId )
-        this.addToMarkContentStarted(this.contentId,this.currentTimeVideo)
+        this.addToMarkContentStarted(this.contentId,Math.floor(this.currentTimeVideo))
         clearInterval(t)
      }else{
        console.log("router else condition is called....." , this.router.url.includes('layout/home'))
