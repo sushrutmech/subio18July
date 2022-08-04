@@ -11,26 +11,54 @@ import { CommentInterface } from '../types/comment.interface';
 export class CommentsComponent implements OnInit {
 
   @Input() currentUserId!: string;
-  @Input() currentUserName!:string;
-  @Input() activeContentId:any;
+  @Input() currentUserName!: string;
+  @Input() activeContentId: any;
+  @Input() profilePic: any;
+  likeArr:any=[];
 
   comments: CommentInterface[] = [];
   activeComment: ActiveCommentInterface | null = null;
+  commentsFilter:CommentInterface[]=[];
 
   constructor(private commentsService: CommentsService) { }
 
   ngOnInit(): void {
     this.commentsService.getComments().subscribe((comments) => {
       this.comments = comments;
-      console.log("coments without filterr" , this.comments)
-      console.log("comments filtering .... " ,this.comments.filter((x:any)=>{
-        return x.activeContentId==this.activeContentId
+      console.log("coments without filterr", this.comments)
+      console.log("comments filtering .... ", this.comments.filter((x: any) => {
+        return x.activeContentId == this.activeContentId
       }))
-      this.comments=this.comments.filter((x:any)=>{
-        return x.activeContentId==this.activeContentId
+      this.comments = this.comments.filter((x: any) => {
+        return x.activeContentId == this.activeContentId
       })
-     
+
     });
+  }
+
+  likePushFuc(commentId:any){
+    this.commentsService.getComments2().subscribe((comments) => {
+      this.comments = comments;
+      this.commentsFilter=this.comments.filter((x: any) => {
+        return x.id == commentId
+      })
+      this.likeArr=this.commentsFilter[0].likeArr
+      this.likeArr.push(this.currentUserId)
+    })
+    return this.likeArr
+  }
+
+  likeComment(commentId:any){
+    console.log("value form comments section " , commentId , this.currentUserId)
+    console.log("array without fill",this.likeArr )
+    this.likePushFuc(commentId)
+    console.log("returen function ...", this.likePushFuc(commentId))
+    console.log("array after filterr and fill ",this.likeArr)
+    this.commentsService.likeComment(commentId ,this.likePushFuc(commentId)).subscribe(res=>{
+      console.log("like .." , res)
+    },err=>{
+      console.log("like .." , err)
+    })
   }
 
   getRootComments(): CommentInterface[] {
@@ -78,7 +106,8 @@ export class CommentsComponent implements OnInit {
     parentId: string | null;
   }): void {
     this.commentsService
-      .createComment(text, parentId ,this.currentUserId , this.currentUserName ,this.activeContentId)
+      .createComment(text, parentId, this.currentUserId, this.currentUserName,
+        this.activeContentId, this.profilePic, this.likeArr)
       .subscribe((createdComment) => {
         this.comments = [...this.comments, createdComment];
         this.activeComment = null;

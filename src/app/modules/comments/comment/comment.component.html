@@ -1,76 +1,51 @@
-
 <div class="comment">
-    <div class="comment-image-container">
-      <img src="./assets/images/user-icon.png " />
+  <div class="comment-image-container">
+    <!-- <img src="./assets/images/user-icon.png " /> -->
+    <img [src]="comment.profilePic ? 'data:image/png;base64,' + comment.profilePic : './assets/img/dummy-profile.png'"
+      alt="Avatar" class="avatar" width="25px" style="border-radius:50% ; object-fit: cover;     width: 32px;
+                height: 32px;" />
+  </div>
+  <div class="comment-right-part">
+    <div class="comment-content">
+      <div class="comment-author">{{comment.username}}</div>
+      <div>{{ createdAt }}</div>
     </div>
-    <div class="comment-right-part">
-      <div class="comment-content">
-        <div class="comment-author">{{comment.username}}</div>
-        <div>{{ createdAt }}</div>
-      </div>
-      <div class="comment-text" *ngIf="!isEditing()">{{ comment.body }}</div>
-      <comment-form
-        *ngIf="isEditing()"
-        submitLabel="Update"
-        [hasCancelButton]="true"
-        [initialText]="comment.body"
-        (handleSubmit)="
+    <div class="comment-text" *ngIf="!isEditing()">{{ comment.body }}</div>
+    <comment-form *ngIf="isEditing()" submitLabel="Update" [hasCancelButton]="true" [initialText]="comment.body"
+      (handleSubmit)="
           updateComment.emit({ text: $event, commentId: comment.id })
-        "
-        (handleCancel)="setActiveComment.emit(null)"
-      ></comment-form>
-      <div class="comment-actions">
-        <div
-          *ngIf="canReply"
-          class="comment-action"
-          (click)="
+        " (handleCancel)="setActiveComment.emit(null)"></comment-form>
+    <div class="comment-actions">
+      <div class="comment-action" (click)="likeComment.emit(comment.id)">Like</div>
+      
+      <div class="comment-action" >dislike</div>
+      <div *ngIf="canReply" class="comment-action" (click)="
             setActiveComment.emit({
               id: comment.id,
               type: activeCommentType.replying
             })
-          "
-        >
-          Reply
-        </div>
-        <div
-          *ngIf="canEdit"
-          class="comment-action"
-          (click)="
+          ">
+        Reply
+      </div>
+      <div *ngIf="canEdit" class="comment-action" (click)="
             setActiveComment.emit({
               id: comment.id,
               type: activeCommentType.editing
             })
-          "
-        >
-          Edit
-        </div>
-        <div
-          *ngIf="canDelete"
-          class="comment-action"
-          (click)="deleteComment.emit(comment.id)"
-        >
-          Delete
-        </div>
+          ">
+        Edit
       </div>
-      <comment-form
-        *ngIf="isReplying()"
-        submitLabel="Reply"
-        (handleSubmit)="addComment.emit({ text: $event, parentId: replyId })"
-      ></comment-form>
-      <div class="replies" *ngIf="replies.length > 0">
-        <comment
-          *ngFor="let reply of replies"
-          [comment]="reply"
-          (setActiveComment)="setActiveComment.emit($event)"
-          [activeComment]="activeComment"
-          (updateComment)="updateComment.emit($event)"
-          (deleteComment)="deleteComment.emit($event)"
-          (addComment)="addComment.emit($event)"
-          [parentId]="comment.id"
-          [replies]="[]"
-          [currentUserId]="currentUserId"
-        ></comment>
+      <div *ngIf="canDelete" class="comment-action" (click)="deleteComment.emit(comment.id)">
+        Delete
       </div>
     </div>
+    <comment-form *ngIf="isReplying()" submitLabel="Reply"
+      (handleSubmit)="addComment.emit({ text: $event, parentId: replyId })"></comment-form>
+    <div class="replies" *ngIf="replies.length > 0">
+      <comment *ngFor="let reply of replies" [comment]="reply" (setActiveComment)="setActiveComment.emit($event)"
+        [activeComment]="activeComment" (updateComment)="updateComment.emit($event)"
+        (deleteComment)="deleteComment.emit($event)" (addComment)="addComment.emit($event)" [parentId]="comment.id"
+        [replies]="[]" [currentUserId]="currentUserId" (likeComment)="likeComment.emit($event)" ></comment>
+    </div>
   </div>
-  
+</div>

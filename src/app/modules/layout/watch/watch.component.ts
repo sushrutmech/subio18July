@@ -23,6 +23,7 @@ export class WatchComponent implements OnInit, OnChanges {
   currentUserId:any;
   currentUserName:any;
   activeContentId:any;
+  profilePic:any;
 
 
   constructor(
@@ -36,6 +37,8 @@ export class WatchComponent implements OnInit, OnChanges {
     this.userSession = this.authService.userSession.user;
     this.currentUserId=this.userSession.userID
     this.currentUserName=this.userSession.firstName 
+    this.profilePic=this.userSession.profilePic
+    console.log("profile ...." ,this.userSession.profilePic )
    
   }
 

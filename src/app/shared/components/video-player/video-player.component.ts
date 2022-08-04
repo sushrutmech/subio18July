@@ -74,17 +74,17 @@ export class VideoPlayerComponent implements OnInit  {
     //this clear interval stop settimeInterval after leaving the video page 
     let t = setInterval(() => {
       if(this.router.url.includes('layout/home')==true){
-        console.log("router if condition is called .. and time at this moment." ,Math.floor(this.currentTimeVideo))
-        console.log("content Id",this.contentId )
+       // console.log("router if condition is called .. and time at this moment." ,Math.floor(this.currentTimeVideo))
+        //console.log("content Id",this.contentId )
         this.addToMarkContentStarted(this.contentId,Math.floor(this.currentTimeVideo))
         clearInterval(t)
      }else{
-       console.log("router else condition is called....." , this.router.url.includes('layout/home'))
+       //console.log("router else condition is called....." , this.router.url.includes('layout/home'))
      }
       this.currentTimeVideo = this.videoPlayer.getDefaultMedia().currentTime
       this.videoDuration = this.videoPlayer.getDefaultMedia().duration
       this.videoWatchTimePercent = this.currentTimeVideo / this.videoDuration * 100
-      console.log("curret time video...", this.currentTimeVideo)
+     // console.log("curret time video...", this.currentTimeVideo)
       //console.log("**-*- videoDuration", this.videoDuration)
      // console.log("percentage watch time...", this.videoWatchTimePercent)
       this.homeContentFromLocal = localStorage.getItem("homeContent")
@@ -95,7 +95,7 @@ export class VideoPlayerComponent implements OnInit  {
         if (ele.contentLocation==this.src) {
           ele.watchPerctent=this.videoWatchTimePercent
           localStorage.setItem("watchTimePercent",JSON.stringify(this.homeContentFromLocalJson))
-          console.log("<<" , )
+          //console.log("<<" , )
         }else{
           ele.watchPerctent=0
         }

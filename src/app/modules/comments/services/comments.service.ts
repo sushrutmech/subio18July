@@ -7,7 +7,13 @@ import { CommentInterface } from '../types/comment.interface';
   providedIn: 'root'
 })
 export class CommentsService {
-  constructor(private httpClient: HttpClient) {}
+
+  comments: CommentInterface[] = [];
+  commentsFilter:CommentInterface[]=[];
+  activeContentId:any;
+  likeArr:any=[];
+
+  constructor(private httpClient: HttpClient) { }
 
   getComments(): Observable<CommentInterface[]> {
     return this.httpClient.get<CommentInterface[]>(
@@ -17,7 +23,8 @@ export class CommentsService {
 
   createComment(
     text: string,
-    parentId: string | null = null,userID:any ,username:any ,activeContentId:any
+    parentId: string | null = null, userID: any, username: any, 
+    activeContentId: any, profilePic: any ,likeArr:[]
   ): Observable<CommentInterface> {
     return this.httpClient.post<CommentInterface>(
       'http://localhost:8000/comments',
@@ -28,7 +35,9 @@ export class CommentsService {
         createdAt: new Date().toISOString(),
         userId: userID,
         username: username,
-        activeContentId:activeContentId
+        activeContentId: activeContentId,
+        profilePic: profilePic,
+        likeArr:likeArr
       }
     );
   }
@@ -38,6 +47,24 @@ export class CommentsService {
       `http://localhost:8000/comments/${id}`,
       {
         body: text,
+      }
+    );
+  }
+
+  getComments2(): Observable<CommentInterface[]> {
+    return this.httpClient.get<CommentInterface[]>(
+      'http://localhost:8000/comments'
+    );
+  }
+
+  likeComment(id: string, likeArr:any): Observable<CommentInterface> {
+    console.log("from service....." ,likeArr)
+    return this.httpClient.patch<CommentInterface>(
+      
+      `http://localhost:8000/comments/${id}`,
+      
+      {
+        likeArr:likeArr,
       }
     );
   }

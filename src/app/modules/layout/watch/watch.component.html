@@ -1,7 +1,7 @@
 <div class="animated fadeIn py-3">
-  
+
   <div class="setup-state-container">
-    
+
     <div *ngFor="let content of programContents; let i = index" class="d-flex setup-state-block">
       <div class="setup-state" [class.active]="i ==contentDescriptionJson.stepNo"
         [innerHTML]="activeIndex > i ? '&#10003;' : i + 1">
@@ -12,56 +12,58 @@
     <i class="icon icon-close fa-2x"></i>
   </div>
 </div>
-    <div class="row full-height-row">
-      <div class="col-lg-8 col-md-8  mx-auto" >
-        <div class="d-flex flex-column h-100 justify-content-between">
-          <div class="d-flex justify-content-between align-items-center">
-            
-          <div class="d-flex flex-grow-1 flex-column justify-content-around py-3">
-            <div class="video-header">
-              <h3 class="videoHeading marPad0">{{contentDescriptionJson.stepName}}</h3>
-              <p class="videoHeaderBlurb marPad0">{{contentDescriptionJson.headerBlurb}}</p>
-            </div>         
-            <div class="video-player-wrapper" >
-              <app-video-player class="" *ngIf="contentDescriptionJson.contentTypeName=='Video'" [contentDescriptionJson]="contentDescriptionJson"  [src]="contentDescriptionJson.contentLocation"
-                (onVideoEnd)="handleReadContent(contentDescriptionJson.contentID ,contentDescriptionJson.programStepID)">
-              </app-video-player>
+<div class="row full-height-row">
+  <div class="col-lg-8 col-md-8  mx-auto">
+    <div class="d-flex flex-column h-100 justify-content-between">
+      <div class="d-flex justify-content-between align-items-center">
 
-              <app-pdf-viewer *ngIf="contentDescriptionJson.contentTypeName=='PDF Document'" [src]="contentDescriptionJson.contentLocation"
-                (onLoad)="handleReadContent(contentDescriptionJson.contentID ,contentDescriptionJson.programStepID)">
-              </app-pdf-viewer>
+        <div class="d-flex flex-grow-1 flex-column justify-content-around py-3">
+          <div class="video-header">
+            <h3 class="videoHeading marPad0">{{contentDescriptionJson.stepName}}</h3>
+            <p class="videoHeaderBlurb marPad0">{{contentDescriptionJson.headerBlurb}}</p>
+          </div>
+          <div class="video-player-wrapper">
+            <app-video-player class="" *ngIf="contentDescriptionJson.contentTypeName=='Video'"
+              [contentDescriptionJson]="contentDescriptionJson" [src]="contentDescriptionJson.contentLocation"
+              (onVideoEnd)="handleReadContent(contentDescriptionJson.contentID ,contentDescriptionJson.programStepID)">
+            </app-video-player>
 
-            </div>
-            <!-- <div class="d-flex justify-content-center py-2 animated fadeIn"
+            <app-pdf-viewer *ngIf="contentDescriptionJson.contentTypeName=='PDF Document'"
+              [src]="contentDescriptionJson.contentLocation"
+              (onLoad)="handleReadContent(contentDescriptionJson.contentID ,contentDescriptionJson.programStepID)">
+            </app-pdf-viewer>
+
+          </div>
+          <!-- <div class="d-flex justify-content-center py-2 animated fadeIn"
               *ngIf="!(visibleWatchNextButton || visibleBackToHomeButton)">
               <button class="btn btn-outline-primary" (click)="onWatchLaterClick()">Watch later</button>
             </div> -->
-            <div class="video-footer">
-              <!-- <label>{{activeContent.footerBlurb}}</label> -->
-            </div>
-          </div>
-          <div class="btn-min-highted-block">
-            <button class="btn btn-block btn-primary animated fadeIn" *ngIf="visibleWatchNextButton"
-              (click)="nextContent()">{{activeContent.nextButtonText || 'WATCH NEXT'}}</button>
-            <button class="btn btn-block btn-primary animated fadeIn" *ngIf="visibleBackToHomeButton"
-              (click)="backToHomeClick()">{{activeContent.nextButtonText || 'BACK TO HOME'}}</button>
+          <div class="video-footer">
+            <!-- <label>{{activeContent.footerBlurb}}</label> -->
           </div>
         </div>
-        <div class="matTab">
-          <mat-tab-group mat-align-tabs="start">
-            <mat-tab label="Transcript">
-              Content 1
-            </mat-tab>
-            <mat-tab label="Exercise">
-              Content 2
-            </mat-tab>
-            <mat-tab label="Discussion">
-              <!-- <app-commentbox></app-commentbox> -->
-              <app-comments [currentUserId]="currentUserId" [activeContentId]="activeContentId" [currentUserName]="currentUserName"></app-comments>
-            </mat-tab>
-          </mat-tab-group>
+        <div class="btn-min-highted-block">
+          <button class="btn btn-block btn-primary animated fadeIn" *ngIf="visibleWatchNextButton"
+            (click)="nextContent()">{{activeContent.nextButtonText || 'WATCH NEXT'}}</button>
+          <button class="btn btn-block btn-primary animated fadeIn" *ngIf="visibleBackToHomeButton"
+            (click)="backToHomeClick()">{{activeContent.nextButtonText || 'BACK TO HOME'}}</button>
         </div>
+      </div>
+      <div class="matTab">
+        <mat-tab-group mat-align-tabs="start">
+          <mat-tab label="Transcript">
+            Content 1
+          </mat-tab>
+          <mat-tab label="Exercise">
+            Content 2
+          </mat-tab>
+          <mat-tab label="Discussion">
+            <!-- <app-commentbox></app-commentbox> -->
+            <app-comments [currentUserId]="currentUserId" [activeContentId]="activeContentId"
+              [currentUserName]="currentUserName" [profilePic]="profilePic"></app-comments>
+          </mat-tab>
+        </mat-tab-group>
       </div>
     </div>
   </div>
-  
+</div>

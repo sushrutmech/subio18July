@@ -25,6 +25,8 @@ export class CommentComponent implements OnInit {
   addComment = new EventEmitter<{ text: string; parentId: string | null }>();
   @Output()
   updateComment = new EventEmitter<{ text: string; commentId: string }>();
+  @Output()
+  likeComment = new EventEmitter<string>();
 
   createdAt: string = '';
   canReply: boolean = false;
@@ -47,6 +49,8 @@ export class CommentComponent implements OnInit {
       this.replies.length === 0 &&
       !timePassed;
     this.replyId = this.parentId ? this.parentId : this.comment.id;
+
+    console.log("like event ....",this.likeComment )
   }
 
   isReplying(): boolean {

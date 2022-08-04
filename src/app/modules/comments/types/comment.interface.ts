@@ -6,4 +6,6 @@ export interface CommentInterface {
   parentId: null | string;
   createdAt: string;
   activeContentId:string;
+  profilePic:string;
+  likeArr:[];
 }
