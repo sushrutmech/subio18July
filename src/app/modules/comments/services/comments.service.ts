@@ -58,7 +58,7 @@ export class CommentsService {
   }
 
   likeComment(id: string, likeArr:any): Observable<CommentInterface> {
-    console.log("from service....." ,likeArr)
+    // console.log("from service....." ,likeArr)
     return this.httpClient.patch<CommentInterface>(
       
       `http://localhost:8000/comments/${id}`,

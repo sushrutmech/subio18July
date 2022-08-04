@@ -14,9 +14,11 @@ export class CommentsComponent implements OnInit {
   @Input() currentUserName!: string;
   @Input() activeContentId: any;
   @Input() profilePic: any;
+  likeArrr:any=[];
   likeArr:any=[];
 
   comments: CommentInterface[] = [];
+  comments1: CommentInterface[] = [];
   activeComment: ActiveCommentInterface | null = null;
   commentsFilter:CommentInterface[]=[];
 
@@ -34,27 +36,36 @@ export class CommentsComponent implements OnInit {
       })
 
     });
+    this.commentsService.getComments2().subscribe((comments) => {
+      this.comments1 = comments;
+    })
   }
 
-  likePushFuc(commentId:any){
-    this.commentsService.getComments2().subscribe((comments) => {
-      this.comments = comments;
-      this.commentsFilter=this.comments.filter((x: any) => {
-        return x.id == commentId
-      })
-      this.likeArr=this.commentsFilter[0].likeArr
-      this.likeArr.push(this.currentUserId)
+   likePushFuc(commentId:any):any{
+     this.commentsService.getComments2().subscribe((comments) => {
+      this.comments1 = comments;
     })
-    return this.likeArr
+    console.log(this.comments1)
+    this.commentsFilter=this.comments1.filter((x: any) => {
+      return x.id == commentId
+    })
+    this.likeArrr = []
+    this.likeArrr=this.commentsFilter[0].likeArr
+    if(!this.likeArrr.includes(this.currentUserId)){
+      this.likeArrr.push(this.currentUserId)
+    }
+    console.log(this.likeArrr)
+    return this.likeArrr
   }
 
   likeComment(commentId:any){
-    console.log("value form comments section " , commentId , this.currentUserId)
-    console.log("array without fill",this.likeArr )
-    this.likePushFuc(commentId)
-    console.log("returen function ...", this.likePushFuc(commentId))
-    console.log("array after filterr and fill ",this.likeArr)
-    this.commentsService.likeComment(commentId ,this.likePushFuc(commentId)).subscribe(res=>{
+    // console.log("value form comments section " , commentId , this.currentUserId)
+    // console.log("array without fill",this.likeArr )
+    console.log(this.likePushFuc(commentId))
+    let newA = this.likePushFuc(commentId)
+    console.log("returen function ...", newA)
+    console.log("array after filterr and fill ",this.likeArrr)
+    this.commentsService.likeComment(commentId ,newA).subscribe(res=>{
       console.log("like .." , res)
     },err=>{
       console.log("like .." , err)
