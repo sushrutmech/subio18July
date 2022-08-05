@@ -50,7 +50,7 @@ export class CommentComponent implements OnInit {
       !timePassed;
     this.replyId = this.parentId ? this.parentId : this.comment.id;
 
-    console.log("like event ....",this.likeComment )
+    //console.log("like event ....",this.likeComment )
   }
 
   isReplying(): boolean {

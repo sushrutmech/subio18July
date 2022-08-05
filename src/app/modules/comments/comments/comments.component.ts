@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { filter } from 'rxjs';
 import { CommentsService } from '../services/comments.service';
 import { ActiveCommentInterface } from '../types/activeComment.interface';
 import { CommentInterface } from '../types/comment.interface';
@@ -14,13 +15,13 @@ export class CommentsComponent implements OnInit {
   @Input() currentUserName!: string;
   @Input() activeContentId: any;
   @Input() profilePic: any;
-  likeArrr:any=[];
-  likeArr:any=[];
+  likeArrr: any = [];
+  likeArr: any = [];
 
   comments: CommentInterface[] = [];
   comments1: CommentInterface[] = [];
   activeComment: ActiveCommentInterface | null = null;
-  commentsFilter:CommentInterface[]=[];
+  commentsFilter: CommentInterface[] = [];
 
   constructor(private commentsService: CommentsService) { }
 
@@ -41,34 +42,52 @@ export class CommentsComponent implements OnInit {
     })
   }
 
-   likePushFuc(commentId:any):any{
-     this.commentsService.getComments2().subscribe((comments) => {
+  filter(s: any) {
+    return s = this.currentUserId
+  }
+
+  likePushFuc(commentId: any): any {
+
+    this.commentsService.getComments2().subscribe((comments) => {
       this.comments1 = comments;
     })
     console.log(this.comments1)
-    this.commentsFilter=this.comments1.filter((x: any) => {
+    this.commentsFilter = this.comments1.filter((x: any) => {
       return x.id == commentId
     })
     this.likeArrr = []
-    this.likeArrr=this.commentsFilter[0].likeArr
-    if(!this.likeArrr.includes(this.currentUserId)){
+    this.likeArrr = this.commentsFilter[0].likeArr
+    if (!this.likeArrr.includes(this.currentUserId)) {
+      console.log("if condition ....", this.likeArrr)
       this.likeArrr.push(this.currentUserId)
+    } else {
+      console.log("else condition", this.likeArrr)
+      let newfiltArr: any = []
+      this.likeArrr.forEach((element: any) => {
+        console.log("*-*/*", element)
+        if (element != this.currentUserId) {
+          newfiltArr.push(element)
+        }
+      });
+      console.log("after filterr same id ", newfiltArr)
+      this.likeArrr = newfiltArr
+      //this.likeArrr.push(this.currentUserId)
     }
-    console.log(this.likeArrr)
+
     return this.likeArrr
   }
 
-  likeComment(commentId:any){
+  likeComment(commentId: any) {
     // console.log("value form comments section " , commentId , this.currentUserId)
     // console.log("array without fill",this.likeArr )
-    console.log(this.likePushFuc(commentId))
+    //console.log(this.likePushFuc(commentId))
     let newA = this.likePushFuc(commentId)
-    console.log("returen function ...", newA)
-    console.log("array after filterr and fill ",this.likeArrr)
-    this.commentsService.likeComment(commentId ,newA).subscribe(res=>{
-      console.log("like .." , res)
-    },err=>{
-      console.log("like .." , err)
+    //console.log("returen function ...", newA)
+    //console.log("array after filterr and fill ", this.likeArrr)
+    this.commentsService.likeComment(commentId, newA).subscribe(res => {
+      console.log("like ..", res)
+    }, err => {
+      console.log("like ..", err)
     })
   }
 
