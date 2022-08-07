@@ -1,6 +1,11 @@
 <div class="row">
  
-  <div>
+  <div style="    display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+  justify-content: space-between;
+  align-items: center;
+">
     <div class="container2HeaderText mb-3">
       PRE-READING AND PREPARATION
     </div>
@@ -25,7 +30,7 @@
   </div>
 
   <div class="full-height" *ngIf="isDataLoaded && hasData; else noDataTemplate">
-    <carousel [cellsToShow]="4" style="height: 515px" class="carouselCardRow">
+    <carousel [cellsToShow]="4" cellWidth="100%" class="carouselCardRow">
 
       <div class="carousel-cell" *ngFor="let item of programContents; let i = index">
         <div>

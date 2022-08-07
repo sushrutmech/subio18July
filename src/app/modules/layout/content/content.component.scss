@@ -17,16 +17,15 @@
 .containerImg1 {
     background: #0198e0;
 }
-@media (min-width: 1400px) {
 
-    .container-xxl,
-    .container-xl,
-    .container-lg,
-    .container-md,
-    .container-sm,
-    .containerImg1 {
-        max-width: 1496px;
-    }
+::ng-deep .homeContainer .mat-tab-body-content {
+  height: 100%;
+  overflow: hidden !important;
+  // overflow-y: unset !important;
+}
+
+::ng-deep .homeContainer .mat-tab-body.mat-tab-body-active {
+  // overflow-y: unset !important;
 }
 
 .fWrapper {
@@ -223,7 +222,7 @@
 /* sarfaraz starting */
 
 .container2 {
-    max-width: 1496px !important;
+    // max-width: 1496px !important;
     padding-top: 32px;
     margin-top: 46px;
     border-top: 2px solid #d4d4d4 !important;
@@ -232,13 +231,13 @@
     border-bottom: 2px solid #d4d4d4 !important;
 }
 .containerGoal{
-    max-width: 1496px !important;
+    // max-width: 1496px !important;
     padding-bottom: 32px;
 
 }
 
 .container3 {
-    max-width: 1496px !important;
+    // max-width: 1496px !important;
     margin-top: 40px;
     margin-bottom: 40px;
 }
@@ -947,7 +946,7 @@
       top: 120px !important;
     }
     .carousel-arrow-next {
-      right: 50px !important;
+      right: 10px !important;
       top: 120px !important;
     }
   }

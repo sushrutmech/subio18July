@@ -142,15 +142,18 @@
 }
 
 .carousel-cell {
-  width: 316px !important;
+  // width: 316px !important;
 }
 
 .carousel-cell>div {
-  width: 316px !important;
+  // width: 316px !important;
 }
 
 .carouselCardRow .mat-card {
   padding: 0px !important;
+}
+.carouselCardRow{
+  height: 512px !important;
 }
 
 .carouselDataContainer {
@@ -477,4 +480,21 @@ time.calendar-icon span {
   font-size: 16px;
   line-height: 100%;
   color: #6C757D;
+}
+@media (min-width:1400px){
+  .card {
+    min-height: 540px;
+  }
+  .carouselCardRow{
+    height: 550px !important;
+  }
+}
+
+@media (min-width:1800px){
+  .card {
+    min-height: 590px;
+  }
+  .carouselCardRow{
+    height: 590px !important;
+  }
 }
