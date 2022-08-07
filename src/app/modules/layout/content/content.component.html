@@ -111,17 +111,8 @@
               <button class=" btn btn-outline-primary btn-sm addGoalBtn" routerLink="/key-to-success/goal">Add New Goal </button>
             </div>
           </div>
-
-         
-
           <div class="goalContainer">
-
-            
-           
             <mat-tab-group>
-
-            
-
               <mat-tab label="All Goals">
 
                 <div class="allGoalList" *ngIf="isDataLoaded">
@@ -159,8 +150,7 @@
                           </div>
                           <div   (click)="openDialog(item.userSuccessID ,item)"   style="position: absolute;right: 1%;top: 35%;">
                             <img class="keyImg" src="./assets/images/Vector.svg" alt="" srcset="">
-                            
-                            
+             
                           </div>
                         </mat-card-title>
 
@@ -174,10 +164,17 @@
 
                         </mat-card-subtitle>
                       </div>
-
+                      
                     </mat-card>
                   </div>
+                  
+                </div>
 
+                
+                <div class=" overflow-auto pr-lg-1 d-lg-block d-block d-sm-flex" *ngIf="successGoalList?.length==0">
+                  <div class="" *ngIf="isDataLoaded">
+                    <div > Add Your First Goal </div>
+                  </div>
                 </div>
 
               </mat-tab>
@@ -185,107 +182,131 @@
 
 
               <mat-tab label="My Goals">
+              
+                <div class="allGoalList" *ngIf="isDataLoaded">
+                  <mat-card *ngFor="let item of MyGoalList">
 
-                <mat-card *ngFor="let item of MyGoalList">
-
-                  <div class="listMayGoals">
-
-                    <mat-card-title class="d-flex justify-content-between">
-                      <div class="d-flex gap-1">
-                        <div class="titleCard">
-                          My Goal
+                    <div class="listMayGoals">
+  
+                      <mat-card-title class="d-flex justify-content-between">
+                        <div class="d-flex gap-1">
+                          <div class="titleCard">
+                            My Goal
+                          </div>
+                          <div class="progressStatusCard">
+                            In Progress
+                          </div>
+  
                         </div>
-                        <div class="progressStatusCard">
-                          In Progress
+                        <div (click)="openDialog(item.userSuccessID ,item)" >
+                          <img class="keyImg" src="./assets/images/Vector.svg" alt="" srcset="">
                         </div>
-
-                      </div>
-                      <div (click)="openDialog(item.userSuccessID ,item)" >
-                        <img class="keyImg" src="./assets/images/Vector.svg" alt="" srcset="">
-                      </div>
-                    </mat-card-title>
-                    <mat-card-subtitle class="titleText">
-                      <div class="">
-                        {{item.goal}}
-                      </div>
-
-                      <!-- <div> {{item.goalDescription}}</div> -->
-
-                    </mat-card-subtitle>
-
+                      </mat-card-title>
+                      <mat-card-subtitle class="titleText">
+                        <div class="">
+                          {{item.goal}}
+                        </div>
+                      
+                      </mat-card-subtitle>
+  
+                    </div>
+                    
+                  </mat-card>
+                </div>
+                
+                <div class=" overflow-auto pr-lg-1 d-lg-block d-block d-sm-flex" *ngIf="MyGoalList?.length==0">
+                  <div class="" *ngIf="isDataLoaded">
+                    <div > Add Your First My Goal </div>
                   </div>
-
-                </mat-card>
+                </div>
               </mat-tab>
 
               <mat-tab label="My Team Goals">
+                <div class="allGoalList" *ngIf="isDataLoaded">
+                  <mat-card *ngFor="let item of teamGoalList">
 
-                <mat-card *ngFor="let item of teamGoalList">
 
-
-                  <div class="teamGoalList">
-
-                    <mat-card-title class="d-flex justify-content-between">
-                      <div class="d-flex gap-1">
-                        <div class="titleCardTeamGoal">
-                          My Team Goals
+                    <div class="teamGoalList">
+  
+                      <mat-card-title class="d-flex justify-content-between">
+                        <div class="d-flex gap-1">
+                          <div class="titleCardTeamGoal">
+                            My Team Goals
+                          </div>
+                          <div class="progressStatusCard">
+                            In Progress
+                          </div>
                         </div>
-                        <div class="progressStatusCard">
-                          In Progress
+                        <div (click)="openDialog(item.userSuccessID ,item)">
+                          <img class="keyImg" src="./assets/images/Vector.svg" alt="" srcset="">
                         </div>
-                      </div>
-                      <div (click)="openDialog(item.userSuccessID ,item)">
-                        <img class="keyImg" src="./assets/images/Vector.svg" alt="" srcset="">
-                      </div>
-                    </mat-card-title>
-                    <mat-card-subtitle class="titleText">
-                      <div class="">
-                        {{item.goal}}
-                      </div>
+                      </mat-card-title>
+                      <mat-card-subtitle class="titleText">
+                        <div class="">
+                          {{item.goal}}
+                        </div>
+  
+                        <!-- <div> {{item.goalDescription}}</div> -->
+  
+                      </mat-card-subtitle>
+  
+                    </div>
+  
+                    
+                  </mat-card>
+                  
+                </div>
 
-                      <!-- <div> {{item.goalDescription}}</div> -->
-
-                    </mat-card-subtitle>
-
+                
+                <div class=" overflow-auto pr-lg-1 d-lg-block d-block d-sm-flex" *ngIf="teamGoalList?.length==0">
+                  <div class="" *ngIf="isDataLoaded">
+                    <div > Add Your First My team goal </div>
                   </div>
-
-
-                </mat-card>
+                </div>
               </mat-tab>
 
 
               <mat-tab label="My Business Goals">
-                <mat-card *ngFor="let item of BusinessGoalList">
+                <div class="allGoalList" *ngIf="isDataLoaded">
+                  <mat-card *ngFor="let item of BusinessGoalList">
 
-                  <div class="businessGoalList">
-
-                    <mat-card-title class="d-flex justify-content-between">
-                      <div class="d-flex gap-1">
-                        <div class="titleCardBuisnessGoal">
-                          My BusinessGoals
+                    <div class="businessGoalList">
+  
+                      <mat-card-title class="d-flex justify-content-between">
+                        <div class="d-flex gap-1">
+                          <div class="titleCardBuisnessGoal">
+                            My BusinessGoals
+                          </div>
+                          <div class="progressStatusCard">
+                            In Progress
+                          </div>
                         </div>
-                        <div class="progressStatusCard">
-                          In Progress
+                        <div (click)="openDialog(item.userSuccessID ,item)">
+                          <img class="keyImg" src="./assets/images/Vector.svg" alt="" srcset="">
                         </div>
-                      </div>
-                      <div (click)="openDialog(item.userSuccessID ,item)">
-                        <img class="keyImg" src="./assets/images/Vector.svg" alt="" srcset="">
-                      </div>
-                    </mat-card-title>
-                    <mat-card-subtitle class="titleText">
-                      <div class="">
-                        {{item.goal}}
-                      </div>
-
-                      <!-- <div> {{item.goalDescription}}</div> -->
-
-                    </mat-card-subtitle>
-
+                      </mat-card-title>
+                      <mat-card-subtitle class="titleText">
+                        <div class="">
+                          {{item.goal}}
+                        </div>
+  
+                        <!-- <div> {{item.goalDescription}}</div> -->
+  
+                      </mat-card-subtitle>
+  
+                    </div>
+  
+  
+                    
+                  </mat-card>
+                </div>
+                
+                <div class=" overflow-auto pr-lg-1 d-lg-block d-block d-sm-flex" *ngIf="BusinessGoalList?.length==0">
+                  <div class="" *ngIf="isDataLoaded">
+                    <div > Add Your First My BusinessGoals </div>
                   </div>
-
-
-
-                </mat-card>
+                </div>
+                
               </mat-tab>
             </mat-tab-group>
           </div>
