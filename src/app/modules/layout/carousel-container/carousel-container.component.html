@@ -41,14 +41,18 @@
                   <div class="item-complated-badge" *ngIf="nextVideoIndex > i">
                     <div class="fa fa-check"></div>
                   </div>
-                  <div class="overlay-content" *ngIf="nextVideoIndex >= i">
-                    <div class="round-button" (click)="handleWatchVideo(item , programContents)" [ngSwitch]="item.contenttypeid">
-                      <i class="fa fa-play fa-2x pl-1" aria-hidden="true" *ngSwitchCase="contentType.Video"></i>
-                      <i class="fa fa-file-pdf-o fa-2x" aria-hidden="true" *ngSwitchCase="contentType.PDF_Document"></i>
+                  <div *ngIf="item.contentTypeName=='PDF Document'" class="overlay-content" >
+                    <div class="round-button" (click)="handleWatchVideo(item , programContents)" >
+                      <!-- <i *ngIf="item.contentTypeName=='Video'" class="fa fa-play fa-2x pl-1" aria-hidden="true"  ></i> -->
+                      <i  class="fa fa-file-pdf-o fa-2x" aria-hidden="true" ></i>
                     </div>
                   </div>
-                  <img [src]="'data:image/png;base64,'+item.contentImage"
+                  <img *ngIf="item.contentTypeName=='PDF Document'" [src]="'data:image/png;base64,'+item.contentImage"
                     onerror="this.src='../../../../assets/img/default-image.png'" class="card-img-top">
+                    <video preload="metadata" id="vid2" #vid1 (click)="videodata(vid1)" *ngIf="item.contentTypeName=='Video'"  width="470" height="255" [poster]="'data:image/png;base64,'+item.contentImage" controls>
+                      <source src="movie.mp4" type="video/mp4">
+                      <source src={{item.contentLocation}} type="video/ogg">
+                    </video>
                 </div>
                 <div class="card-body">
                   <h5 class="card-title">{{item.stepName}}</h5>

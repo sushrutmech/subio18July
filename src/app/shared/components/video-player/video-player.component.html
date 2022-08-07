@@ -5,7 +5,7 @@
       <vg-scrub-bar-current-time [vgSlider]="true"></vg-scrub-bar-current-time>
       <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
     </vg-scrub-bar>
-    <!-- <vg-controls> -->
+    
     <vg-controls [vgAutohide]="true">
       <vg-play-pause></vg-play-pause>
       <vg-time-display class="current-time" vgProperty="current" vgFormat="mm:ss /"></vg-time-display>
@@ -18,11 +18,11 @@
     <video #media [vgMedia]="$any(media)" [src]="src" preload="auto" >
     </video>
   </vg-player>
-  
+   
 
-<!-- < <video width="400" controls>
+<!-- <video width="400" controls>
   <source  #media [vgMedia]="$any(media)" [src]="src" preload="auto">
   <source #media [vgMedia]="$any(media)" [src]="src" preload="auto">
   Your browser does not support HTML video.
-</video>   -->
-  
+</video>  
+   -->

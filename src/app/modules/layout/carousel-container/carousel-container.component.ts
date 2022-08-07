@@ -32,6 +32,7 @@ export class CarouselContainerComponent implements OnInit {
   contentType: any = ProgramContentTypes;
   selectedContent: any;
   courseData!: any;
+  currentTime:any;
 
 
   constructor(
@@ -48,9 +49,22 @@ export class CarouselContainerComponent implements OnInit {
 
   }
 
+ 
+
   ngOnInit(): void {
     this.callHomeContentAPI();
+    console.log("vidoe lll", this.programContents)
+   
 
+  }
+
+  videodata(data:any){
+    let vidoo:any;
+    //let vidoe= vidoo.get("vid1")
+    document.getElementById("vid2")?.addEventListener('loadedmetadata',()=>{
+      this.currentTime = 50;
+    },false)
+    console.log("*-/*/**" ,data )
   }
 
   ngOnDestroy(): void {
