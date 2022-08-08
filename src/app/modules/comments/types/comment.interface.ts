@@ -1,4 +1,5 @@
 export interface CommentInterface {
+  
   id: string;
   body: string;
   username: string;
@@ -8,4 +9,5 @@ export interface CommentInterface {
   activeContentId:string;
   profilePic:string;
   likeArr:[];
+  dislikeArr:[];
 }

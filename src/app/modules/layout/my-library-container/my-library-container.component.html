@@ -37,10 +37,10 @@
 
                         <div class="overlay-content">
                           <div class="round-button" (click)="handleWatchVideo(item)">
-                            <i class="fa fa-play fa-2x pl-1" aria-hidden="true"
-                              *ngIf="item.contentTypeName=='Video'"></i>
-                            <i class="fa fa-file-pdf-o fa-2x" aria-hidden="true"
-                              *ngIf="item.contentTypeName== 'PDF Document'"></i>
+                            <i class="" aria-hidden="true"
+                              *ngIf="item.contentTypeName=='Video'"> <img src="./assets/images/playIcon.svg" alt=""> </i>
+                            <i class="" aria-hidden="true"
+                              *ngIf="item.contentTypeName== 'PDF Document'"> <img src="./assets/images/pdfIcon.svg" alt=""> </i>
                           </div>
                         </div>
                         <img [src]="'data:image/png;base64,'+ item.contentImage" class="suggested-image"
@@ -197,10 +197,10 @@
 
                         <div class="overlay-content">
                           <div class="round-button" (click)="handleWatchVideo(item)">
-                            <i class="fa fa-play fa-2x pl-1" aria-hidden="true"
-                              *ngIf="item.contentTypeName=='Video'"></i>
-                            <i class="fa fa-file-pdf-o fa-2x" aria-hidden="true"
-                              *ngIf="item.contentTypeName== 'PDF Document'"></i>
+                            <i class="" aria-hidden="true"
+                              *ngIf="item.contentTypeName=='Video'"> <img src="./assets/images/playIcon.svg" alt="">  </i>
+                            <i class="" aria-hidden="true"
+                              *ngIf="item.contentTypeName== 'PDF Document'"> <img src="./assets/images/pdfIcon.svg" alt=""> </i>
                           </div>
                         </div>
                         <img [src]="'data:image/png;base64,'+ item.contentImage" class="suggested-image"

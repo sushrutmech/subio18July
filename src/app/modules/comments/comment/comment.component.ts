@@ -27,6 +27,8 @@ export class CommentComponent implements OnInit {
   updateComment = new EventEmitter<{ text: string; commentId: string }>();
   @Output()
   likeComment = new EventEmitter<string>();
+  @Output()
+  disLikeComment=new EventEmitter<string>();
 
   createdAt: string = '';
   canReply: boolean = false;

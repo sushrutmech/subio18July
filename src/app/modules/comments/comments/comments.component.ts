@@ -17,7 +17,12 @@ export class CommentsComponent implements OnInit {
   @Input() activeContentId: any;
   @Input() profilePic: any;
   likeArrr: any = [];
+  dislikeArrr:any=[];
+  //dislikeArr:any=[];
   likeArr: any = [];
+
+  likeStyle:boolean=false;
+  dislikeStyle:boolean=false;
 
   comments: CommentInterface[] = [];
   comments1: CommentInterface[] = [];
@@ -40,11 +45,61 @@ export class CommentsComponent implements OnInit {
     });
     this.commentsService.getComments2().subscribe((comments) => {
       this.comments1 = comments;
+      
     })
   }
 
   filter(s: any) {
     return s = this.currentUserId
+  }
+
+  disLikePushFuc(commentId: any): any {
+    this.commentsService.getComments2().subscribe((comments) => {
+      this.comments1 = comments;
+    })
+    console.log(this.comments1)
+    this.commentsFilter = this.comments1.filter((x: any) => {
+      console.log("++++",x)
+      return x.id == commentId
+    })
+    console.log("+--+", this.commentsFilter)
+    this.dislikeArrr = []
+    this.dislikeArrr = this.commentsFilter[0].dislikeArr
+    if (!this.dislikeArrr.includes(this.currentUserId)) {
+      console.log("if condition ....", this.dislikeArrr)
+      this.dislikeArrr.push(this.currentUserId)
+    } else {
+      console.log("else condition", this.dislikeArrr)
+      let newfiltArr: any = []
+      this.dislikeArrr.forEach((element: any) => {
+        console.log("*-*/*", element)
+        if (element != this.currentUserId) {
+          newfiltArr.push(element)
+        }
+      });
+      console.log("after filterr same id ", newfiltArr)
+      this.dislikeArrr = newfiltArr
+      //this.likeArrr.push(this.currentUserId)
+    }
+
+    return this.dislikeArrr
+  }
+
+  disLikeComment(commentId: any){
+     console.log("dislike hit" , commentId)
+     let newA = this.disLikePushFuc(commentId)
+     //console.log("returen function ...", newA)
+     //console.log("array after filterr and fill ", this.likeArrr)
+     this.commentsService.disLikeComment(commentId, newA).subscribe(
+       {
+         next:(res:any)=>{
+           console.log("++++----", res)
+         },
+         error:(res:any)=>{
+           console.log("error,,,," , res)
+         }
+       }
+     )
   }
 
   likePushFuc(commentId: any): any {

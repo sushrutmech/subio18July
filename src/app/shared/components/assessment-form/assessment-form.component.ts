@@ -224,7 +224,11 @@ export class AssessmentFormComponent implements OnInit {
   onStartClick() {
     this.introVisible = false;
     this.formVisible = true;
-    this.finishVisible = false;
+    //this.finishVisible = false;
+    if (this.currentPage !== 1) {
+      this.currentPage = this.currentPage - 1;
+      //this.ngWizardService.previous();
+    }
   }
 
   onNextClick() {
@@ -262,10 +266,13 @@ export class AssessmentFormComponent implements OnInit {
         this.precentage = 100;
         this.progressChange.emit(this.precentage);
         this.ngWizardService.next();
+        this.route.navigate(['/key-to-success'])
+      this.submitted = true;
         this.spinner.hide();
       })
     } else {
-      this.submitted = true;
+      this.onRequestClose.emit();
+      
     }
   }
 

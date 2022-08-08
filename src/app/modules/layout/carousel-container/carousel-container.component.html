@@ -49,12 +49,13 @@
                   <div *ngIf="item.contentTypeName=='PDF Document'" class="overlay-content" >
                     <div class="round-button" (click)="handleWatchVideo(item , programContents)" >
                       <!-- <i *ngIf="item.contentTypeName=='Video'" class="fa fa-play fa-2x pl-1" aria-hidden="true"  ></i> -->
-                      <i  class="fa fa-file-pdf-o fa-2x" aria-hidden="true" ></i>
+                      <i  class="" aria-hidden="true" ><img src="./assets/images/pdfIcon.svg" alt=""> </i>
                     </div>
                   </div>
                   <img *ngIf="item.contentTypeName=='PDF Document'" [src]="'data:image/png;base64,'+item.contentImage"
                     onerror="this.src='../../../../assets/img/default-image.png'" class="card-img-top">
                     <video preload="metadata" id="vid2" #vid1 (click)="videodata(vid1)" *ngIf="item.contentTypeName=='Video'"  width="470" height="255" [poster]="'data:image/png;base64,'+item.contentImage" controls>
+                      <i  class="" aria-hidden="true" > <img src="./assets/images/playIcon.svg" alt="">  </i>
                       <source src="movie.mp4" type="video/mp4">
                       <source src={{item.contentLocation}} type="video/ogg">
                     </video>

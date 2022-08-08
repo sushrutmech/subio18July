@@ -69,6 +69,18 @@ export class CommentsService {
     );
   }
 
+  disLikeComment(id: string, dislikeArr:any): Observable<CommentInterface> {
+    // console.log("from service....." ,likeArr)
+    return this.httpClient.patch<CommentInterface>(
+      
+      `http://localhost:8000/comments/${id}`,
+      
+      {
+        dislikeArr:dislikeArr,
+      }
+    );
+  }
+
   deleteComment(id: string): Observable<{}> {
     return this.httpClient.delete(`http://localhost:8000/comments/${id}`);
   }

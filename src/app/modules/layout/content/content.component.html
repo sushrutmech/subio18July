@@ -343,18 +343,18 @@
                             <div class="card-header border-0  bg-white p-0 overlay mb-2 overlay min-height-140px">
 
                               <div class="overlay-content">
-                                <div class="round-button" (click)="handleWatchVideo(item)">
-                                  <i class="fa fa-play fa-2x pl-1" aria-hidden="true"
-                                    *ngIf="item.contentTypeName=='Video'"></i>
-                                  <i class="fa fa-file-pdf-o fa-2x" aria-hidden="true"
-                                    *ngIf="item.contentTypeName== 'PDF Document'"></i>
+                                <div class="round-button" (click)="handleWatchVideoo(item)">
+                                  <i class="" aria-hidden="true"
+                                    *ngIf="item.contentTypeName=='Video'"> <img src="./assets/images/playIcon.svg" alt="">  </i>
+                                  <i class="" aria-hidden="true"
+                                    *ngIf="item.contentTypeName== 'PDF Document'"> <img src="./assets/images/pdfIcon.svg" alt="">  </i>
                                 </div>
                               </div>
                               <img [src]="'data:image/png;base64,'+ item.contentImage" class="suggested-image"
                                 onerror="this.src='./assets/img/default-image.png'">
                             </div>
                             <div style="padding: 4px 8px;">
-                              <button class="btn px-0" (click)="handleWatchVideo(item)">
+                              <button class="btn px-0" (click)="handleWatchVideoo(item)">
                                 <h5 class="card-title text-dark line-clamp">{{item.contentName}}</h5>
                               </button>
 
@@ -370,7 +370,7 @@
                                 <p class="cardDescDiv">{{item.contentBlurb}}</p>
                               </div>
 
-                              <div style="position: absolute;bottom: 32px;left: 25%;" (click)="handleWatchVideo(item)">
+                              <div style="position: absolute;bottom: 32px;left: 25%;" (click)="handleWatchVideoo(item)">
                                 <button type="button" class="cardBtnBottom btn btn-primary"
                                   *ngIf="item.contentTypeName=='Video'">watch
                                   now</button>
@@ -411,18 +411,18 @@
                           <div class="card-header text-white bg-white p-0 mb-2 border-0 overlay min-height-130px">
 
                             <div class="overlay-content">
-                              <div class="round-button" (click)="handleWatchVideo(single)">
-                                <i class="fa fa-play fa-2x pl-1" aria-hidden="true"
-                                  *ngIf="single.contentTypeName=='Video'"></i>
-                                <i class="fa fa-file-pdf-o fa-2x" aria-hidden="true"
-                                  *ngIf="single.contentTypeName== 'PDF Document'"></i>
+                              <div class="round-button" (click)="handleWatchVideoo(single)">
+                                <i class="" aria-hidden="true"
+                                  *ngIf="single.contentTypeName=='Video'">  <img src="./assets/images/playIcon.svg" alt="">  </i>
+                                <i class="" aria-hidden="true"
+                                  *ngIf="single.contentTypeName== 'PDF Document'"> <img src="./assets/images/pdfIcon.svg" alt=""> </i>
                               </div>
                             </div>
                             <img [src]="'data:image/png;base64,'+ single.contentImage" class="suggested-image"
                               onerror="this.src='./assets/img/default-image.png'">
                           </div>
                           <div>
-                            <button class="btn btn-link px-0" (click)="handleWatchVideo(single)">
+                            <button class="btn btn-link px-0" (click)="handleWatchVideoo(single)">
                               <h5 class="card-title text-dark line-clamp">{{single.contentName}}</h5>
                             </button>
                           </div>
@@ -492,10 +492,10 @@
 
                               <div class="overlay-content">
                                 <div class="round-button" (click)="handleWatchVideoo(item)">
-                                  <i class="fa fa-play fa-2x pl-1" aria-hidden="true"
-                                    *ngIf="item.contentTypeName=='Video'"></i>
-                                  <i class="fa fa-file-pdf-o fa-2x" aria-hidden="true"
-                                    *ngIf="item.contentTypeName== 'PDF Document'"></i>
+                                  <i class="" aria-hidden="true"
+                                    *ngIf="item.contentTypeName=='Video'"> <img src="./assets/images/playIcon.svg" alt=""> </i>
+                                  <i class="" aria-hidden="true"
+                                    *ngIf="item.contentTypeName== 'PDF Document'"> <img src="./assets/images/pdfIcon.svg" alt=""> </i>
                                 </div>
                               </div>
                               <img [src]="'data:image/png;base64,'+ item.contentImage" class="suggested-image"

@@ -96,10 +96,10 @@
 
                             <div class="overlay-content">
                                 <div class="round-button" (click)="handleWatchVideo(single)">
-                                    <i class="fa fa-play fa-2x pl-1" aria-hidden="true"
-                                        *ngIf="single.contentTypeName=='Video'"></i>
-                                    <i class="fa fa-file-pdf-o fa-2x" aria-hidden="true"
-                                        *ngIf="single.contentTypeName== 'PDF Document'"></i>
+                                    <i class="" aria-hidden="true"
+                                        *ngIf="single.contentTypeName=='Video'"> <img src="./assets/images/playIcon.svg" alt=""> </i>
+                                    <i class="" aria-hidden="true"
+                                        *ngIf="single.contentTypeName== 'PDF Document'"> <img src="./assets/images/pdfIcon.svg" alt=""> </i>
                                 </div>
                             </div>
                             <img [src]="'data:image/png;base64,' + single.contentImage" class="suggested-image"

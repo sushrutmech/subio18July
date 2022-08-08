@@ -16,9 +16,10 @@
           updateComment.emit({ text: $event, commentId: comment.id })
         " (handleCancel)="setActiveComment.emit(null)"></comment-form>
     <div class="comment-actions">
+      <div>{{comment.likeArr.length}}</div>
       <div class="comment-action" (click)="likeComment.emit(comment.id)">Like</div>
-      
-      <div class="comment-action" >dislike</div>
+      <div>{{comment.dislikeArr.length}}</div>
+      <div class="comment-action" (click)="disLikeComment.emit(comment.id)">dislike</div>
       <div *ngIf="canReply" class="comment-action" (click)="
             setActiveComment.emit({
               id: comment.id,
@@ -45,7 +46,8 @@
       <comment *ngFor="let reply of replies" [comment]="reply" (setActiveComment)="setActiveComment.emit($event)"
         [activeComment]="activeComment" (updateComment)="updateComment.emit($event)"
         (deleteComment)="deleteComment.emit($event)" (addComment)="addComment.emit($event)" [parentId]="comment.id"
-        [replies]="[]" [currentUserId]="currentUserId" (likeComment)="likeComment.emit($event)" ></comment>
+        [replies]="[]" [currentUserId]="currentUserId"
+         (likeComment)="likeComment.emit($event)" (disLikeComment)="disLikeComment.emit($event)" ></comment>
     </div>
   </div>
 </div>

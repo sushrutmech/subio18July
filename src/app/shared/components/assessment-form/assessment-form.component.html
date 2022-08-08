@@ -9,7 +9,8 @@
           <i class="icon icon-close fa-2x "></i>
         </button>
       </div>
-      <div class="d-flex flex-column h-100 justify-content-between w-100" *ngIf="introVisible">
+
+      <!-- <div class="d-flex flex-column h-100 justify-content-between w-100" *ngIf="introVisible">
         <div class="d-flex align-sm-items-center flex-column flex-sm-row">
           <div class="mr-sm-4">
             <img src="./../../../../assets/assessment-man.png" height="250" />
@@ -27,24 +28,25 @@
             </button>
           </div>
         </div>
-      </div>
+      </div> -->
 
-      <div class="d-flex flex-column h-100 justify-content-between w-100 animated fadeIn" *ngIf="formVisible">
+      <div class="d-flex flex-column h-100 justify-content-between w-100 animated fadeIn">
         <div>
-          <div class="d-flex flex-column h-100 justify-content-end align-items-center animated fadeIn">
+          <!-- <div class="d-flex flex-column h-100 justify-content-end align-items-center animated fadeIn">
             <button class="btn mb-1 d-flex flex-column align-items-center" (click)="onPreviousClick()">
               <div class="slide-arrow up"></div>
               Questions {{questionText}}
             </button>
-          </div>
+          </div> -->
+          {{questionText}}
         </div>
         <div class="d-flex h-100 overflow-hidden">
           <div class="container ratingAssesDiv" [@listAnimation]="currentPage"> 
             <ng-wizard [config]="config" (stepChanged)="stepChanged($event)">
 
               <ng-wizard-step *ngFor="let i of Arr(totalPages).fill(1); let indx = index" [title]="'Step '+ (indx+1) +''"
-                [description]="'Step '+ (indx+1) +' description'">
-                <span style="margin-bottom: 8px;">Step {{indx+1}} content</span>
+                [description]="'Step '+ (indx+1) +' description'+(questionText)">
+                <!-- <span style="margin-bottom: 8px;">Step {{indx+1}} content</span> -->
                 <div class="row ratingAssesChild" (keypress)="eventHandler($event, question)"
                   *ngFor="let question of questionList; let questionIndx = index">
                   <div *ngIf="(questionIndx+1) >= paginationStart((indx+1)) && (questionIndx+1) <= pagination((indx+1))">
@@ -86,7 +88,7 @@
         </div>
       </div>
 
-      <div class="d-flex flex-column h-100 justify-content-between w-100" *ngIf="finishVisible">
+      <!-- <div class="d-flex flex-column h-100 justify-content-between w-100" *ngIf="finishVisible">
         <div class="d-flex g-1 justify-content-center align-sm-items-center flex-column flex-sm-row">
           <div class="mr-sm-4">
             <img src="./../../../../assets/assessment-man.png" height="250" />
@@ -107,7 +109,7 @@
             </button>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
 
  
