@@ -6,6 +6,8 @@ import {ProgramContentTypes } from '../../constants/program-content-types'
 import {UserProgramContent } from '../../../shared/interfaces/home-content'
 import { LibraryListInstance , SearchLibrary } from '../../../shared/interfaces/library-list'
 import { MyLibraryService } from '../../../modules/my-library/my-library.service'
+import { AuthService } from 'src/app/appServices/auth.service';
+import { User } from '../../interfaces/user';
 
 
 @Component({
@@ -20,11 +22,23 @@ export class ViewContentComponent implements OnInit {
 
   userRating!: number;
   isLiked: boolean = false;
+  userSession!: User;
+  currentUserId:any;
+  currentUserName:any;
+  activeContentId:any;
+  profilePic:any;
 
   constructor(
     private myLibraryService: MyLibraryService,
     private spinner: NgxSpinnerService,
-  ) { }
+    private authService: AuthService
+  ) {
+    this.userSession = this.authService.userSession.user;
+    this.currentUserId=this.userSession.userID
+    this.currentUserName=this.userSession.firstName 
+    this.profilePic=this.userSession.profilePic
+    console.log("profile ...." ,this.userSession.profilePic )
+   }
 
   isDataLoaded: boolean = false;
   activeIndex: number = -1;

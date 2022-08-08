@@ -25,6 +25,7 @@ import { CommentboxComponent } from './commentbox/commentbox.component';
 import { OnHoverKeyComponent } from './on-hover-key/on-hover-key.component';
 import { AngularMaterialModule } from 'src/app/angularMaterialComponents/angular-material/angular-material.module';
 import { CardComponent } from './card/card.component';
+import { CommentsModule } from 'src/app/modules/comments/comments.module';
 
 const ngWizardConfig: NgWizardConfig = {
   theme: THEME.default
@@ -59,7 +60,8 @@ const ngWizardConfig: NgWizardConfig = {
     VgStreamingModule,
     NgxExtendedPdfViewerModule ,
     NgWizardModule.forRoot(ngWizardConfig) ,
-    AngularMaterialModule
+    AngularMaterialModule,
+    CommentsModule
   ],
   exports: [
     AssessmentFormComponent,

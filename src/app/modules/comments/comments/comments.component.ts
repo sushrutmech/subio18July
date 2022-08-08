@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { filter } from 'rxjs';
+
+
 import { CommentsService } from '../services/comments.service';
 import { ActiveCommentInterface } from '../types/activeComment.interface';
 import { CommentInterface } from '../types/comment.interface';
@@ -53,8 +54,10 @@ export class CommentsComponent implements OnInit {
     })
     console.log(this.comments1)
     this.commentsFilter = this.comments1.filter((x: any) => {
+      console.log("++++",x)
       return x.id == commentId
     })
+    console.log("+--+", this.commentsFilter)
     this.likeArrr = []
     this.likeArrr = this.commentsFilter[0].likeArr
     if (!this.likeArrr.includes(this.currentUserId)) {
@@ -84,11 +87,16 @@ export class CommentsComponent implements OnInit {
     let newA = this.likePushFuc(commentId)
     //console.log("returen function ...", newA)
     //console.log("array after filterr and fill ", this.likeArrr)
-    this.commentsService.likeComment(commentId, newA).subscribe(res => {
-      console.log("like ..", res)
-    }, err => {
-      console.log("like ..", err)
-    })
+    this.commentsService.likeComment(commentId, newA).subscribe(
+      {
+        next:(res:any)=>{
+          console.log("++++----", res)
+        },
+        error:(res:any)=>{
+          console.log("error,,,," , res)
+        }
+      }
+    )
   }
 
   getRootComments(): CommentInterface[] {

@@ -1,69 +1,90 @@
 <div class="animated fadeIn py-3">
-    <div class="row full-height-row">
-      <div class="col-lg-9 col-md-10 col-xl-7 mx-auto" *ngIf="isDataLoaded">
-        <div class="h-100 justify-content-between">
-          <div class="d-flex justify-content-between align-items-center">
-            <button class=" p-0 btn btn-link cursor-pointer text-theme-blue txt-decoration-underline fw-200" (click)="backToLibraryClick()">Return to search results</button>
-  
-            <div class="close-button" (click)="backToLibraryClick()">
-              <i class="icon icon-close fa-2x"></i>
-            </div>
+  <div class="row full-height-row">
+    <div class="col-lg-9 col-md-10 col-xl-7 mx-auto" *ngIf="isDataLoaded">
+      <div class="h-100 justify-content-between">
+        <div class="d-flex justify-content-between align-items-center">
+          <button class=" p-0 btn btn-link cursor-pointer text-theme-blue txt-decoration-underline fw-200" (click)="backToLibraryClick()">Return to search results</button>
+
+          <div class="close-button" (click)="backToLibraryClick()">
+            <i class="icon icon-close fa-2x"></i>
           </div>
-          <div class="d-flex  flex-column justify-content-around py-3">
-            <div class="video-header mb-3">
-              <h3>{{selectedContent.contentName}}</h3>
-              <label>{{selectedContent.contentBlurb}}</label>
-            </div>
-            <div class="video-player-wrapper">
-              <app-video-player *ngIf="selectedContent.contentTypeName == 'Video'" [src]="selectedContent.contentLocation"
-                (onVideoEnd)="handleReadContent()">
-  
-              </app-video-player>
-              
-              <app-pdf-viewer *ngIf="selectedContent.contentTypeName == 'PDF Document'"
-                [src]="selectedContent.contentLocation" (onLoad)="handleReadContent()">
-  
-              </app-pdf-viewer>
-            </div>
-            <div class="d-flex justify-content-between">
-              <div>
-                <div *ngIf="selectedContent.rating > 0">
-                  <rating [(ngModel)]="selectedContent.rating" class="custom-rating-star" [max]="selectedContent.rating"
-                    [readonly]="true"></rating>
-                  
-                </div>
-                <span *ngIf="selectedContent.review">{{selectedContent.review}}</span>
-              </div>
-  
-              <button class="btn btn-link " (click)="onLikeClick()">
-                <i class="fa fa-thumbs-up font-size-2rem" [ngStyle]="{'color': (isLiked) ? '#2f5597' : '#a6a4a4'}"></i>
-              </button>
-            </div>
-            <div class="d-flex justify-content-center animated fadeIn w-100" *ngIf="selectedContent.rating == 0">
-              <span class="text-uppercase">rate this article</span>
-            </div>
-            <div class="d-flex justify-content-center pb-2 animated fadeIn w-100" *ngIf="selectedContent.rating == 0">
-              <rating [(ngModel)]="userRating" class="custom-rating-star" [max]="5">
-              </rating>
-              <!-- <star-rating [value]="userRating" [totalstars]="5"
-                    checkedcolor="rgb(255,192,0)" uncheckedcolor="#c6c3c3" size="35px" readonly="false"
-                    (rate)="onRate($event)"></star-rating> -->
-            </div>
-  
-            <div class="d-flex justify-content-center animated fadeIn w-100" *ngIf="userRating>0 && selectedContent">
-              <div class="d-flex align-items-bottom col-md-8 col-sm-12">
-                <textarea #userReview row="5" class="w-100"></textarea>
-                <div class="d-flex align-items-end">
-                  <button class="btn btn-link py-0 position-absolute" (click)="onShareRatingClick(userReview.value)">
-                    <img class="share-cons-width" src="./assets/img/share.png" alt="Share" />
-                  </button>
-                </div>
-              </div>
-            </div>
-  
-          </div>
-  
         </div>
+        <div class="d-flex  flex-column justify-content-around py-3">
+          <div class="video-header mb-3">
+            <h3>{{selectedContent.contentName}}</h3>
+            <label>{{selectedContent.contentBlurb}}</label>
+          </div>
+          <div class="video-player-wrapper">
+            <app-video-player *ngIf="selectedContent.contentTypeName == 'Video'" [src]="selectedContent.contentLocation"
+              (onVideoEnd)="handleReadContent()">
+
+            </app-video-player>
+            
+            <app-pdf-viewer *ngIf="selectedContent.contentTypeName == 'PDF Document'"
+              [src]="selectedContent.contentLocation" (onLoad)="handleReadContent()">
+
+            </app-pdf-viewer>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div>
+              <div *ngIf="selectedContent.rating > 0">
+                <rating [(ngModel)]="selectedContent.rating" class="custom-rating-star" [max]="selectedContent.rating"
+                  [readonly]="true"></rating>
+                
+              </div>
+              <span *ngIf="selectedContent.review">{{selectedContent.review}}</span>
+            </div>
+
+            <button class="btn btn-link " (click)="onLikeClick()">
+              <i class="fa fa-thumbs-up font-size-2rem" [ngStyle]="{'color': (isLiked) ? '#2f5597' : '#a6a4a4'}"></i>
+            </button>
+          </div>
+          <div class="d-flex justify-content-center animated fadeIn w-100" *ngIf="selectedContent.rating == 0">
+            <span class="text-uppercase">rate this article</span>
+          </div>
+          <div class="d-flex justify-content-center pb-2 animated fadeIn w-100" *ngIf="selectedContent.rating == 0">
+            <rating [(ngModel)]="userRating" class="custom-rating-star" [max]="5">
+            </rating>
+            <!-- <star-rating [value]="userRating" [totalstars]="5"
+                  checkedcolor="rgb(255,192,0)" uncheckedcolor="#c6c3c3" size="35px" readonly="false"
+                  (rate)="onRate($event)"></star-rating> -->
+          </div>
+
+          <div class="d-flex justify-content-center animated fadeIn w-100" *ngIf="userRating>0 && selectedContent">
+            <div class="d-flex align-items-bottom col-md-8 col-sm-12">
+              <textarea #userReview row="5" class="w-100"></textarea>
+              <div class="d-flex align-items-end">
+                <button class="btn btn-link py-0 position-absolute" (click)="onShareRatingClick(userReview.value)">
+                  <img class="share-cons-width" src="./assets/img/share.png" alt="Share" />
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
       </div>
+
+      
+
     </div>
+
+    <div class="matTab">
+      <mat-tab-group mat-align-tabs="start">
+        <mat-tab label="Transcript">
+          Content 1
+        </mat-tab>
+        <mat-tab label="Exercise">
+          Content 2
+        </mat-tab>
+        <mat-tab label="Discussion">
+          <app-comments [currentUserId]="currentUserId" [activeContentId]="selectedContent.contentID"
+          [currentUserName]="currentUserName" [profilePic]="profilePic"></app-comments>
+          
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+
+
   </div>
+</div>
