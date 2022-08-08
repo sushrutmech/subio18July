@@ -174,10 +174,11 @@
 }
 
 .profileImage {
-    width: 175px;
+    width: 168px;
+    aspect-ratio: auto 182 / 182;
+    image-rendering: pixelated;
     height: 168px;
-
-    background: url(../../../../assets/componnets/profile.jpg);
+    background: url(../../../../assets/componnets/profile.jpg) no-repeat;
     border-radius: 8px;
     background-color: aqua;
 }
