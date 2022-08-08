@@ -22,7 +22,7 @@
                                     id="excludeSwitch" (change)="searchTerm()">
 
                                 </mat-slide-toggle>
-                                
+
                                 <label style="margin-left: 18px;" class="custom-control-label mt-sm-0 mt-2"
                                     for="excludeSwitch">Exclude articles
                                     already viewed</label>
@@ -48,7 +48,48 @@
 
                         <span class="fa fa-check font-size-24px"></span>
                     </div>
+
+                    <div *ngIf="single.isAlreadyReadingList === false" style="position: absolute !important;right: 36px;
+                    top: 26px !important;
+                    z-index: 999;
+                    color: #fff;
+                    height: 41px;
+                    border-radius: 50%;
+                    background-color: #959e9a !important;" class=" position-absolute top-0 translate-middle p-2 ">
+
+
+                        <div class="saveIcon">
+                            <div (click)="addToReadingList(single.contentID)">
+                                <img src="../../../../assets/images/saveIcon.svg" alt="">
+
+                            </div>
+                           
+
+                        </div>
                     
+                    </div>
+                   
+                   <div *ngIf="single.isAlreadyReadingList && single.isRead===false" style="position: absolute !important;right: 36px;
+                    top: 26px !important;
+                    z-index: 999;
+                    color: #fff;
+                    height: 41px;
+                    border-radius: 50%;
+                    background-color: #959e9a !important;" class=" position-absolute top-0 translate-middle p-2 ">
+
+
+                        <div class="saveIcon">
+                           
+                            <div *ngIf="single.isAlreadyReadingList && single.isRead===false">
+                                <img src="../../../../assets/images/saveIconFill.svg" alt="">
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
                     <div class="card-body d-md-flex d-block ">
 
                         <div class=" bg-white p-0 border-0 overlay d-flex align-items-center">
@@ -67,18 +108,18 @@
 
                         <div class="cardDetailContainer p-2 d-xl-flex d-block ">
                             <div style="width:100%" class="col-xxl-10 col-xl-9  col-sm-12">
-                             
+
                                 <button class="btn  px-0" (click)="handleWatchVideo(single)">
                                     <h5 class="card-title text-dark line-clamp">{{single.contentName}}</h5>
                                 </button>
 
                                 <div class="m-0 d-flex align-items-center  " *ngIf="single.avgRating>0">
-                                  
+
                                     <star-rating [value]="single.avgRating"
                                         [totalstars]="getRoundedValue(single.avgRating)" checkedcolor="rgb(255,192,0)"
                                         uncheckedcolor="white" size="30px" [readonly]="true">
                                     </star-rating>
-                                  
+
                                     <span>({{single.viewDescription}} )</span>
                                 </div>
 
@@ -92,12 +133,22 @@
                                             margin-top: 8px;" class="" [ngClass]="{'d-none': single.isRead}">
                                                 <span class="" style="margin-right: 22px;"> Add to my reading
                                                     list</span>
-                                                <mat-slide-toggle class="example-margin" [color]="color"
+                                                <!-- <mat-slide-toggle class="example-margin" [color]="color"
                                                     [checked]="checked" [disabled]="disabled" class=""
                                                     [id]="single.contentID" [checked]="single.isAlreadyReadingList"
                                                     (click)="addToReadingList(single.contentID)">
 
-                                                </mat-slide-toggle>
+                                                </mat-slide-toggle> -->
+                                                <div>
+                                                    <div *ngIf="!single.isAlreadyReadingList"
+                                                        (click)="addToReadingList(single.contentID)">
+                                                        <img src="../../../../assets/images/saveIcon.svg" alt="">
+
+                                                    </div>
+                                                    <img *ngIf="single.isAlreadyReadingList"
+                                                        src="../../../../assets/images/saveIconFill.svg" alt="">
+
+                                                </div>
 
                                                 <label class="custom-control-label" [for]="single.contentID">
                                                 </label>
@@ -112,7 +163,7 @@
                                         {{single.tagList}}
                                     </p>
                                 </div>
-                              
+
                             </div>
 
                         </div>
@@ -132,7 +183,7 @@
             <div class="d-flex" *ngIf="searchResult?.length==0 && isSearched">
                 <span class="text-muted">We couldn’t find anything that matches your search</span>
             </div>
-          
+
         </div>
         <app-view-content *ngIf="isWatchVideo" [selectedContent]="selectedContent"
             (onRequestClose)="handleContentViewerClose($event)">
