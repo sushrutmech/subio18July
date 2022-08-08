@@ -9,7 +9,7 @@
 }
 .goalWHoleC{
   max-width: 100%;
-  padding: 40px !important;
+  padding: 0 40px !important;
 }
 
 .goal-item img {
@@ -69,7 +69,7 @@
 
 .lockContainerDivGoal {
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .addGoalBtn {
@@ -87,6 +87,7 @@
   font-size: 14px;
   height: 31px;
   margin-top: 0px;
+  width: 179px;
 }
 
 .goalContainer {
@@ -150,5 +151,5 @@
 }
 
 .reAssesCont{
-  padding: 1px 1px 250px 1px;
+  padding: 40px 0px 0px 0px;
 }

@@ -179,16 +179,22 @@ export class SuccessKeyLockComponent implements OnInit {
       ((251 - (251 * s8) / 100) / 251) * 100 > 60 ? indicator9!.style.fill = "#DC3545" : ((251 - (251 * s8) / 100) / 251) * 100 > 30 ? indicator9!.style.fill = "#FFC107" : indicator9!.style.fill = "#198754";
   
   
+      
   
       //combined Result Circle
       let secR = document.getElementById('combinedResult')
       let ssR = document.getElementById('overAlls')
+      let lockImg = document.getElementById('lockImgK')
+      let polyImg = document.getElementById('polyImg')
       // console.log(((((440 - (440*s)/60)/440)*100)+(((440 - (440*s1)/60)/440)*100))/2)
       let sR = ((s) + (s1) + (s2) + (s3) + (s4) + (s5) + (s6) + (s7) + (s8)) / 9;
       let reverseSr = 100 - sR
       secR!.innerHTML = String(Math.floor(sR))
       ssR!.style.strokeDashoffset = String((565 * reverseSr) / 100);
       sR < 40 ? ssR!.style.stroke = "#DC3545" : sR < 73 ? ssR!.style.stroke = "#FFC107" : ssR!.style.stroke = "#198754";
+      sR < 40 ? lockImg!.style.stroke = "#DC3545" : sR < 73 ? lockImg!.style.stroke = "#FFC107" : lockImg!.style.stroke = "#198754";
+      sR < 40 ? lockImg!.style.fill = "#DC3545" : sR < 73 ? lockImg!.style.fill = "#FFC107" : lockImg!.style.fill = "#198754";
+      sR < 40 ? polyImg!.style.fill = "#DC3545" : sR < 73 ? polyImg!.style.fill = "#FFC107" : polyImg!.style.fill = "#198754";
   
   
       //ends Key
