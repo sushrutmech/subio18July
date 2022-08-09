@@ -150,9 +150,9 @@ export class AssessmentFormComponent implements OnInit {
     let pageItem
     if(indx === this.totalPages-1){
       let lastNumberRecord = this.questionList.length%10
-      pageItem = (((indx+1)*10)-9).toString()+ ' to ' + (((indx+1)*10)-(10-lastNumberRecord)).toString()
+      pageItem = 'Questions '+(((indx+1)*10)-9).toString()+ ' to ' + (((indx+1)*10)-(10-lastNumberRecord)).toString()
     } else {
-      pageItem = (((indx+1)*10)-9).toString()+ ' to ' + ((indx+1)*10).toString()
+      pageItem = 'Questions '+(((indx+1)*10)-9).toString()+ ' to ' + ((indx+1)*10).toString()
     }
     return pageItem;
   }
