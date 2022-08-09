@@ -306,6 +306,9 @@
   padding: 0px 8px;
   height: 21px;
   margin-left: 13px;
+  position: absolute;
+    right: 6%;
+    top: 35%;
 }
 
 .goal-item>span {
@@ -1021,4 +1024,9 @@ input:checked+.slider:before {
   font-size: 14px;
   line-height: 120%;
   color: #000000;
+  margin-top: 12px;
+}
+.titleText{
+  margin-left: 18px;
+  margin-bottom: 0px !important;
 }
