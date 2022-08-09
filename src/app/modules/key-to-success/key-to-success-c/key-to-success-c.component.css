@@ -3,11 +3,12 @@
   padding: 8px 0px 16px 0px;
 }
 
-.addGoalContainer{
+.addGoalContainer {
   max-width: 100%;
   padding: 0px !important;
 }
-.goalWHoleC{
+
+.goalWHoleC {
   max-width: 100%;
   padding: 0 40px !important;
 }
@@ -81,9 +82,9 @@
   color: #fff !important;
   height: 48px;
   margin-top: 16px;
-  }
+}
 
-.reAsses > button{
+.reAsses>button {
   font-size: 14px;
   height: 31px;
   margin-top: 0px;
@@ -99,11 +100,13 @@
   margin-right: 0px !important;
   margin-left: 16px;
 }
+
 .goalContainer:hover {
   box-shadow: 0px 20px 25px -5px rgba(0, 0, 0, 0.1),
-      0px 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+    0px 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
 }
-.dispNone{
+
+.dispNone {
   display: none;
 }
 
@@ -117,7 +120,8 @@
 }
 
 .titleCardTeamGoal {
-  background: rgba(207, 244, 252, 1);    border-radius: 4px;
+  background: rgba(207, 244, 252, 1);
+  border-radius: 4px;
   font-weight: 400;
   font-size: 14px;
   line-height: 120%;
@@ -145,11 +149,21 @@
   margin-left: 13px;
 }
 
-.goal-item > span {
-  color: #000;
+.goal-item>span {
+  color: #0198E0;
   text-decoration: none;
 }
 
-.reAssesCont{
+.reAssesCont {
   padding: 40px 0px 0px 0px;
+}
+
+.goalTitle {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 100%;
+  
+
 }

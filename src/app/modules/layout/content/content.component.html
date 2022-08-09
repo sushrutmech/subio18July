@@ -53,14 +53,14 @@
                   {{programInstance.programName}}
                 </div>
                 <div class="para">
-                   {{programInstance.programDescription}}
+                  {{programInstance.programDescription}}
                 </div>
                 <div class="timing1">
                   <div>TIMINGS</div>
                   <div>
                     {{programInstance.dateStart | date : 'hh:mma'}} to {{programInstance.dateEnd | date : 'hh:mma'}}
                   </div>
-                 
+
                 </div>
                 <!-- <div class="btnJoin">
                   Join Now
@@ -105,10 +105,11 @@
         <div class="row">
           <div class="myGoalContainer d-flex justify-content-between">
             <div class="container2HeaderText">
-              MY GOALS 
+              MY GOALS
             </div>
             <div>
-              <button class=" btn btn-outline-primary btn-sm addGoalBtn" routerLink="/key-to-success/goal">Add New Goal </button>
+              <button class=" btn btn-outline-primary btn-sm addGoalBtn" routerLink="/key-to-success/goal">Add New Goal
+              </button>
             </div>
           </div>
           <div class="goalContainer">
@@ -118,62 +119,66 @@
                 <div class="allGoalList" *ngIf="isDataLoaded">
 
                   <div class="" *ngIf="successGoalList.length > 0">
-                    <app-on-hover-key [userSuccessGoalId]="userSuccessGoalId"  *ngIf="keyDisplay && keyDisplayActiveId==userSuccessGoalId"></app-on-hover-key>  
+                    <app-on-hover-key [userSuccessGoalId]="userSuccessGoalId"
+                      *ngIf="keyDisplay && keyDisplayActiveId==userSuccessGoalId"></app-on-hover-key>
 
                     <mat-card *ngFor="let item of successGoalList;let i = index">
 
+
                       <div class="row">
 
-                        <div class="col-4">
-
-                        </div>
-                      </div>
-                      <div class="row">
-                       
 
                         <mat-card-title class="d-flex justify-content-between">
                           <div class="d-flex gap-1">
 
-                            <div *ngIf="item.successGoalTypeId==1" class="titleCard">
-                              My Goals
+                            <div *ngIf="item.successGoalTypeId==1" class="MyGoals">
+
+                              <img src="./assets/images/PERSONAL GOAL.png">
                             </div>
-                            <div *ngIf="item.successGoalTypeId==2" class="titleCardBuisnessGoal">
-                              My Business Goals
+                            <div *ngIf="item.successGoalTypeId==2" class="MyBusinessGoals">
+                              <img src="./assets/images/BUSINESS GOAL.png">
                             </div>
-                            <div *ngIf="item.successGoalTypeId==3" class="titleCardTeamGoal">
-                              My Team Goals
+                            <div *ngIf="item.successGoalTypeId==3" class="MyTeamGoals">
+                              <img src="./assets/images/gAsses.svg">
                             </div>
+
+                            <mat-card-subtitle class="titleText">
+                              <div class="" style="width: 1000px;">
+                                <div class="goal-item">
+                                  <!-- <img [src]="item.icon | appImage" *ngIf="item.icon" class="mr-1" /> -->
+                                  <span>{{item.goal}}</span>
+                                </div>
+                                <div class="goalDescription">
+                                  <p>{{item.goalDescription}}</p>
+                                </div>
+                              </div>
+    
+                            </mat-card-subtitle>
 
                             <div class="progressStatusCard">
                               In Progress
                             </div>
-                          </div>
-                          <div   (click)="openDialog(item.userSuccessID ,item)"   style="position: absolute;right: 1%;top: 35%;">
+                            <div (click)="openDialog(item.userSuccessID ,item)"
+                            style="position: absolute;right: 1%;top: 35%;">
                             <img class="keyImg" src="./assets/images/Vector.svg" alt="" srcset="">
-             
+
                           </div>
+                          </div>
+                   
                         </mat-card-title>
 
-                        <mat-card-subtitle class="titleText">
-                          <div class="col-8">
-                            <div class="goal-item d-flex align-items-top">
-                              <!-- <img [src]="item.icon | appImage" *ngIf="item.icon" class="mr-1" /> -->
-                              <span>{{item.goal}}</span>
-                            </div>
-                          </div>
-
-                        </mat-card-subtitle>
+                        
                       </div>
-                      
+
                     </mat-card>
                   </div>
-                  
+
                 </div>
 
-                
+
                 <div class=" overflow-auto pr-lg-1 d-lg-block d-block d-sm-flex" *ngIf="successGoalList?.length==0">
                   <div class="" *ngIf="isDataLoaded">
-                    <div > Add Your First Goal </div>
+                    <div> Add Your First Goal </div>
                   </div>
                 </div>
 
@@ -182,41 +187,47 @@
 
 
               <mat-tab label="My Goals">
-              
+
                 <div class="allGoalList" *ngIf="isDataLoaded">
                   <mat-card *ngFor="let item of MyGoalList">
 
-                    <div class="listMayGoals">
-  
+                    <div class="listMayGoals d-flex justify-content-between">
+
                       <mat-card-title class="d-flex justify-content-between">
                         <div class="d-flex gap-1">
-                          <div class="titleCard">
-                            My Goal
+                          <div class="MyGoal">
+                             <img src="./assets/images/PERSONAL GOAL.png">
                           </div>
-                          <div class="progressStatusCard">
-                            In Progress
-                          </div>
-  
+              
                         </div>
-                        <div (click)="openDialog(item.userSuccessID ,item)" >
-                          <img class="keyImg" src="./assets/images/Vector.svg" alt="" srcset="">
-                        </div>
+                        
                       </mat-card-title>
                       <mat-card-subtitle class="titleText">
-                        <div class="">
-                          {{item.goal}}
+                        <div class="" style="width: 1000px;">
+                          <div class="goal-item">
+                            <!-- <img [src]="item.icon | appImage" *ngIf="item.icon" class="mr-1" /> -->
+                            <span>{{item.goal}}</span>
+                          </div>
+                          <div class="goalDescription">
+                            <p>{{item.goalDescription}}</p>
+                          </div>
                         </div>
-                      
                       </mat-card-subtitle>
-  
+                      <div class="progressStatusCard">
+                        In Progress
+                      </div>
+                      <div (click)="openDialog(item.userSuccessID ,item)">
+                        <img class="keyImg" src="./assets/images/Vector.svg" alt="" srcset="">
+                      </div>
+
                     </div>
-                    
+
                   </mat-card>
                 </div>
-                
+
                 <div class=" overflow-auto pr-lg-1 d-lg-block d-block d-sm-flex" *ngIf="MyGoalList?.length==0">
                   <div class="" *ngIf="isDataLoaded">
-                    <div > Add Your First My Goal </div>
+                    <div> Add Your First My Goal </div>
                   </div>
                 </div>
               </mat-tab>
@@ -226,41 +237,46 @@
                   <mat-card *ngFor="let item of teamGoalList">
 
 
-                    <div class="teamGoalList">
-  
+                    <div class="teamGoalList d-flex justify-content-between">
+
                       <mat-card-title class="d-flex justify-content-between">
                         <div class="d-flex gap-1">
-                          <div class="titleCardTeamGoal">
-                            My Team Goals
+                          <div class="MyTeamGoals">
+                            <img src="./assets/images/gAsses.svg">
                           </div>
-                          <div class="progressStatusCard">
-                            In Progress
-                          </div>
+                          
                         </div>
-                        <div (click)="openDialog(item.userSuccessID ,item)">
-                          <img class="keyImg" src="./assets/images/Vector.svg" alt="" srcset="">
-                        </div>
+                        
                       </mat-card-title>
                       <mat-card-subtitle class="titleText">
-                        <div class="">
-                          {{item.goal}}
+                        <div class="" style="width: 1000px;">
+                          <div class="goal-item">
+                            <!-- <img [src]="item.icon | appImage" *ngIf="item.icon" class="mr-1" /> -->
+                            <span>{{item.goal}}</span>
+                          </div>
+                          <div class="goalDescription">
+                            <p>{{item.goalDescription}}</p>
+                          </div>
                         </div>
-  
-                        <!-- <div> {{item.goalDescription}}</div> -->
-  
                       </mat-card-subtitle>
-  
+                      <div class="progressStatusCard">
+                        In Progress
+                      </div>
+                      <div (click)="openDialog(item.userSuccessID ,item)">
+                        <img class="keyImg" src="./assets/images/Vector.svg" alt="" srcset="">
+                      </div>
+
                     </div>
-  
-                    
+
+
                   </mat-card>
-                  
+
                 </div>
 
-                
+
                 <div class=" overflow-auto pr-lg-1 d-lg-block d-block d-sm-flex" *ngIf="teamGoalList?.length==0">
                   <div class="" *ngIf="isDataLoaded">
-                    <div > Add Your First My team goal </div>
+                    <div> Add Your First My team goal </div>
                   </div>
                 </div>
               </mat-tab>
@@ -270,43 +286,48 @@
                 <div class="allGoalList" *ngIf="isDataLoaded">
                   <mat-card *ngFor="let item of BusinessGoalList">
 
-                    <div class="businessGoalList">
-  
+                    <div class="businessGoalList d-flex justify-content-between">
+
                       <mat-card-title class="d-flex justify-content-between">
                         <div class="d-flex gap-1">
-                          <div class="titleCardBuisnessGoal">
-                            My BusinessGoals
+                          <div class="MyBusinessGoals">
+                            <img src="./assets/images/BUSINESS GOAL.png">
                           </div>
-                          <div class="progressStatusCard">
-                            In Progress
-                          </div>
+                          
                         </div>
-                        <div (click)="openDialog(item.userSuccessID ,item)">
-                          <img class="keyImg" src="./assets/images/Vector.svg" alt="" srcset="">
-                        </div>
+                        
                       </mat-card-title>
                       <mat-card-subtitle class="titleText">
-                        <div class="">
-                          {{item.goal}}
+                        <div class="" style="width: 1000px;">
+                          <div class="goal-item">
+                            <!-- <img [src]="item.icon | appImage" *ngIf="item.icon" class="mr-1" /> -->
+                            <span>{{item.goal}}</span>
+                          </div>
+                          <div class="goalDescription">
+                            <p>{{item.goalDescription}}</p>
+                          </div>
                         </div>
-  
-                        <!-- <div> {{item.goalDescription}}</div> -->
-  
                       </mat-card-subtitle>
-  
+                      <div class="progressStatusCard">
+                        In Progress
+                      </div>
+                      <div (click)="openDialog(item.userSuccessID ,item)">
+                        <img class="keyImg" src="./assets/images/Vector.svg" alt="" srcset="">
+                      </div>
+
                     </div>
-  
-  
-                    
+
+
+
                   </mat-card>
                 </div>
-                
+
                 <div class=" overflow-auto pr-lg-1 d-lg-block d-block d-sm-flex" *ngIf="BusinessGoalList?.length==0">
                   <div class="" *ngIf="isDataLoaded">
-                    <div > Add Your First My BusinessGoals </div>
+                    <div> Add Your First My BusinessGoals </div>
                   </div>
                 </div>
-                
+
               </mat-tab>
             </mat-tab-group>
           </div>
@@ -324,7 +345,7 @@
 
               <mat-tab label="Viewing List">
 
-                <app-view-content *ngIf="isWatchVideo && tabIndex==0"  [selectedContent]="selectedContent"
+                <app-view-content *ngIf="isWatchVideo && tabIndex==0" [selectedContent]="selectedContent"
                   (onRequestClose)="handleContentViewerClose($event)">
                 </app-view-content>
 
@@ -333,7 +354,7 @@
 
 
                   <div class="col-sm-12 pl-0">
-                
+
                     <div class="row overflow-auto pr-1  h-330px" *ngIf="readingList?.length>0">
                       <div *ngFor="let item of readingList" class=" toViewCont col-sm-12 h-100 pr-2 py-1 pl-0"
                         [ngClass]="{'col-xl-3 col-md-4 col-sm-6 col-12': readingList?.length <= 6, 'min-width-230px' : readingList?.length > 6}">
@@ -344,10 +365,10 @@
 
                               <div class="overlay-content">
                                 <div class="round-button" (click)="handleWatchVideoo(item)">
-                                  <i class="" aria-hidden="true"
-                                    *ngIf="item.contentTypeName=='Video'"> <img src="./assets/images/playIcon.svg" alt="">  </i>
-                                  <i class="" aria-hidden="true"
-                                    *ngIf="item.contentTypeName== 'PDF Document'"> <img src="./assets/images/pdfIcon.svg" alt="">  </i>
+                                  <i class="" aria-hidden="true" *ngIf="item.contentTypeName=='Video'"> <img
+                                      src="./assets/images/playIcon.svg" alt=""> </i>
+                                  <i class="" aria-hidden="true" *ngIf="item.contentTypeName== 'PDF Document'"> <img
+                                      src="./assets/images/pdfIcon.svg" alt=""> </i>
                                 </div>
                               </div>
                               <img [src]="'data:image/png;base64,'+ item.contentImage" class="suggested-image"
@@ -389,7 +410,7 @@
                         <span class="text-muted">Nothing in your Viewing list</span>
                       </div>
                     </div>
-      
+
 
                   </div>
 
@@ -401,7 +422,7 @@
               <mat-tab label="Suggested Viewing">
 
                 <div class="col-sm-12 ">
-                 
+
                   <div class="d-flex overflow-auto h-370px pl-0" *ngIf="suggestedList?.length>0">
                     <div *ngFor="let single of suggestedList" class="h-100 pr-2 py-1 pl-0"
                       [ngClass]="{'col-xxl-2 col-xl-3 col-md-4 col-sm-6 col-12': suggestedList?.length <= 6, 'min-width-230px' : suggestedList?.length > 6 }">
@@ -412,10 +433,10 @@
 
                             <div class="overlay-content">
                               <div class="round-button" (click)="handleWatchVideoo(single)">
-                                <i class="" aria-hidden="true"
-                                  *ngIf="single.contentTypeName=='Video'">  <img src="./assets/images/playIcon.svg" alt="">  </i>
-                                <i class="" aria-hidden="true"
-                                  *ngIf="single.contentTypeName== 'PDF Document'"> <img src="./assets/images/pdfIcon.svg" alt=""> </i>
+                                <i class="" aria-hidden="true" *ngIf="single.contentTypeName=='Video'"> <img
+                                    src="./assets/images/playIcon.svg" alt=""> </i>
+                                <i class="" aria-hidden="true" *ngIf="single.contentTypeName== 'PDF Document'"> <img
+                                    src="./assets/images/pdfIcon.svg" alt=""> </i>
                               </div>
                             </div>
                             <img [src]="'data:image/png;base64,'+ single.contentImage" class="suggested-image"
@@ -480,7 +501,7 @@
 
                   <div class="col-sm-12 pl-0">
 
-                   
+
 
                     <div class="row overflow-auto pr-1  h-330px" *ngIf="readingHistory?.length>0">
                       <div *ngFor="let item of readingHistory" class=" toViewCont col-sm-12 h-100 pr-2 py-1 pl-0"
@@ -492,10 +513,10 @@
 
                               <div class="overlay-content">
                                 <div class="round-button" (click)="handleWatchVideoo(item)">
-                                  <i class="" aria-hidden="true"
-                                    *ngIf="item.contentTypeName=='Video'"> <img src="./assets/images/playIcon.svg" alt=""> </i>
-                                  <i class="" aria-hidden="true"
-                                    *ngIf="item.contentTypeName== 'PDF Document'"> <img src="./assets/images/pdfIcon.svg" alt=""> </i>
+                                  <i class="" aria-hidden="true" *ngIf="item.contentTypeName=='Video'"> <img
+                                      src="./assets/images/playIcon.svg" alt=""> </i>
+                                  <i class="" aria-hidden="true" *ngIf="item.contentTypeName== 'PDF Document'"> <img
+                                      src="./assets/images/pdfIcon.svg" alt=""> </i>
                                 </div>
                               </div>
                               <img [src]="'data:image/png;base64,'+ item.contentImage" class="suggested-image"

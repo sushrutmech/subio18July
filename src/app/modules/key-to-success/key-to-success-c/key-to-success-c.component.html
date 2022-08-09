@@ -44,72 +44,99 @@
 
 
             <div *ngIf="!tabIndex"  class="goalContainer">
-              <mat-card-title class="d-flex justify-content-between">
-                <div class="d-flex gap-1">
-
-                  <div *ngIf="item.successGoalTypeId==1" class="titleCard">
-                    My Goals
+              <div class="d-flex flex-row " >
+                <mat-card-title class="d-flex justify-content-between">
+                  <div class="d-flex gap-1">
+  
+                    <div *ngIf="item.successGoalTypeId==1" class="MyGoals">
+                       
+                      <img  src="./assets/images/PERSONAL GOAL.png"> 
+                    </div>
+                    <div *ngIf="item.successGoalTypeId==2" class="MyBusinessGoals">
+                      
+                      <img  src="./assets/images/BUSINESS GOAL.png">
+                    </div>
+                    <div *ngIf="item.successGoalTypeId==3" class="MyTeamGoals">
+                      
+                      <img  src="./assets/images/gAsses.svg">
+                    </div>
+  
+                    
                   </div>
-                  <div *ngIf="item.successGoalTypeId==2" class="titleCardBuisnessGoal">
-                    My Business Goals
+                  <div style="position: absolute;right: 1%;top: 35%;">
+                    <!-- <img src="./assets/images/Vector.svg" alt="" srcset=""> -->
                   </div>
-                  <div *ngIf="item.successGoalTypeId==3" class="titleCardTeamGoal">
-                    My Team Goals
+                </mat-card-title>
+                <div class="col-8">
+                  <div class="goal-item d-flex align-items-top" [class.active]="item === selectedSuccessGoal"
+                    (click)="setSuccessGoal(item)">
+                    <!-- <img [src]="item.icon | appImage" *ngIf="item.icon" class="mr-1" /> -->
+                    <span class="goalTitle">{{item.goal}}</span>
                   </div>
-
+                  <div class="goalDescription" >
+                    <p>{{item.goalDescription}}</p>
+                  </div>
+                </div>
+                <div>
                   <div class="progressStatusCard">
                     In Progress
                   </div>
                 </div>
-                <div style="position: absolute;right: 1%;top: 35%;">
-                  <!-- <img src="./assets/images/Vector.svg" alt="" srcset=""> -->
-                </div>
-              </mat-card-title>
-              <div class="col-8">
-                <div class="goal-item d-flex align-items-top" [class.active]="item === selectedSuccessGoal"
-                  (click)="setSuccessGoal(item)">
-                  <!-- <img [src]="item.icon | appImage" *ngIf="item.icon" class="mr-1" /> -->
-                  <span>{{item.goal}}</span>
-                </div>
+
               </div>
+             
            
             </div>
 
            
 
             <div class="goalContainer" *ngIf="tabIndex && item.successGoalTypeId===tabIndex">
-              <mat-card-title class="d-flex justify-content-between">
-                <div class="d-flex gap-1">
-                  <div class="">
-                    <div [ngSwitch]="tabIndex">
-                      <div *ngSwitchCase=1 class="titleCard">My Goals</div>
-                      <div *ngSwitchCase=2 class="titleCardBuisnessGoal">My Buisness Goals</div>
-                      <div *ngSwitchCase=3 class="titleCardTeamGoal">My Team Goals</div>
-                      <div *ngSwitchDefault>no goals</div>
+              <div class="d-flex flex-row " >
+                <mat-card-title class="d-flex justify-content-between">
+                  <div class="d-flex gap-1">
+                    <div class="">
+                      <div [ngSwitch]="tabIndex">
+                        <div *ngSwitchCase=1 class="MyGoals">
+                          <img  src="./assets/images/PERSONAL GOAL.png">
+                        </div>
+                        <div *ngSwitchCase=2 class="MyBuisnessGoals">
+                          <img  src="./assets/images/BUSINESS GOAL.png">
+                        </div>
+                        <div *ngSwitchCase=3 class="MyTeamGoals">
+                          <img  src="./assets/images/gAsses.svg">
+                        </div>
+                        <div *ngSwitchDefault>no goals</div>
+                      </div>
+                     
                     </div>
                    
+                   
                   </div>
-                 
+                  <div style="position: absolute;right: 1%;top: 35%;">
+                    <!-- <img src="./assets/images/Vector.svg" alt="" srcset=""> -->
+                  </div>
+                </mat-card-title>
+                <div class="col-8 " >
+                  <div class="goal-item d-flex align-items-top" [class.active]="item === selectedSuccessGoal"
+                    (click)="setSuccessGoal(item)">
+                    <!-- <img [src]="item.icon | appImage" *ngIf="item.icon" class="mr-1" /> -->
+                    <span>{{item.goal}}</span>
+                  </div>
+                  <div class="goalDescription" >
+                    <p>{{item.goalDescription}}</p>
+                  </div>
+                </div>
+                <div class="tag">
                   <div class="progressStatusCard">
                     In Progress
                   </div>
+
                 </div>
-                <div style="position: absolute;right: 1%;top: 35%;">
-                  <!-- <img src="./assets/images/Vector.svg" alt="" srcset=""> -->
-                </div>
-              </mat-card-title>
-              <div class="col-8 " >
-                <div class="goal-item d-flex align-items-top" [class.active]="item === selectedSuccessGoal"
-                  (click)="setSuccessGoal(item)">
-                  <!-- <img [src]="item.icon | appImage" *ngIf="item.icon" class="mr-1" /> -->
-                  <span>{{item.goal}}</span>
-                </div>
+
               </div>
-            
+        
             </div>
           
-          
-
         </div>
       
 

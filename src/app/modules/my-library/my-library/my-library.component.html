@@ -49,39 +49,45 @@
                         <span class="fa fa-check font-size-24px"></span>
                     </div>
 
-                    <div *ngIf="single.isAlreadyReadingList === false" style="position: absolute !important;right: 36px;
-                    top: 26px !important;
-                    z-index: 999;
-                    color: #fff;
-                    height: 41px;
-                    border-radius: 50%;
-                    background-color: #959e9a !important;" class=" position-absolute top-0 translate-middle p-2 ">
+                    <div *ngIf="single.isAlreadyReadingList === false" style="
+                  position: absolute !important;
+                  right: 4px;
+                  top: 8px !important;
+                  z-index: 999;
+                  color: #fff;
+                   height: 41px;
+                   width: 41px;
+                    
+                     ">
 
 
-                        <div class="saveIcon">
+                        <div class="">
                             <div (click)="addToReadingList(single.contentID)">
-                                <img src="../../../../assets/images/saveIcon.svg" alt="">
+                                <img width="40px" height="40px" src="../../../../assets/images/saveIcon.svg" alt="">
 
                             </div>
-                           
+
 
                         </div>
-                    
+
                     </div>
+
+                    <div *ngIf="single.isAlreadyReadingList && single.isRead===false" style="
+                  position: absolute !important;
+    right: 4px;
+    top: 8px !important;
+    z-index: 999;
+    color: #fff;
+    height: 41px;
+    width: 41px;
                    
-                   <div *ngIf="single.isAlreadyReadingList && single.isRead===false" style="position: absolute !important;right: 36px;
-                    top: 26px !important;
-                    z-index: 999;
-                    color: #fff;
-                    height: 41px;
-                    border-radius: 50%;
-                    background-color: #959e9a !important;" class=" position-absolute top-0 translate-middle p-2 ">
+                    ">
 
 
-                        <div class="saveIcon">
-                           
+                        <div class="">
+
                             <div *ngIf="single.isAlreadyReadingList && single.isRead===false">
-                                <img src="../../../../assets/images/saveIconFill.svg" alt="">
+                                <img width="40px" height="40px" style="fill: #0198E0;" src="../../../../assets/images/saveIconBlue.svg" alt="">
 
                             </div>
 
@@ -96,10 +102,10 @@
 
                             <div class="overlay-content">
                                 <div class="round-button" (click)="handleWatchVideo(single)">
-                                    <i class="" aria-hidden="true"
-                                        *ngIf="single.contentTypeName=='Video'"> <img src="./assets/images/playIcon.svg" alt=""> </i>
-                                    <i class="" aria-hidden="true"
-                                        *ngIf="single.contentTypeName== 'PDF Document'"> <img src="./assets/images/pdfIcon.svg" alt=""> </i>
+                                    <i class="" aria-hidden="true" *ngIf="single.contentTypeName=='Video'"> <img
+                                            src="./assets/images/playIcon.svg" alt=""> </i>
+                                    <i class="" aria-hidden="true" *ngIf="single.contentTypeName== 'PDF Document'"> <img
+                                            src="./assets/images/pdfIcon.svg" alt=""> </i>
                                 </div>
                             </div>
                             <img [src]="'data:image/png;base64,' + single.contentImage" class="suggested-image"
