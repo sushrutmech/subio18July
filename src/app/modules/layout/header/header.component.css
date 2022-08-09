@@ -160,8 +160,12 @@
 
 
 .cardNextDropInSession{
-  
-  width:200px;
-  height:200px;
+  width:350px;
 }
+
+.notificationDrop .dropdown-menu{
+  right: 0px !important;
+  left: unset !important;
+}
+
 /*  */

@@ -31,7 +31,7 @@
         </div>
         <div class="btmFlex d-flex">
 
-            <div class="marPad0 dropdown" (click)="coursedata()">
+            <div class="marPad0 notificationDrop dropdown" (click)="coursedata()">
                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
                     aria-expanded="false">
                     <img class="dropdown-toggle" src="./assets/componnets/notificatioBtn.svg" alt="sv" width="50"
@@ -42,23 +42,25 @@
                        <div class="cardNextDropInSession">
 
                         
-                        <div>
-                            <strong>{{courseDate | date:'MM' }}</strong>
+                           <div style="color: #0198e0;font-size: 20px;margin-bottom: 4px;">
+                               <div>{{courseDate | date : 'EEEE'}}</div>
+   
+                           </div>
+                        <div style="display:flex;margin-bottom: 8px;">
+                            <div>
+                                <strong>{{courseDate | date:'MM' }}/</strong>
+                            </div>
+                            <div>
+                                <strong>{{courseDate | date : 'd'}}/</strong>
+                            </div>
+                            <div>
+                                <strong>{{courseDate | date : 'yyyy'}}</strong>
+                            </div>
                         </div>
-                        <div>
-                            <strong>{{courseDate | date : 'd'}}</strong>
-                        </div>
-                        <div>
-                            <strong>{{courseDate | date : 'EEEE'}}</strong>
-
-                        </div>
-                        <div>
-                            <strong>{{courseDate | date : 'yyyy'}}</strong>
-                        </div>
-                        <div>TIMINGS</div>
-                        <div>
+                        <div style="color: #0198e0;font-size: 20px;margin-bottom: 4px;">TIMINGS</div>
+                        <strong>
                            {{courseDate | date : 'hh:mma'}} to  {{courseDateEnd | date : 'hh:mma'}}
-                        </div>
+                        </strong>
                        
                        </div>
                     </div>
