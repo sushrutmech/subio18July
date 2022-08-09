@@ -16,9 +16,9 @@
           updateComment.emit({ text: $event, commentId: comment.id })
         " (handleCancel)="setActiveComment.emit(null)"></comment-form>
     <div class="comment-actions">
-      <div>{{comment.likeArr.length}}</div>
+      <!-- <div>{{comment.likeArr.length}}</div> -->
       <div class="comment-action" (click)="likeComment.emit(comment.id)">Like</div>
-      <div>{{comment.dislikeArr.length}}</div>
+      <!-- <div>{{comment.dislikeArr.length}}</div> -->
       <div class="comment-action" (click)="disLikeComment.emit(comment.id)">dislike</div>
       <div *ngIf="canReply" class="comment-action" (click)="
             setActiveComment.emit({
