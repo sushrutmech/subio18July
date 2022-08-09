@@ -116,3 +116,9 @@
   .fw-200 {
     font-weight: 100;
   }
+  ::ng-deep {
+    .matTab .mat-tab-body-content {
+      padding-top: 8px ;
+    }
+  
+  }

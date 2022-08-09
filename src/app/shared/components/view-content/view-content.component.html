@@ -3,7 +3,7 @@
     <div class="col-lg-9 col-md-10 col-xl-7 mx-auto" *ngIf="isDataLoaded">
       <div class="h-100 justify-content-between">
         <div class="d-flex justify-content-between align-items-center">
-          <button class=" p-0 btn btn-link cursor-pointer text-theme-blue txt-decoration-underline fw-200" (click)="backToLibraryClick()">Return to search results</button>
+          <button style="margin-left: 16px;" class=" p-0 btn btn-link cursor-pointer text-theme-blue txt-decoration-underline fw-200" (click)="backToLibraryClick()">Return to search results</button>
 
           <div class="close-button" (click)="backToLibraryClick()">
             <i class="icon icon-close fa-2x"></i>
@@ -11,8 +11,12 @@
         </div>
         <div class="d-flex  flex-column justify-content-around py-3">
           <div class="video-header mb-3">
-            <h3>{{selectedContent.contentName}}</h3>
-            <label>{{selectedContent.contentBlurb}}</label>
+            <h3 style="font-weight: 500;
+            font-size: 20px;
+            line-height: 120%;
+            color: #0198E0;
+            margin-left: 16px;">{{selectedContent.contentName}}</h3>
+            <label style="margin-left: 16px;">{{selectedContent.contentBlurb}}</label>
           </div>
           <div class="video-player-wrapper">
             <app-video-player *ngIf="selectedContent.contentTypeName == 'Video'" [src]="selectedContent.contentLocation"
@@ -25,7 +29,8 @@
 
             </app-pdf-viewer>
           </div>
-          <div class="d-flex justify-content-between">
+          <div style="padding-top: 10px;
+          align-items: baseline;" class="d-flex justify-content-between">
             <div>
               <div *ngIf="selectedContent.rating > 0">
                 <rating [(ngModel)]="selectedContent.rating" class="custom-rating-star" [max]="selectedContent.rating"
@@ -69,7 +74,7 @@
 
     </div>
 
-    <div class="matTab">
+    <div class="col-lg-9 col-md-10 col-xl-7 mx-auto matTab">
       <mat-tab-group mat-align-tabs="start">
         <mat-tab label="Transcript">
           Content 1
