@@ -180,6 +180,14 @@ background: #0198E0;
   position: absolute;
   cursor: pointer;
 }
+::ng-deep{
+  .container3 .homeLib{
+    padding: 0px !important;
+  }
+  .container3 .searchClassContainer{
+    padding: 0px !important;
+  }
+}
 
 .overlay {
   position: relative;
