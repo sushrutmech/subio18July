@@ -39,7 +39,7 @@
 .setup-state {
   height: 30px;
   width: 30px;
-  background-color: #2f5597;
+  background-color: #0DCAF0;
   color: white;
   border-radius: 50%;
   font-weight: 500;
@@ -125,4 +125,11 @@
   line-height: 150%;
   color: #212529;
   padding: 0px 16px 64px 16px;
+}
+
+::ng-deep {
+  .matTab .mat-tab-body-content {
+    padding-top: 8px ;
+  }
+
 }
