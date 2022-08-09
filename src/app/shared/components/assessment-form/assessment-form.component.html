@@ -45,7 +45,7 @@
             <ng-wizard [config]="config" (stepChanged)="stepChanged($event)">
 
               <ng-wizard-step *ngFor="let i of Arr(totalPages).fill(1); let indx = index" [title]="'Step '+ (indx+1) +''"
-                [description]="'Step '+ (indx+1) +' description'+(questionText)">
+                [description]="questionText">
                 <!-- <span style="margin-bottom: 8px;">Step {{indx+1}} content</span> -->
                 <div class="row ratingAssesChild" (keypress)="eventHandler($event, question)"
                   *ngFor="let question of questionList; let questionIndx = index">
