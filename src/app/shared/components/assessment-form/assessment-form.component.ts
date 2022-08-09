@@ -146,6 +146,17 @@ export class AssessmentFormComponent implements OnInit {
     }
   }
 
+  getPageItems(indx : any){
+    let pageItem
+    if(indx === this.totalPages-1){
+      let lastNumberRecord = this.questionList.length%10
+      pageItem = (((indx+1)*10)-9).toString()+ ' to ' + (((indx+1)*10)-(10-lastNumberRecord)).toString()
+    } else {
+      pageItem = (((indx+1)*10)-9).toString()+ ' to ' + ((indx+1)*10).toString()
+    }
+    return pageItem;
+  }
+
   eventHandler(event: KeyboardEvent, item: QuestionList) {
     switch (event.code) {
       case "Numpad1":
