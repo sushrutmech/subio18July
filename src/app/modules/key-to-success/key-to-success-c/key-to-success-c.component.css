@@ -1,6 +1,6 @@
 .goal-item,
 .goal-item-value {
-  padding: 8px 0px 16px 0px;
+  padding: 12px 0px 12px 0px;
 }
 
 .addGoalContainer {
@@ -147,6 +147,9 @@
   padding: 0px 8px;
   height: 21px;
   margin-left: 13px;
+  position: absolute;
+    right: 1%;
+    top: 35%;
 }
 
 .goal-item>span {

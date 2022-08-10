@@ -159,7 +159,7 @@
                               In Progress
                             </div>
                             <div (click)="openDialog(item.userSuccessID ,item)"
-                            style="position: absolute;right: 1%;top: 35%;">
+                            style="position: absolute;right: 1%;top: 35%;" >
                             <img class="keyImg" src="./assets/images/Vector.svg" alt="" srcset="">
 
                           </div>
@@ -178,7 +178,7 @@
 
                 <div class=" overflow-auto pr-lg-1 d-lg-block d-block d-sm-flex" *ngIf="successGoalList?.length==0">
                   <div class="" *ngIf="isDataLoaded">
-                    <div> <h3>Add Your First Goal</h3>  </div>
+                    <div style="padding-top: 4px;" > <h3>Add Your First Goal</h3>  </div>
                   </div>
                 </div>
 
@@ -191,12 +191,12 @@
                 <div class="allGoalList" *ngIf="isDataLoaded">
                   <mat-card *ngFor="let item of MyGoalList">
 
-                    <div class="listMayGoals d-flex justify-content-between">
+                    <div class="listMayGoals d-flex ">
 
-                      <mat-card-title class="d-flex justify-content-between">
+                      <mat-card-title class="d-flex">
                         <div class="d-flex gap-1">
                           <div class="MyGoal">
-                             <img src="./assets/images/PERSONAL GOAL.png">
+                             <img style="width: 60px;" src="./assets/images/PERSONAL GOAL.png">
                           </div>
               
                         </div>
@@ -216,7 +216,8 @@
                       <div class="progressStatusCard">
                         In Progress
                       </div>
-                      <div (click)="openDialog(item.userSuccessID ,item)">
+                      <div (click)="openDialog(item.userSuccessID ,item)"
+                      style="position: absolute;right: 1%;top: 35%;" >
                         <img class="keyImg" src="./assets/images/Vector.svg" alt="" srcset="">
                       </div>
 
@@ -227,7 +228,7 @@
 
                 <div class=" overflow-auto pr-lg-1 d-lg-block d-block d-sm-flex" *ngIf="MyGoalList?.length==0">
                   <div class="" *ngIf="isDataLoaded">
-                    <div> <h3>Add Your First My Goal </h3> </div>
+                    <div style="padding-top: 4px;" > <h3>Add Your First My Goal </h3> </div>
                   </div>
                 </div>
               </mat-tab>
@@ -237,12 +238,12 @@
                   <mat-card *ngFor="let item of teamGoalList">
 
 
-                    <div class="teamGoalList d-flex justify-content-between">
+                    <div class="teamGoalList d-flex ">
 
-                      <mat-card-title class="d-flex justify-content-between">
+                      <mat-card-title class="d-flex ">
                         <div class="d-flex gap-1">
                           <div class="MyTeamGoals">
-                            <img src="./assets/images/gAsses.svg">
+                            <img style="width: 60px;" src="./assets/images/gAsses.svg">
                           </div>
                           
                         </div>
@@ -262,7 +263,8 @@
                       <div class="progressStatusCard">
                         In Progress
                       </div>
-                      <div (click)="openDialog(item.userSuccessID ,item)">
+                      <div (click)="openDialog(item.userSuccessID ,item)"
+                      style="position: absolute;right: 1%;top: 35%;" >
                         <img class="keyImg" src="./assets/images/Vector.svg" alt="" srcset="">
                       </div>
 
@@ -276,7 +278,7 @@
 
                 <div class=" overflow-auto pr-lg-1 d-lg-block d-block d-sm-flex" *ngIf="teamGoalList?.length==0">
                   <div class="" *ngIf="isDataLoaded">
-                    <div><h3>Add Your First My team goal </h3> </div>
+                    <div style="padding-top: 4px;" ><h3>Add Your First My team goals </h3> </div>
                   </div>
                 </div>
               </mat-tab>
@@ -286,12 +288,12 @@
                 <div class="allGoalList" *ngIf="isDataLoaded">
                   <mat-card *ngFor="let item of BusinessGoalList">
 
-                    <div class="businessGoalList d-flex justify-content-between">
+                    <div class="businessGoalList d-flex ">
 
-                      <mat-card-title class="d-flex justify-content-between">
+                      <mat-card-title class="d-flex">
                         <div class="d-flex gap-1">
                           <div class="MyBusinessGoals">
-                            <img src="./assets/images/BUSINESS GOAL.png">
+                            <img style="width: 60px;" src="./assets/images/BUSINESS GOAL.png">
                           </div>
                           
                         </div>
@@ -311,7 +313,8 @@
                       <div class="progressStatusCard">
                         In Progress
                       </div>
-                      <div (click)="openDialog(item.userSuccessID ,item)">
+                      <div (click)="openDialog(item.userSuccessID ,item)"
+                      style="position: absolute;right: 1%;top: 35%;" >
                         <img class="keyImg" src="./assets/images/Vector.svg" alt="" srcset="">
                       </div>
 
@@ -324,7 +327,7 @@
 
                 <div class=" overflow-auto pr-lg-1 d-lg-block d-block d-sm-flex" *ngIf="BusinessGoalList?.length==0">
                   <div class="" *ngIf="isDataLoaded">
-                    <div> <h3>Add Your First My BusinessGoals </h3> </div>
+                    <div style="padding-top: 4px;" > <h3>Add Your First My BusinessGoals </h3> </div>
                   </div>
                 </div>
 
@@ -480,8 +483,8 @@
                     </div>
                   </div>
                   <div class="overflow-auto pr-lg-1 d-lg-block d-block d-sm-flex" *ngIf="suggestedList?.length==0">
-                    <div *ngIf="isDataLoaded">
-                      <span class="text-muted">Nothing in your suggested reading list</span>
+                    <div style="padding-top: 8px;" *ngIf="isDataLoaded">
+                      <span class="text-muted">Nothing in your suggested viewing list</span>
                     </div>
 
                   </div>
@@ -584,7 +587,7 @@
         <span class="goalLabel">My Goals</span>
       </ng-template>
 
-      <div class="container containerGoal">
+      <div class=" containerGoal">
         <div class="row">
           <app-key-success-container></app-key-success-container>
 

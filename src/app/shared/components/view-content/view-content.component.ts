@@ -8,6 +8,7 @@ import { LibraryListInstance , SearchLibrary } from '../../../shared/interfaces/
 import { MyLibraryService } from '../../../modules/my-library/my-library.service'
 import { AuthService } from 'src/app/appServices/auth.service';
 import { User } from '../../interfaces/user';
+import { GlobleDataserviceService } from 'src/app/appServices/globle-dataservice.service';
 
 
 @Component({
@@ -27,11 +28,14 @@ export class ViewContentComponent implements OnInit {
   currentUserName:any;
   activeContentId:any;
   profilePic:any;
+  transcriptData:any=[];
+  ExerciseList:any=[];
 
   constructor(
     private myLibraryService: MyLibraryService,
     private spinner: NgxSpinnerService,
-    private authService: AuthService
+    private authService: AuthService,
+    private _globledataService:GlobleDataserviceService
   ) {
     this.userSession = this.authService.userSession.user;
     this.currentUserId=this.userSession.userID
@@ -51,6 +55,8 @@ export class ViewContentComponent implements OnInit {
   ngOnInit(): void {
     this.handleReadContent();
     console.log("app view content is called ....")
+    this.GetContentExerciseList();
+    this.GetContentList(); 
   }
 
   ngOnChanges(changes: any): void {
@@ -93,5 +99,48 @@ export class ViewContentComponent implements OnInit {
     debugger
     this.userRating= ev.newValue;
   }
+
+  GetContentExerciseList(){
+    this.spinner.show();
+    this._globledataService.GetContentExerciseList(this.currentUserId).subscribe(
+      {
+        next:(res:any)=>{
+          //console.log("Exercise list ", res)
+          this.ExerciseList=res
+          //console.log("exerxide ++ data " , this.ExerciseList)
+          this.spinner.hide();
+         
+        },
+        error:(res:any)=>{
+          console.log("error,,,, exersie list " , res)
+          this.spinner.hide();
+        }
+      }
+    )
+
+  }
+
+  GetContentList(){
+    this.spinner.show();
+    this._globledataService.getContentList(this.currentUserId).subscribe(
+      {
+        next:(res:any)=>{
+          //console.log("++++----", res)
+          this.transcriptData=  res.filter((x:any)=>{
+            return x.contentID==this.selectedContent.contentID
+          })
+          
+         // console.log("transcriptdata after sort" , this.transcriptData)
+          this.spinner.hide();
+        },
+        error:(res:any)=>{
+          console.log("error,,,," , res)
+          this.spinner.hide();
+        }
+      }
+    )
+
+  }
+  
 
 }
