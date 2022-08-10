@@ -54,10 +54,25 @@ justify-content: center;" class="animated fadeIn py-3">
       <div class="matTab">
         <mat-tab-group mat-align-tabs="start">
           <mat-tab label="Transcript">
-            Content 1
+
+            <h3> Transcript data is not available</h3>
+
+            <!-- <div *ngIf="transcriptData.length==0">
+              <h3> Transcript data is not available</h3>
+            </div>
+            <div *ngIf="transcriptData[0].transcript">
+              <h3>Transcript data available</h3>
+            </div> -->
+
           </mat-tab>
           <mat-tab label="Exercise">
-            Content 2
+
+            <div *ngIf="ExerciseList.length==0">
+              <h3>Exercise Data is not available</h3>
+            </div>
+            <div *ngIf="ExerciseList.length>0">
+              <h3>Exercise Data is available</h3>
+            </div>
           </mat-tab>
           <mat-tab label="Discussion">
             <!-- <app-commentbox></app-commentbox> -->

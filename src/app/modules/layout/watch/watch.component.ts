@@ -24,6 +24,8 @@ export class WatchComponent implements OnInit, OnChanges {
   currentUserName:any;
   activeContentId:any;
   profilePic:any;
+  transcriptData:any=[];
+  ExerciseList:any=[];
 
 
   constructor(
@@ -31,14 +33,15 @@ export class WatchComponent implements OnInit, OnChanges {
     private spinner: NgxSpinnerService,
     private route: ActivatedRoute,
     private globalDataSevice: GlobleDataserviceService,
-    private authService: AuthService
+    private authService: AuthService,
+    private _globledataService:GlobleDataserviceService
   ) {
 
     this.userSession = this.authService.userSession.user;
     this.currentUserId=this.userSession.userID
     this.currentUserName=this.userSession.firstName 
     this.profilePic=this.userSession.profilePic
-    console.log("profile ...." ,this.userSession.profilePic )
+    //console.log("profile ...." ,this.userSession.profilePic )
    
   }
 
@@ -68,6 +71,8 @@ export class WatchComponent implements OnInit, OnChanges {
     console.log("user id //**//**" ,this.activeContentId )
     console.log("form watch now **//--" , this.contentDescriptionJson.contentID)
     console.log("url .. ", this.contentDescriptionJson.contentLocation) 
+    this.GetContentExerciseList();
+    this.GetContentList(); 
 
 
 
@@ -148,6 +153,49 @@ export class WatchComponent implements OnInit, OnChanges {
       this.isDataLoaded = true;
       this.spinner.hide();
     })
+  }
+
+  GetContentExerciseList(){
+    this.spinner.show();
+    this._globledataService.GetContentExerciseList(this.currentUserId).subscribe(
+      {
+        next:(res:any)=>{
+          console.log("Exercise list ", res)
+          this.ExerciseList=res
+          console.log("exerxide ++ data " , this.ExerciseList)
+          this.spinner.hide();
+         
+        },
+        error:(res:any)=>{
+          console.log("error,,,, exersie list " , res)
+          this.spinner.hide();
+        }
+      }
+    )
+
+  }
+
+  GetContentList(){
+    this.spinner.show();
+    this._globledataService.getContentList(this.currentUserId).subscribe(
+      {
+        next:(res:any)=>{
+          console.log("++++----", res )
+          console.log("content id " , this.activeContentId)
+          this.transcriptData=  res.filter((x:any)=>{
+            return x.contentID==this.activeContentId
+          })
+          
+          console.log("transcriptdata after sort" , this.transcriptData)
+          this.spinner.hide();
+        },
+        error:(res:any)=>{
+          console.log("error,,,," , res)
+          this.spinner.hide();
+        }
+      }
+    )
+
   }
 
 
