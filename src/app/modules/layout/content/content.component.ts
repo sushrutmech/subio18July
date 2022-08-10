@@ -76,7 +76,7 @@ export class ContentComponent implements OnInit, OnDestroy {
   homeContentLocalStorage: any;
   watchTimePercentage: number = 0;
 
-  tabIndex:any
+  tabIndex:any=0;
   keyDisplay:boolean=false;
   keyDisplayActiveId:number=0;
   userSuccessGoalId:any;

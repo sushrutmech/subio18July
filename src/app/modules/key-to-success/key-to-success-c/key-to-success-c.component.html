@@ -36,116 +36,124 @@
     </div>
     <div class="row">
       <div class="col" *ngIf="successGoalList.length > 0">
-          <div style="width: 99%;" class="row" *ngFor="let item of successGoalList">
-          
+        <div style="width: 99%;" class="row" *ngFor="let item of successGoalList">
 
-          <!-- <mat-card class="goalContainer"  *ngIf="item.goal.length>0" >
-          </mat-card> -->
+          <div *ngIf="!tabIndex" class="goalContainer">
+            <div class="d-flex flex-row ">
+              <mat-card-title class="d-flex justify-content-between">
+                <div class="d-flex gap-1">
+
+                  <div *ngIf="item.successGoalTypeId==1" class="MyGoals">
+
+                    <img src="./assets/images/PERSONAL GOAL.png">
+                  </div>
+                  <div *ngIf="item.successGoalTypeId==2" class="MyBusinessGoals">
+
+                    <img src="./assets/images/BUSINESS GOAL.png">
+                  </div>
+                  <div *ngIf="item.successGoalTypeId==3" class="MyTeamGoals">
+
+                    <img src="./assets/images/gAsses.svg">
+                  </div>
 
 
-            <div *ngIf="!tabIndex"  class="goalContainer">
-              <div class="d-flex flex-row " >
-                <mat-card-title class="d-flex justify-content-between">
-                  <div class="d-flex gap-1">
-  
-                    <div *ngIf="item.successGoalTypeId==1" class="MyGoals">
-                       
-                      <img  src="./assets/images/PERSONAL GOAL.png"> 
-                    </div>
-                    <div *ngIf="item.successGoalTypeId==2" class="MyBusinessGoals">
-                      
-                      <img  src="./assets/images/BUSINESS GOAL.png">
-                    </div>
-                    <div *ngIf="item.successGoalTypeId==3" class="MyTeamGoals">
-                      
-                      <img  src="./assets/images/gAsses.svg">
-                    </div>
-  
-                    
-                  </div>
-                  <div style="position: absolute;right: 1%;top: 35%;">
-                    <!-- <img src="./assets/images/Vector.svg" alt="" srcset=""> -->
-                  </div>
-                </mat-card-title>
-                <div class="col-8">
-                  <div class="goal-item d-flex align-items-top" [class.active]="item === selectedSuccessGoal"
-                    (click)="setSuccessGoal(item)">
-                    <!-- <img [src]="item.icon | appImage" *ngIf="item.icon" class="mr-1" /> -->
-                    <span class="goalTitle">{{item.goal}}</span>
-                  </div>
-                  <div class="goalDescription" >
-                    <p>{{item.goalDescription}}</p>
-                  </div>
                 </div>
-                <div>
-                  <div class="progressStatusCard">
-                    In Progress
-                  </div>
+                <div style="position: absolute;right: 1%;top: 35%;">
+                  <!-- <img src="./assets/images/Vector.svg" alt="" srcset=""> -->
                 </div>
-
+              </mat-card-title>
+              <div class="col-8">
+                <div class="goal-item d-flex align-items-top" [class.active]="item === selectedSuccessGoal"
+                  (click)="setSuccessGoal(item)">
+                  <!-- <img [src]="item.icon | appImage" *ngIf="item.icon" class="mr-1" /> -->
+                  <span class="goalTitle">{{item.goal}}</span>
+                </div>
+                <div class="goalDescription">
+                  <p>{{item.goalDescription}}</p>
+                </div>
               </div>
-             
-           
+              <div>
+                <div class="progressStatusCard">
+                  In Progress
+                </div>
+              </div>
+
             </div>
 
-           
 
-            <div class="goalContainer" *ngIf="tabIndex && item.successGoalTypeId===tabIndex">
-              <div class="d-flex flex-row " >
-                <mat-card-title class="d-flex justify-content-between">
-                  <div class="d-flex gap-1">
-                    <div class="">
-                      <div [ngSwitch]="tabIndex">
-                        <div *ngSwitchCase=1 class="MyGoals">
-                          <img  src="./assets/images/PERSONAL GOAL.png">
-                        </div>
-                        <div *ngSwitchCase=2 class="MyBuisnessGoals">
-                          <img  src="./assets/images/BUSINESS GOAL.png">
-                        </div>
-                        <div *ngSwitchCase=3 class="MyTeamGoals">
-                          <img  src="./assets/images/gAsses.svg">
-                        </div>
-                        <div *ngSwitchDefault>no goals</div>
+          </div>
+
+
+
+          <div class="goalContainer" *ngIf="tabIndex && item.successGoalTypeId===tabIndex">
+            <div class="d-flex flex-row ">
+              <mat-card-title class="d-flex justify-content-between">
+                <div class="d-flex gap-1">
+                  <div class="">
+                    <div [ngSwitch]="tabIndex">
+                      <div *ngSwitchCase=1 class="MyGoals">
+                        <img src="./assets/images/PERSONAL GOAL.png">
                       </div>
-                     
+                      <div *ngSwitchCase=2 class="MyBuisnessGoals">
+                        <img src="./assets/images/BUSINESS GOAL.png">
+                      </div>
+                      <div *ngSwitchCase=3 class="MyTeamGoals">
+                        <img src="./assets/images/gAsses.svg">
+                      </div>
+                      <div *ngSwitchDefault>no goals</div>
                     </div>
-                   
-                   
-                  </div>
-                  <div style="position: absolute;right: 1%;top: 35%;">
-                    <!-- <img src="./assets/images/Vector.svg" alt="" srcset=""> -->
-                  </div>
-                </mat-card-title>
-                <div class="col-8 " >
-                  <div class="goal-item d-flex align-items-top" [class.active]="item === selectedSuccessGoal"
-                    (click)="setSuccessGoal(item)">
-                    <!-- <img [src]="item.icon | appImage" *ngIf="item.icon" class="mr-1" /> -->
-                    <span>{{item.goal}}</span>
-                  </div>
-                  <div class="goalDescription" >
-                    <p>{{item.goalDescription}}</p>
-                  </div>
-                </div>
-                <div class="tag">
-                  <div class="progressStatusCard">
-                    In Progress
+
                   </div>
 
+
+                </div>
+                <div style="position: absolute;right: 1%;top: 35%;">
+                  <!-- <img src="./assets/images/Vector.svg" alt="" srcset=""> -->
+                </div>
+              </mat-card-title>
+              <div class="col-8 ">
+                <div class="goal-item d-flex align-items-top" [class.active]="item === selectedSuccessGoal"
+                  (click)="setSuccessGoal(item)">
+                  <!-- <img [src]="item.icon | appImage" *ngIf="item.icon" class="mr-1" /> -->
+                  <span> {{item.goal}} </span>
+                </div>
+                <div class="goalDescription">
+                  <p>{{item.goalDescription}}</p>
+                </div>
+              </div>
+              <div class="tag">
+                <div class="progressStatusCard">
+                  In Progress
                 </div>
 
               </div>
-        
+
             </div>
-          
+
+
+          </div>
+
         </div>
-      
-
-
-
 
       </div>
+      <div *ngIf="MyGoalList.length===0 && tabIndex==1">
+        <h3>add your first my goal </h3>
+      </div>
+      <div *ngIf="BusinessGoalList.length===0 && tabIndex==2">
+        <h3>add your first My Business Goals </h3>
+      </div>
+      <div *ngIf="teamGoalList.length===0 && tabIndex==3">
+        <h3>add your first My Team Goals</h3>
+      </div>
+      <div *ngIf="successGoalList.length==0">
+        <h3>Add your first Goal</h3>
+
+      </div>
+
+
       <div class="col-md-12 d-flex justify-content-center">
-        <button style="display: none;" class="col-3 btn btn-outline-primary btn-sm addGoalBtn" routerLink="/key-to-success/goal">
+        <button style="display: none;" class="col-3 btn btn-outline-primary btn-sm addGoalBtn"
+          routerLink="/key-to-success/goal">
           <i class="fa fa-crosshairs"></i>
           Add New Goal
         </button>
