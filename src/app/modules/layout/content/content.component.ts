@@ -382,6 +382,7 @@ this.timerCourse= setInterval(() => {
 
 
   setSuccessGoal(item: SuccessGoal) {
+    console.log("goal data item " , item)
     this.selectedSuccessGoal = item;
   }
 
