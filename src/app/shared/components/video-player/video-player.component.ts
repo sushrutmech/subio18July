@@ -1,7 +1,8 @@
 
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { VgApiService } from '@videogular/ngx-videogular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { MyLibraryService } from 'src/app/modules/my-library/my-library.service';
 
 @Component({
@@ -9,11 +10,13 @@ import { MyLibraryService } from 'src/app/modules/my-library/my-library.service'
   templateUrl: './video-player.component.html',
   styleUrls: ['./video-player.component.scss']
 })
-export class VideoPlayerComponent implements OnInit  {
+export class VideoPlayerComponent implements OnInit,OnDestroy  {
 
   @Input() src:any;
   @Input() contentDescriptionJson:any;
   @Output() onVideoEnd: EventEmitter<any> = new EventEmitter();
+  @Input() openFrom:any;
+  @Input() closeVideofrom:boolean=false;
   contentId:any;
   current: any
   videoPlayer!: VgApiService;
@@ -24,17 +27,20 @@ export class VideoPlayerComponent implements OnInit  {
   homeContentFromLocalJson:any;
   updateHomeContent:any;
   homeContent: string = "homeContentUpdated"
+  t2:any;
 
 
 
 
   constructor(
     public router: Router,
-    private myLibraryService: MyLibraryService
+    private myLibraryService: MyLibraryService,
+    private spinner: NgxSpinnerService,
   ) { }
 
   ngOnInit(): void {
     this.contentId=this.contentDescriptionJson.contentID
+    console.log("content description from view content" , this.contentDescriptionJson)
     this.getHomeContentLocalStorage()
     console.log("form video player component " ,this.contentId )
     this.myLibraryService.getContentList2().subscribe(res=>{
@@ -46,6 +52,13 @@ export class VideoPlayerComponent implements OnInit  {
 
   }
 
+  ngOnDestroy(): void {
+    console.log("ng on destroy is called .....++++" , "id-",this.contentId, "time-",this.currentTimeVideo)
+    this.addToMarkContentStarted(this.contentId,Math.floor(this.currentTimeVideo))
+    this.handleReadContent()
+    clearInterval(this.t2)
+  }
+
   addToMarkContentStarted(contentId:any , PlayTime:any){
     this.myLibraryService.markContentSarted(contentId , PlayTime).subscribe(res=>{
       console.log("resuslt " , res)
@@ -55,13 +68,28 @@ export class VideoPlayerComponent implements OnInit  {
     })
   }
 
+  handleReadContent() {
+    this.spinner.show();
+    this.myLibraryService.markContentAsRead(this.contentId).subscribe(result => {
+      console.log("response from add to readlist" , result)
+      this.spinner.hide();
+    })
+  }
+
+ 
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['src'] && changes['src'].currentValue) {
       this.src = changes['src'].currentValue;
     }
   }
 
-
+  markContentStartedForLibrary(){
+    console.log("library time start is called")
+    this.currentTimeVideo = this.videoPlayer.getDefaultMedia().currentTime
+    console.log("**duration video", this.videoPlayer.getDefaultMedia().duration)
+    console.log("current time " , this.currentTimeVideo)
+  }
 
   videoPlayerInit(data: VgApiService) {
     this.videoPlayer = data;
@@ -69,6 +97,21 @@ export class VideoPlayerComponent implements OnInit  {
     this.videoPlayer.getDefaultMedia().subscriptions.ended.subscribe(this.handleVideoWatched.bind(this));
     //console.log("**" ,this.videoPlayer.getDefaultMedia())
     //console.log("time",this.videoPlayer.getDefaultMedia().currentTime)
+    console.log("openfrommmm", this.openFrom)
+    if (this.openFrom==="fromlibrary") {
+      console.log("closeVideofrom..value" , this.closeVideofrom)
+      this.t2 = setInterval(() => {
+        console.log("closeVideofrom..value" , this.closeVideofrom)
+        if (this.closeVideofrom==true) {
+          clearInterval(this.t2)
+        }
+        this.markContentStartedForLibrary()
+        
+       
+      },1000)
+      console.log("t2 time interval" , this.t2)
+      
+    }
     this.currentTimeVideo = this.videoPlayer.getDefaultMedia().currentTime
     console.log("**-*-", this.videoPlayer.getDefaultMedia().duration)
     //this clear interval stop settimeInterval after leaving the video page 
@@ -135,6 +178,7 @@ export class VideoPlayerComponent implements OnInit  {
   }
 
   handleVideoWatched() {
+   
     this.onVideoEnd.emit();
   }
 

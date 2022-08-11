@@ -30,6 +30,8 @@ export class ViewContentComponent implements OnInit {
   profilePic:any;
   transcriptData:any=[];
   ExerciseList:any=[];
+  fromlibrary:any="fromlibrary"
+  fromlibraryClose:boolean=false;
 
   constructor(
     private myLibraryService: MyLibraryService,
@@ -41,6 +43,7 @@ export class ViewContentComponent implements OnInit {
     this.currentUserId=this.userSession.userID
     this.currentUserName=this.userSession.firstName 
     this.profilePic=this.userSession.profilePic
+    this.fromlibrary="fromlibrary"
     console.log("profile ...." ,this.userSession.profilePic )
    }
 
@@ -55,6 +58,7 @@ export class ViewContentComponent implements OnInit {
   ngOnInit(): void {
     this.handleReadContent();
     console.log("app view content is called ....")
+    
     this.GetContentExerciseList();
     this.GetContentList(); 
   }
@@ -75,6 +79,8 @@ export class ViewContentComponent implements OnInit {
   }
 
   backToLibraryClick() {
+    this.fromlibraryClose=true
+    console.log("fromlibraryClose" , this.fromlibraryClose)
     this.onRequestClose.emit(true);
   }
   onShareRatingClick(review:any) {

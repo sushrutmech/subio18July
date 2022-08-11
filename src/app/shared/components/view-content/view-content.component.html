@@ -20,7 +20,7 @@
           </div>
           <div class="video-player-wrapper">
             <app-video-player *ngIf="selectedContent.contentTypeName == 'Video'" [src]="selectedContent.contentLocation"
-              (onVideoEnd)="handleReadContent()">
+              (onVideoEnd)="handleReadContent()" [contentDescriptionJson]="selectedContent" [openFrom]="fromlibrary" [closeVideofrom]="fromlibraryClose" >
 
             </app-video-player>
             

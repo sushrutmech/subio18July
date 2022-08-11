@@ -26,6 +26,7 @@ export class WatchComponent implements OnInit, OnChanges {
   profilePic:any;
   transcriptData:any=[];
   ExerciseList:any=[];
+  fromCourse:any="fromCourse"
 
 
   constructor(
@@ -41,6 +42,7 @@ export class WatchComponent implements OnInit, OnChanges {
     this.currentUserId=this.userSession.userID
     this.currentUserName=this.userSession.firstName 
     this.profilePic=this.userSession.profilePic
+    this.fromCourse="fromCourse"
     //console.log("profile ...." ,this.userSession.profilePic )
    
   }
