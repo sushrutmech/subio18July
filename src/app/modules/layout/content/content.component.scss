@@ -1030,3 +1030,35 @@ input:checked+.slider:before {
   margin-left: 18px;
   margin-bottom: 0px !important;
 }
+
+@media (max-width:1000px){
+    .toViewCont{
+      flex-wrap: wrap;
+      gap: 30px;
+      width: 33%;
+  }
+  .buttonRnW{
+    position: unset !important;
+    left: unset !important;
+    text-align: center;
+  }
+}
+
+@media (max-width:800px){
+    .toViewCont{
+      flex-wrap: wrap;
+      gap: 30px;
+      width: 50%;
+  }
+}
+
+@media (max-width:600px){
+    .toViewCont{
+      flex-wrap: wrap;
+      gap: 30px;
+      width: 100%;
+  }
+  .buttonRnW{
+    position: absolute;bottom: 32px;left: 25%;
+  }
+}
