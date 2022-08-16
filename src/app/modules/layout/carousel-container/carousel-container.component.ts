@@ -58,6 +58,12 @@ export class CarouselContainerComponent implements OnInit {
 
   }
 
+  videodataa(){
+    let video: any = document.getElementById("vid2");
+    console.log("video === ",video.currentTime);
+    console.log('vido.....',video.duration)
+  }
+
   videodata(data:any){
     let vidoo:any;
     //let vidoe= vidoo.get("vid1")
