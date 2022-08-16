@@ -26,7 +26,9 @@ export class WatchComponent implements OnInit, OnChanges {
   profilePic:any;
   transcriptData:any=[];
   ExerciseList:any=[];
-  fromCourse:any="fromCourse"
+  fromCourse:any="fromCourse";
+  videoDurationForOutSide:any;
+  progContentForStepper:any=[];
 
 
   constructor(
@@ -78,6 +80,7 @@ export class WatchComponent implements OnInit, OnChanges {
 
 
 
+
   }
 
   ngOnChanges(changes: any): void {
@@ -90,6 +93,11 @@ export class WatchComponent implements OnInit, OnChanges {
     this.validateProps();
   }
 
+  videoDurationCatch(data:any){
+    let videoDuration = data;
+    this.videoDurationForOutSide=Math.floor(videoDuration) 
+    console.log("duration from child" , this.videoDurationForOutSide , "...", data)
+  }
   validateProps() {
     if (this.videoIndex !== -1) {
       this.activeIndex = this.videoIndex;
@@ -139,6 +147,9 @@ export class WatchComponent implements OnInit, OnChanges {
       if (results.userProgramContent.length > 0 && results.userProgramInstance.length > 0) {
         this.programInstance = results.userProgramInstance[0];
         this.programContents = results.userProgramContent;
+        this.progContentForStepper=results.userProgramContent;
+        console.log("programInstance..." , this.programInstance)
+        console.log("progrmaContentstepper ..." , this.progContentForStepper)
         //this.contentType=results.userProgramContent;
         this.nextVideoIndex = this.programContents.findIndex(x => x.readCount === 0);
         if (this.nextVideoIndex === -1) {

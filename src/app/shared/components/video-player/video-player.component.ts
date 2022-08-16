@@ -17,6 +17,8 @@ export class VideoPlayerComponent implements OnInit,OnDestroy  {
   @Output() onVideoEnd: EventEmitter<any> = new EventEmitter();
   @Input() openFrom:any;
   @Input() closeVideofrom:boolean=false;
+  @Output() videoDurationForOutSide:EventEmitter<any> = new EventEmitter();
+
   contentId:any;
   current: any
   videoPlayer!: VgApiService;
@@ -84,6 +86,10 @@ export class VideoPlayerComponent implements OnInit,OnDestroy  {
     }
   }
 
+  videoDurationEmits(){
+    this.videoDuration=this.videoDurationForOutSide.emit()
+  }
+
   markContentStartedForLibrary(){
     console.log("library time start is called")
     this.currentTimeVideo = this.videoPlayer.getDefaultMedia().currentTime
@@ -95,6 +101,7 @@ export class VideoPlayerComponent implements OnInit,OnDestroy  {
     this.videoPlayer = data;
     this.videoPlayer.getDefaultMedia().subscriptions.loadedMetadata.subscribe(this.initVdo.bind(this));
     this.videoPlayer.getDefaultMedia().subscriptions.ended.subscribe(this.handleVideoWatched.bind(this));
+    console.log("**-*- videoDuration", this.videoDuration)
     //console.log("**" ,this.videoPlayer.getDefaultMedia())
     //console.log("time",this.videoPlayer.getDefaultMedia().currentTime)
     console.log("openfrommmm", this.openFrom)
@@ -128,7 +135,8 @@ export class VideoPlayerComponent implements OnInit,OnDestroy  {
       this.videoDuration = this.videoPlayer.getDefaultMedia().duration
       this.videoWatchTimePercent = this.currentTimeVideo / this.videoDuration * 100
      // console.log("curret time video...", this.currentTimeVideo)
-      //console.log("**-*- videoDuration", this.videoDuration)
+      console.log("**-*- videoDuration", this.videoDuration)
+      this.videoDurationForOutSide.emit(this.videoDuration)
      // console.log("percentage watch time...", this.videoWatchTimePercent)
       this.homeContentFromLocal = localStorage.getItem("homeContent")
       this.homeContentFromLocalJson = JSON.parse(this.homeContentFromLocal)

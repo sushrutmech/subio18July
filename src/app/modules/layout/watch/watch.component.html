@@ -2,18 +2,55 @@
 display: flex;
 justify-content: center;" class="animated fadeIn py-3">
 
-  <div class="setup-state-container">
+  <!-- <div class="setup-state-container">
 
     <div *ngFor="let content of programContents; let i = index" class="d-flex setup-state-block">
       <div class="setup-state" [class.active]="i ==contentDescriptionJson.stepNo"
         [innerHTML]="activeIndex > i ? '&#10003;' : i + 1">
       </div>
+
+      <div class="setup-state2">
+        <img src="./assets/images/incopleteStepStepper.svg" alt="">
+      </div>
+
+    
+        <div *ngIf="contentDescriptionJson.playedTime==videoDurationForOutSide" class="setup-state2">
+
+          <img src="../../../../assets/images/stepperWrightCheck.svg" alt="">
+        </div>
+       
+      
+    </div>
+  </div> -->
+
+  <div class="setup-state-container">
+
+    <div *ngFor="let content of progContentForStepper; let i = index" class="d-flex setup-state-block">
+      <div *ngIf="content.playedTime==0" class="setup-state" [class.active]="i ==contentDescriptionJson.stepNo"
+        [innerHTML]="activeIndex > i ? '&#10003;' : i + 1">
+      </div>
+
+      
+
+      <div *ngIf="content.playedTime==videoDurationForOutSide" class="setup-state2">
+
+        <img src="../../../../assets/images/stepperWrightCheck.svg" alt="">
+      </div>
+
+      <div *ngIf="content.playedTime<videoDurationForOutSide && content.playedTime!=0" class="setup-state2">
+        <img src="./assets/images/incopleteStepStepper.svg" alt="">
+      </div>
+
     </div>
   </div>
-  <div class="close-button" (click)="onWatchLaterClick()">
-    <i class="icon icon-close fa-2x"></i>
+
+  <!-- <div class="close-button" (click)="onWatchLaterClick()">
+    <i class="icon icon-close fa-2x">close</i>
   </div>
+   -->
 </div>
+<h1>video duration {{videoDurationForOutSide}}</h1>
+<h1>video playedTime {{contentDescriptionJson.playedTime}}</h1>
 <div style="width: 100%;" class="row full-height-row">
   <div class="col-lg-8 col-md-8  mx-auto">
     <div class="d-flex flex-column h-100 justify-content-between">
@@ -26,7 +63,8 @@ justify-content: center;" class="animated fadeIn py-3">
           </div>
           <div class="video-player-wrapper">
             <app-video-player class="" *ngIf="contentDescriptionJson.contentTypeName=='Video'" [openFrom]="fromCourse"
-              [closeVideofrom]="fromCourse" [contentDescriptionJson]="contentDescriptionJson" [src]="contentDescriptionJson.contentLocation"
+              [closeVideofrom]="fromCourse" [contentDescriptionJson]="contentDescriptionJson"
+              [src]="contentDescriptionJson.contentLocation" (videoDurationForOutSide)="videoDurationCatch($event)"
               (onVideoEnd)="handleReadContent(contentDescriptionJson.contentID ,contentDescriptionJson.programStepID)">
             </app-video-player>
 
